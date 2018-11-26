@@ -1,0 +1,180 @@
+@import "../../../../assets/css/common";
+@import "../../../../assets/css/commonDialog";
+$imgUrl: "../../../../assets/images/";
+.dialogMain {
+  padding: 15px 15px 0;
+  .box {
+    margin-bottom: 10px;
+    &:last-child {
+      margin-bottom: 0px;
+    }
+    .name {
+      float: left;
+      width: 80px;
+      height: 30px;
+      line-height: 30px;
+      text-align: right;
+    }
+    .value {
+      float: left;
+      &.switchType {
+        width: 150px;
+        height: 30px;
+        line-height: 28px;
+        border: 1px solid #e5e5e5;
+        border-radius: 4px;
+      }
+      &.time {
+        input,
+        label {
+          float: left;
+          height: 30px;
+          line-height: 28px;
+          margin-right: 20px;
+        }
+        input {
+          width: 80px;
+          border: 1px solid #e5e5e5;
+          border-radius: 4px;
+          margin-right: 5px;
+          padding-left: 3px;
+          font-size: 15px
+        }
+      }
+    }
+    .sceneListBox {
+      margin-left: 80px;
+      border: 1px solid #d7d7d9;
+      overflow: hidden;
+      .search {
+        width: 200px;
+        height: 30px;
+        line-height: 28px;
+        margin: 8px;
+        padding-left: 3px;
+        border: 1px solid rgba(68, 68, 68, 0.10);
+        border-radius: 3px;
+        background: url(#{$imgUrl}searchIcon.svg) no-repeat right center;
+      }
+      .tablelist {
+        height: 152px;
+        overflow-y: hidden;
+      }
+    }
+    table {
+      table-layout: fixed;
+      border-collapse: collapse;
+      th {
+        background: #F2F2F3;
+        color: rgba(53, 60, 67, 0.5);
+        height: 35px;
+        line-height: 35px;
+      }
+      td,
+      th {
+        text-align: center;
+        box-shadow: 0 1px 0 0 #ececee;
+        height: 30px;
+        line-height: 30px;
+        font-size: 12px
+      }
+      .overEllipsis span {
+        position: relative;
+        top: 2px;
+      }
+      td>label {
+        display: block;
+        height: 100%;
+      }
+      .secondItem {
+        padding-left: 10px;
+      }
+      .pollingType {
+        border: 1px solid #e5e5e5;
+        border-radius: 4px;
+        width: 85px;
+        height: 28px;
+        line-height: 26px;
+        vertical-align: middle;
+      }
+      .time {
+        input,
+        label {
+          vertical-align: middle;
+          height: 28px;
+          line-height: 26px;
+          margin-right: 5px;
+          vertical-align: middle;
+        }
+        input {
+          padding-left: 3px;
+          width: 45px;
+          border: 1px solid #e5e5e5;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+}
+
+.folderIcon,
+.imgIcon {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(#{$imgUrl}folderIcon_hover.svg);
+  vertical-align: middle;
+}
+
+.imgIcon {
+  background-image: url(#{$imgUrl}imgIcon.svg);
+}
+
+.chooseBtn {
+  display: none;
+}
+
+.chooseLabel {
+  width: 40px;
+  height: 22px;
+  display: inline-block;
+  border-radius: 22px;
+  position: relative;
+  background-color: #bdbdbd;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.chooseLabel:before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  border-radius: 20px;
+  background-color: #fff;
+  z-index: 20;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.chooseBtn:checked+label.chooseLabel:before {
+  left: 18px;
+}
+
+.chooseBtn:checked+label.chooseLabel {
+  background-color: $blueColor;
+}
+
+.fileTextLeft {
+  padding-left: 24px !important;
+}
+
+.filecheckboxInput {
+  margin-left: 40px !important
+}

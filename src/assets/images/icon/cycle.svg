@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>环图</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="环图" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="环形图" transform="translate(4.000000, 4.000000)" fill-rule="nonzero">
+            <path d="M10.5,1 C4.70100292,1 0,5.70100292 0,11.5 C0,17.2989971 4.70100292,22 10.5,22 C16.2989971,22 21,17.2989971 21,11.5 C21,5.70100292 16.2989971,1 10.5,1 Z M10.5,18.6708327 C6.53966335,18.6708327 3.3291673,15.4603367 3.3291673,11.5 C3.3291673,7.53966335 6.53966335,4.3291673 10.5,4.3291673 C14.4603367,4.3291673 17.6708327,7.53966335 17.6708327,11.5 C17.6708327,15.4603367 14.4603367,18.6708327 10.5,18.6708327 Z" id="Shape" fill="#E96000"></path>
+            <path d="M15.7124833,12 L22,12 C21.9962555,5.37193054 16.6251286,0 10,0 L10,6.29107387 C13.1526642,6.29107387 15.7087388,8.84641284 15.7124833,12 Z" id="Shape" fill="#0CA294"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,84 @@
+@import "../../../../assets/css/common";
+@import "../../../../assets/css/commonDialog";
+$imgUrl: "../../../../assets/images/";
+.dialogMain {
+  padding: 20px 20px 0;
+  .labelName {
+    width: 85px;
+    height: 30px;
+    line-height: 30px;
+  }
+  .renameIcon {
+    width: 20px;
+    height: 20px;
+    background-image: url(#{$imgUrl}renameIcon_hover.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    cursor: pointer;
+  }
+  .dbNameBox {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    &>div {
+      display: flex;
+      flex: 1;
+      height: 40px;
+      border: 1px solid #BAC0D6;
+      padding: 0 10px;
+      align-items: center;
+    }
+    .dbName {
+      flex: 1;
+      height: 30px;
+      line-height: 28px;
+      border: 1px solid transparent;
+      background-color: transparent;
+      outline: medium;
+      pointer-events: none;
+      padding: 0 3px;
+      &.editStatus {
+        background-color: rgba(97, 131, 144, 0.2);
+        pointer-events: auto;
+      }
+    }
+  }
+  .dbTableList {
+    margin-left: 85px;
+    height: 240px;
+    border: 1px solid #BAC0D6;
+    li {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      line-height: 40px;
+      border-bottom: 1px solid #BAC0D6;
+      padding: 0 10px;
+      background-color: #F6F6F7;
+    }
+    .daTableName {
+      flex: 1;
+      height: 30px;
+      line-height: 28px;
+      margin: 0 10px;
+      border: 1px solid transparent;
+      background-color: transparent;
+      outline: medium;
+      pointer-events: none;
+      padding: 0 3px;
+      &.editStatus {
+        background-color: rgba(97, 131, 144, 0.2);
+        pointer-events: auto;
+      }
+    }
+  }
+}
+
+.allSelectedBox {
+  margin-top: 5px;
+  margin-left: 10px;
+  label {
+    margin-right: 13px;
+  }
+}

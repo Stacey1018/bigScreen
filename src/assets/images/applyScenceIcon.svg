@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="20px" viewBox="0 0 19 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>应用场景</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="应用场景" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2-Copy-2" fill="#787993" fill-rule="nonzero">
+            <g id="确定" transform="translate(0.000000, 18.000000)">
+                <path d="M17.9886417,-4.54747351e-13 L1.14911408,-4.54525306e-13 C0.596829332,-4.54423853e-13 0.149114081,0.44771525 0.149114081,1 L0.149114081,1 C0.149114081,1.55228475 0.596829332,2 1.14911408,2 L17.9886417,2 C18.5409265,2 18.9886417,1.55228475 18.9886417,1 L18.9886417,1 C18.9886417,0.44771525 18.5409265,-4.54848804e-13 17.9886417,-4.54747351e-13 Z" id="Shape"></path>
+            </g>
+            <g id="fabu" transform="translate(2.000000, 0.000000)">
+                <polygon id="Shape" points="16 0 0 6.69333333 0 7.5648 6.08 9.92 8.42666667 16 9.29813333 16"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

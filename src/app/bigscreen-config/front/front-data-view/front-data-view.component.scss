@@ -1,0 +1,155 @@
+ $imgUrl:'../../../../assets/images/setting/'; // 新建场景页面的样式
+ .returnSceneIcon {
+     color: #A1B1C5;
+ } // 数据配置
+ .page-right {
+     background-color: #0A1627;
+ } // 辅助线的样式
+ .guide {
+     display: none;
+     position: absolute;
+     left: 0;
+     top: 0;
+     z-index: 3;
+ }
+
+ #guide {
+     display: inline-block;
+     width: auto;
+     text-align: right;
+     height: 36px;
+     line-height: 36px;
+     color: #fff;
+     padding-right: 5px;
+ }
+
+ #guide-w {
+     border-top: 1px dashed #51afff;
+     width: 100%;
+ }
+
+ #guide-h {
+     border-left: 1px dashed #51afff;
+     height: 100%;
+ } // 拖拽的边，角的样式
+ .handlerBox {
+     span {
+         position: absolute;
+         z-index: 2;
+     }
+     .top-left-handler,
+     .top-right-handler,
+     .bottom-left-handler,
+     .bottom-right-handler {
+         width: 11px;
+         height: 11px;
+     }
+     .left-handler,
+     .right-handler {
+         width: 11px;
+         top: 5px;
+         bottom: 5px;
+         cursor: ew-resize;
+     }
+     .top-handler,
+     .bottom-handler {
+         height: 11px;
+         left: 5px;
+         right: 5px;
+         cursor: ns-resize;
+     }
+     .top-left-handler,
+     .top-handler,
+     .top-right-handler {
+         top: -5px;
+         bottom: auto;
+     }
+     .bottom-left-handler,
+     .bottom-handler,
+     .bottom-right-handler {
+         top: auto;
+         bottom: -5px;
+     }
+     .top-left-handler,
+     .left-handler,
+     .bottom-left-handler {
+         left: -5px;
+         right: auto;
+     }
+     .top-right-handler,
+     .right-handler,
+     .bottom-right-handler {
+         left: auto;
+         right: -5px;
+     }
+     .top-right-handler,
+     .bottom-left-handler {
+         cursor: nesw-resize;
+     }
+     .top-left-handler,
+     .bottom-right-handler {
+         cursor: nwse-resize;
+     }
+ } //  右击
+ .operateLayoutBox {
+     width: 100px;
+     position: fixed;
+     top: 300px;
+     left: 400px;
+     background-color: #fff;
+     z-index: 9;
+     ul {
+         border-bottom: none;
+         background-color: #333746;
+         li {
+             height: 30px;
+             text-align: center;
+             line-height: 30px;
+             cursor: pointer;
+             color: #FFFFFF;
+             padding-left: 8px;
+             display: flex;
+             align-items: center;
+             &:hover {
+                 background-color: rgba(115, 169, 247, 0.2);
+                 color: #2CA7E0;
+                 .topIcon {
+                     background: url('#{$imgUrl}topBlue.svg') no-repeat center;
+                 }
+                 .bottomIcon {
+                     background: url('#{$imgUrl}bottomBlue.svg') no-repeat center;
+                 }
+                 .moveupIcon {
+                     background: url('#{$imgUrl}moveUpBlue.svg') no-repeat center;
+                 }
+                 .movedownIcon {
+                     background: url('#{$imgUrl}moveDownBlue.svg') no-repeat center;
+                 }
+                 .deleteIcon {
+                     background: url('#{$imgUrl}deleteBlue.svg') no-repeat center;
+                 }
+             }
+             i {
+                 display: inline-block;
+                 width: 15px;
+                 height: 15px;
+                 margin-right: 5px;
+             }
+             .topIcon {
+                 background: url('#{$imgUrl}top.svg') no-repeat center;
+             }
+             .bottomIcon {
+                 background: url('#{$imgUrl}bottom.svg') no-repeat center;
+             }
+             .moveupIcon {
+                 background: url('#{$imgUrl}moveUp.svg') no-repeat center;
+             }
+             .movedownIcon {
+                 background: url('#{$imgUrl}moveDown.svg') no-repeat center;
+             }
+             .deleteIcon {
+                 background: url('#{$imgUrl}delete.svg') no-repeat center;
+             }
+         }
+     }
+ }

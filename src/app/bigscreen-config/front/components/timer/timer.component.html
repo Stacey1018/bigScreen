@@ -1,0 +1,7 @@
+<div class="timerItem" [ngStyle]="{'justify-content':timerData.configInfo.align}">
+  <i *ngIf="timerData.configInfo.isShowIcon" [ngStyle]="{'font-size':timerData.configInfo.iconSize+'px','color':timerData.configInfo.iconColor,'margin-right':timerData.configInfo.iconSpacing+'px'}"
+    class="iconfont icon-timer"></i>
+  <span [ngStyle]="{'font-size':timerData.configInfo.fontSize+'px','color':timerData.configInfo.fontColor,'font-weight':timerData.configInfo.fontBold,'font-family':timerData.configInfo.fontFamily}">
+    {{time}}
+  </span>
+</div>

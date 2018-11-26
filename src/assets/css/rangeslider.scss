@@ -1,0 +1,38 @@
+$commonBlue:#51afff;
+.rangeBox {
+    width: 200px;
+    position: relative;
+    input[type=range] {
+        -webkit-appearance: none;
+        width: 100%;
+        border-radius: 10px;
+        /*这个属性设置使填充进度条时的图形为圆角*/
+        padding: 0;
+        background: -webkit-linear-gradient(90deg ,rgba(43,209,210,1),rgba(10,153,241,1),rgba(16,114,207,1)) no-repeat,#101728;
+        background: linear-gradient(90deg,rgba(43,209,210,1),rgba(10,153,241,1),rgba(16,114,207,1)) no-repeat,#101728;
+        /*设置左边颜色为#61bd12，右边颜色为#ddd*/
+        /*background-size: 75% 100%;*/
+        /*设置左右宽度比例*/
+    }
+    input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+    } // 滑块的样式
+    input[type=range]::-webkit-slider-runnable-track {
+        height: 6px;
+        border-radius: 3px; // background-color: #101728;
+        /*将轨道设为圆角的*/
+        // box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em red;
+        /*轨道内置阴影效果*/
+    }
+    input[type=range]:focus {
+        outline: none;
+    } // 点的样式
+    input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 12px;
+        width: 12px;
+        margin-top: -3px;
+        background: #ffffff;
+        cursor: pointer;
+    }
+}

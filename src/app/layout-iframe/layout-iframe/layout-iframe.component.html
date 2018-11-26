@@ -1,0 +1,79 @@
+<div class="position iframeBox">
+  <div class="pt-perspective">
+    <div class="pt-page">
+      <div class="layout-main daping" id="layout-container" style="overflow: hidden;">
+        <div id="dataBox" class="dataBox" [ngStyle]="{'width':pageSize.width+'px','height':pageSize.height+'px','background-image': 'url('+bgUrl+')','background-color':sceneBg.bgColor}">
+          <div class="dataItemBox sceneDataItemData" *ngFor="let item of sceneForm.itemList;let i=index;" [ngStyle]="{'width': item.sizeCol+'px','height': item.sizeRow+'px','top': item.positionY+'px','left': item.positionX+'px','z-index':item.layerNum}">
+            <!-- 内容 start -->
+            <!-- border -->
+            <ng-container *ngIf="item.detailCode===dataTypeEnum.border">
+              <div class="borderItem" id="dataItemBox{{item.itemId}}" [ngStyle]="{'background-image': 'url('+appSer.appsetting.viewServerUrl+item.resourceInfo+')'}">
+              </div>
+            </ng-container>
+            <!-- 图表 -->
+            <ng-container *ngIf="item.resourceCode===dataTypeEnum.echarts">
+              <div class="chartItem" id="dataItemBox{{item.itemId}}">
+              </div>
+            </ng-container>
+            <!-- 标题 -->
+            <ng-container *ngIf="item.detailCode===dataTypeEnum.title">
+              <app-text [textData]="item"></app-text>
+            </ng-container>
+            <!-- 单行文本跑马灯 -->
+            <ng-container *ngIf="item.detailCode===dataTypeEnum.singleData">
+              <app-single-data [id]="i" [singleTextData]="item"></app-single-data>
+            </ng-container>
+            <!-- 多行文本左翻 -->
+            <ng-container *ngIf="item.detailCode===dataTypeEnum.multipleData">
+              <app-multiple-data [multipleTextData]="item"></app-multiple-data>
+            </ng-container>
+            <!-- 多行文本上滚 -->
+            <ng-container *ngIf="item.detailCode===dataTypeEnum.scrollTopData">
+              <app-scroll-top [scrollTopData]="item"></app-scroll-top>
+            </ng-container>
+            <!-- 中国地图、世界地图 -->
+            <ng-container *ngIf="item.detailCode===dataTypeEnum.chinaMap||item.detailCode===dataTypeEnum.worldMap">
+              <app-based-map [id]="i" [mapType]="item.resourceInfo"></app-based-map>
+            </ng-container>
+            <!-- 3D球形地图 -->
+            <ng-container *ngIf="item.detailCode===dataTypeEnum.sphericalMap">
+              <app-spherical-map [id]="i"></app-spherical-map>
+            </ng-container>
+            <!---实时视频-->
+            <ng-container *ngIf="item.detailCode===dataTypeEnum.realVideo">
+              <app-video-plugin [videoData]="item"></app-video-plugin>
+            </ng-container>
+            <!--视频片段-->
+            <ng-container *ngIf="item.detailCode===dataTypeEnum.historyVideo">
+              <app-video-plugin [videoData]="item"></app-video-plugin>
+            </ng-container>
+            <!-- 图片 -->
+            <ng-container *ngIf="item.detailCode===dataTypeEnum.image">
+              <div class="imageItem" id="dataItemBox{{item.itemId}}" *ngIf="item.resourceInfo!=''" [ngStyle]="{'background-image': 'url('+appSer.appsetting.viewServerUrl+item.resourceInfo+')'}">
+              </div>
+              <div class="imageItem" id="dataItemBox{{item.itemId}}" *ngIf="item.resourceInfo==''" [ngStyle]="{'background-image': 'url(../../../../assets/images/component/imageItemBg.svg)'}">
+              </div>
+            </ng-container>
+            <!-- 轮播图片 -->
+            <ng-container *ngIf="item.detailCode===dataTypeEnum.pollingImage">
+              <app-polling-image [pollingImgData]="item"></app-polling-image>
+            </ng-container>
+            <!-- 时间器 -->
+            <ng-container *ngIf="item.detailCode===dataTypeEnum.timer">
+              <app-timer [timerData]="item"></app-timer>
+            </ng-container>
+            <!-- 翻牌 -->
+            <ng-container *ngIf="item.detailCode===dataTypeEnum.draw">
+              <app-draw [drawData]="item"></app-draw>
+            </ng-container>
+            <!-- 内容 start -->
+          </div>
+        </div>
+      </div>
+      <div>
+        <button hidden id='changeSceneBtn' (click)='changeScene()'></button>
+        <button hidden id='chartInteractBtn' (click)='chartInteract()'></button>
+      </div>
+    </div>
+  </div>
+</div>

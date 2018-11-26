@@ -1,0 +1,178 @@
+@import "../../../../assets/css/common";
+@import "../../../../assets/css/commonDialog";
+$imgUrl: "../../../../assets/images/";
+$iconUrl:"../../../../assets/images/icon/";
+.dialogMain {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    .selectedWorkSheet {
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        background: rgba(255, 255, 255, 1);
+        border-radius: 3px;
+        border: 1px solid rgba(68, 68, 68, 0.1);
+        padding: 0 3px;
+        &.search {
+            background-image: url(#{$imgUrl}searchIconGray.svg);
+            background-repeat: no-repeat;
+            background-position: 98% center;
+            padding: 0 30px 0 3px;
+        }
+    }
+    .worksheetListBox {
+        background-color: #F3F3F3;
+        flex: 1;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        .worksheetList {
+            flex: 1;
+            overflow: hidden;
+            border: 1px solid rgba(215, 215, 217, 1);
+        }
+    }
+}
+
+.tab-checkout {
+    .icon {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-right: 10px;
+    }
+    width: 100%;
+    .tabs-common {
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+    }
+    .tabs-content {
+        .tree-picture {
+            position: relative;
+            padding-right: 0px;
+            li {
+                cursor: pointer;
+                .name {
+                    float: left;
+                    height: 30px;
+                    width: 290px;
+                    border: none;
+                    outline: medium;
+                    pointer-events: none;
+                    background: transparent;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    &.secondname {
+                        width: 280px;
+                    }
+                }
+                .delete-scene {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    width: 20px;
+                    height: 20px;
+                    line-height: 20px;
+                    font-size: 16px;
+                    text-align: center;
+                    background-color: $themeColor;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    display: none;
+                }
+                &.drag-item {
+                    z-index: 2;
+                }
+                &.tree-picture-li {
+                    height: 40px;
+                    line-height: 40px;
+                    padding-left: 0;
+                    color: $titleColor;
+                    cursor: pointer;
+                    background-color: transparent;
+                    border-radius: 0;
+                    position: absolute;
+                    z-index: 1;
+                }
+            }
+            .common {
+                padding-left: 10px;
+                &.active {
+                    input {
+                        color: $activeColor;
+                    }
+                    .folderIcon {
+                        background-image: url(#{$imgUrl}folderIcon_hover.svg);
+                    }
+                    .scenceFileIcon {
+                        background-image: url(#{$imgUrl}scenceFileIconBlue.svg);
+                    }
+                    .fileIcon {
+                        background-image: url(#{$imgUrl}fileIcon_hover.svg);
+                    }
+                    .fileIcon0 {
+                        background-image: url(#{$iconUrl}line.svg);
+                    }
+                    .dbIcon {
+                        background-image: url(#{$imgUrl}databaseIcon.svg);
+                    }
+                    .settingIcon {
+                        background-image: url(#{$imgUrl}settingIconBlue.svg);
+                    }
+                    .moreTableLinkIcon {
+                        background-image: url(#{$imgUrl}moreTableLinkIconBlue.svg);
+                    }
+                }
+                .folderIcon {
+                    float: left;
+                    background-image: url(#{$imgUrl}folderIcon.svg);
+                }
+                .scenceFileIcon {
+                    float: left;
+                    background-image: url(#{$imgUrl}scenceFileIconBlue.svg);
+                    background-size: 18px;
+                }
+                .fileIcon {
+                    float: left;
+                    background-image: url(#{$imgUrl}fileIcon.svg);
+                    background-size: 20px;
+                }
+                .dbIcon {
+                    float: left;
+                    background-image: url(#{$imgUrl}databaseIconHover.svg);
+                }
+                .excelIcon {
+                    float: left;
+                    background-image: url(#{$imgUrl}excelIconHover.svg);
+                }
+                .settingIcon {
+                    float: right;
+                    cursor: pointer;
+                    background-image: url(#{$imgUrl}settingIcon.svg);
+                }
+                .moreTableLinkIcon {
+                    float: left;
+                    background-image: url(#{$imgUrl}moreTableLinkIcon.svg);
+                }
+            }
+            .second-lever {
+                .common {
+                    padding-left: 20px;
+                    &:hover,
+                    &.active {
+                        background-color: #ECECEE;
+                    }
+                }
+            }
+            &.bottom {
+                z-index: 1;
+            }
+        }
+    }
+}

@@ -1,0 +1,116 @@
+<div class="list-box">
+  <div class="componentTitle">
+    组件库
+    <div>
+      <span class="icon allDataIcon" [ngClass]="{'active': isAllDataShow}" (click)="isAllDataShow=true" title="所有组件"></span>
+      <span class="icon selectedDataIcon" [ngClass]="{'active': !isAllDataShow}" (click)="isAllDataShow=false" title="已添加组件"></span>
+    </div>
+  </div>
+  <div class="position" style="top:40px;" [ngClass]="{'hidden': !isAllDataShow}">
+    <div class="comGrounpList position">
+      <ul>
+        <li class="material" (click)="switchData('border')" [ngClass]="{'active': showDataType=='border'}" title="素材"></li>
+        <li class="chart" (click)="switchData('chart')" [ngClass]="{'active': showDataType=='chart'}" title="图表"></li>
+        <li class="map" (click)="switchData('map')" [ngClass]="{'active': showDataType=='map'}" title="地图"></li>
+        <li class="text" (click)="switchData('text')" [ngClass]="{'active': showDataType=='text'}" title="文本"></li>
+        <li class="media" (click)="switchData('material')" [ngClass]="{'active': showDataType=='material'}" title="媒体"></li>
+        <li class="other" (click)="switchData('other')" [ngClass]="{'active': showDataType=='other'}" title="其他"></li>
+      </ul>
+    </div>
+    <div class="comDataList position">
+      <div class="data-ShowImg operate-container">
+        <img width='140' *ngIf='imgUrl' [src]='imgUrl'>
+      </div>
+      <div class="containerDiv" id="data-view-scroll">
+        <div class="dataBox">
+          <!-- 图表 -->
+          <div [ngClass]="{'hidden': showDataType!='chart'}">
+            <ul class="tree-picture datafile" id="datafile">
+              <li class="data-file first-lever" *ngFor="let item of smSer.chartFolderArray">
+                <div id='{{item.resourceId}}' class="common clearfix" (click)='showSecLevelFile(item.resourceId)' title='{{item.resourceName}}'>
+                  <i class="icon folderIcon"></i>
+                  <input type="text" class="name firstname" value='{{item.resourceName}}' />
+                </div>
+                <ul class="second-lever" *ngIf="item.showList" [sortablejs]="item.list" [sortablejsOptions]="optionsData">
+                  <li class="data-source common clearfix cursorMove" [attr.data-type]="dataTypeEnum.echarts" id='{{item2.resourceId}}' (mouseout)="hideImg('data')"
+                    (mouseover)="showImg(item2.resourceId, item2.thumb)" *ngFor="let item2 of item.list" title='{{item2.resourceName}}'>
+                    <i class="icon fileIcon fileIcon{{item2.detailCode}}"></i>
+                    <input type="text" class="name secondname" maxlength='25' value='{{item2.resourceName}}' />
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="tree-picture rootdatas" [sortablejs]="smSer.chartArray" [sortablejsOptions]="optionsData">
+              <li class="data-source common first-lever clearfix cursorMove" [attr.data-type]="dataTypeEnum.echarts" (mouseout)="hideImg('data')"
+                (mouseover)="showImg(item.resourceId, item.thumb)" id='{{item.resourceId}}' *ngFor="let item of smSer.chartArray"
+                title='{{item.resourceName}}'>
+                <i class="icon fileIcon fileIcon{{item.detailCode}}"></i>
+                <input type="text" class="name firstname" maxlength='25' value='{{item.resourceName}}' />
+              </li>
+            </ul>
+          </div>
+          <!-- 边框 -->
+          <div class="dataItemBox borderItemBox" [ngClass]="{'hidden': showDataType!='border'}">
+            <ul [sortablejs]="borderItems" [sortablejsOptions]="optionsData">
+              <li *ngFor="let item of borderItems;let i=index" [attr.data-type]="dataTypeEnum.border" [attr.data-index]="i">
+                <div class="imgBox" [ngStyle]="{'background-image': 'url('+appSer.appsetting.viewServerUrl+item.resourceInfo+')'}"></div>
+                <div class="textBox overEllipsis" title="{{item.resourceName}}">{{item.resourceName}}</div>
+              </li>
+            </ul>
+          </div>
+          <!-- 地图 -->
+          <div class="dataItemBox" [ngClass]="{'hidden': showDataType!='map'}">
+            <ul [sortablejs]="mapItems" [sortablejsOptions]="optionsData">
+              <li *ngFor="let item of mapItems;let i=index" [attr.data-type]="item.dataType">
+                <div class="imgBox {{item.iconName}}"></div>
+                <div class="textBox overEllipsis" title="{{item.resourceName}}">{{item.resourceName}}</div>
+              </li>
+            </ul>
+          </div>
+          <!-- 文本 -->
+          <div class="dataItemBox" [ngClass]="{'hidden': showDataType!='text'}">
+            <ul [sortablejs]="textItems" [sortablejsOptions]="optionsData">
+              <li *ngFor="let item of textItems;let i=index" [attr.data-type]="item.dataType">
+                <div class="imgBox {{item.iconName}}"></div>
+                <div class="textBox overEllipsis" title="{{item.resourceName}}">{{item.resourceName}}</div>
+              </li>
+            </ul>
+          </div>
+          <!-- 媒体 -->
+          <div class="dataItemBox" [ngClass]="{'hidden': showDataType!='material'}">
+            <ul [sortablejs]="materialItems" [sortablejsOptions]="optionsData">
+              <li *ngFor="let item of materialItems;let i=index" [attr.data-type]="item.dataType">
+                <div class="imgBox {{item.iconName}}"></div>
+                <div class="textBox overEllipsis" title="{{item.resourceName}}">{{item.resourceName}}</div>
+              </li>
+            </ul>
+          </div>
+          <!-- 其他 -->
+          <div class="dataItemBox" [ngClass]="{'hidden': showDataType!='other'}">
+            <ul [sortablejs]="otherItems" [sortablejsOptions]="optionsData">
+              <li *ngFor="let item of otherItems;let i=index" [attr.data-type]="item.dataType">
+                <div class="imgBox {{item.iconName}}"></div>
+                <div class="textBox overEllipsis" title="{{item.resourceName}}">{{item.resourceName}}</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="position" style="top:40px;background-color: #0A1627;" [ngClass]="{'hidden': isAllDataShow}">
+    <div class="containerDiv">
+      <!-- 已选数据 -->
+      <div class="selectedDataBox">
+        <ul class="tree-picture" [sortablejs]="dataIdList" [sortablejsOptions]="optionsSelectedData">
+          <li class="common" [ngClass]="{'active': selectedItemId==dataIdList[i]}" (click)="selectItem(dataIdList[i]);" *ngFor="let item of dataIdList;let i=index;">
+            <i class="icon fileIcon fileIcon{{dataList[dataIdList[i]]?.detailCode}}"></i>
+            <div class="name" title="{{dataList[dataIdList[i]]?.resourceName}}">
+              {{dataList[dataIdList[i]]?.resourceName}}
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

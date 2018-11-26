@@ -1,0 +1,12 @@
+<div app-run-number [options]="drawData.configInfo" class="runNumberBox" style="width: 100%;height: 100%;">
+  <ul class="dataNums inrow">
+    <li class="dataOne" *ngFor="let item of drawData.configInfo?.drawVal.split('')" [ngStyle]="{'width': drawData.configInfo.fontSize*1.5+'px','height':drawData.configInfo.fontSize*2+'px','color':drawData.configInfo.fontColor}">
+      <div class="dataBoc" [ngStyle]="{'background-color':drawData.configInfo.drawBgColor,'border-radius':drawData.configInfo.drawBorderRadius+'px'}">
+        <div class="tt" t="38">
+          <span [ngStyle]="{'font-size':drawData.configInfo.fontSize+'px'}" class="num{{num[i]}}" *ngFor="let num of numArray;let i = index">{{numArray[i]}}</span>
+          <span [ngStyle]="{'font-size':drawData.configInfo.fontSize+'px'}" class="num{{num[i]}}" *ngFor="let num of numArray;let i = index">{{numArray[i]}}</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

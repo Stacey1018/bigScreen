@@ -1,0 +1,176 @@
+$imgUrl:'../../../../assets/images/';
+.canvas-box {
+    bottom: auto;
+    height: 200px;
+    margin: 0 10px;
+    background-color: #ffffff;
+    border: 1px solid #2EA4FF;
+    .noDataTable {
+        height: 100%;
+    }
+}
+
+.table-link-canvas {
+    padding: 20px;
+}
+
+// 表
+.primary-table,
+.association-table {
+    float: left;
+    .name {
+        float: left;
+        display: flex;
+        align-items: center;
+        width: 230px;
+        height: 30px;
+        line-height: 30px;
+        color: #fff;
+        padding: 0 10px;
+        background: rgba(18, 150, 219, 1);
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
+        &:hover {
+            .deleteIcon {
+                display: inline-block;
+            }
+        }
+    }
+    .line {
+        float: left;
+        width: 20px;
+        margin-top: 14.5px;
+        height: 1px;
+        line-height: 0;
+        font-size: 0;
+        background-color: #CED1DC;
+    }
+}
+
+.primary-table {
+    width: 250px;
+}
+
+.association-table {
+    li {
+        position: relative;
+    }
+    .first {
+        .line {
+            margin-top: 14.5px;
+        }
+        .name {
+            margin-top: 0;
+        }
+        .editIcon {
+            top: 2px;
+        }
+    }
+    .vertical-line {
+        float: left;
+        width: 1px;
+        height: 48px;
+        line-height: 0;
+        font-size: 0;
+        background-color: #CED1DC;
+        margin-top: -14.5px;
+    }
+    .line {
+        width: 200px;
+        margin-top: 32.5px;
+    }
+    .name {
+        span {
+            flex: 1;
+        }
+        color: #787993;
+        margin-top: 18px;
+        background: rgba(241, 241, 241, 1);
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.5);
+    }
+    .editIcon {
+        position: absolute;
+        top: 20px;
+        left: 85px;
+        width: 26px;
+        height: 26px;
+        cursor: pointer;
+        background-image: url(#{$imgUrl}editTableLink.svg);
+    }
+}
+
+.titleBox {
+    height: 40px;
+    background-color: #FFE9D5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    color: #E96000;
+    margin-bottom: 15px;
+    &>div {
+        display: flex;
+        align-items: center;
+    }
+    .fieldSetting {
+        cursor: pointer;
+    }
+}
+
+.table-box {
+    display: flex;
+    flex-direction: column;
+    top: 220px;
+    .tableList {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow: hidden;
+    }
+}
+
+.icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    &.settingIcon {
+        margin: 0 5px;
+        background-image: url(#{$imgUrl}fieldSetting.svg);
+    }
+    &.upIcon {
+        margin: 0 5px;
+        background-image: url(#{$imgUrl}fieldSettingUp.svg);
+    }
+    &.downIcon {
+        margin: 0 5px;
+        background-image: url(#{$imgUrl}fieldSettingDown.svg);
+    }
+    &.renameIcon {
+        margin: 0 5px;
+        cursor: pointer;
+        background-size: 16px;
+        background-image: url(#{$imgUrl}renameIcon_hover.svg);
+    }
+    &.fileIcon {
+        margin-right: 5px;
+        background-image: url(#{$imgUrl}scenceFileIcon_hover.svg);
+    }
+    &.fileIconDrag {
+        margin-right: 5px;
+        background-image: url(#{$imgUrl}scenceFileIcon_drag.svg);
+    }
+    &.deleteIcon {
+        display: none;
+        cursor: pointer;
+        margin-left: 5px;
+        background-image: url(#{$imgUrl}deleteTableLink.svg);
+    }
+}
+
+.tableName {
+    background-color: #8B9DAC !important;
+    text-align: left !important;
+    padding-left: 15px;
+}

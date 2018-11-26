@@ -1,0 +1,81 @@
+<div class="settingBox">
+  <div class="settingTitle">
+    配置信息
+  </div>
+  <ul class="navBox">
+    <li [ngClass]="{'active': !isShowHistotyList}" (click)="isShowHistotyList = false">图片上传</li>
+    <li [ngClass]="{'active': isShowHistotyList}" (click)="isShowHistotyList = true">历史上传</li>
+  </ul>
+  <div class="position uploadBox" style="top:80px;bottom:200px" [ngClass]="{'hidden': isShowHistotyList}">
+    <h2 class="title">选择上传</h2>
+    <div class="settingContain">
+      <div class="settingDiv">
+        <label class="settingName">单张图片</label>
+        <div class="uploadImg">
+          <a href="javascript:;" class="file">
+            <input [disabled]="pollingImgData.configInfo.imgUrl.length==5" class="file-upload" type="file" accept=".jpg,.jpeg,.svg,.gif,.png"
+              (click)='beforeUpload()' ng2FileSelect [uploader]="uploader" multiple/>点击上传
+          </a>
+        </div>
+
+
+      </div>
+      <div class="settingDiv settingImg" *ngIf="pollingImgData.configInfo.imgUrl.length!==0">
+        <label class="settingName" style="width:85px;">轮播图顺序</label>
+        <div>
+          <ul class="bgList" [sortablejs]="pollingImgData.configInfo.imgUrl" [sortablejsOptions]="optionsData">
+            <li class="imgList" *ngFor="let item of pollingImgData.configInfo.imgUrl;let i=indx">
+              <div (click)="remove(item)">×</div>
+              <div class="bgBox" [ngStyle]="{'background-image': 'url('+appSer.appsetting.viewServerUrl+item.resourceInfo+')'}"></div>
+              <div class="bgName overEllipsis">{{item.resourceName}} </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <h2 class="title">轮播图配置</h2>
+    <div class="settingContain">
+      <div class="settingDiv">
+        <label class="settingName">轮播速度</label>
+        <input type="number" class="settingValue" [(ngModel)]="pollingImgData.configInfo.speed" (change)="changeData()">
+      </div>
+
+    </div>
+
+
+    <!-- <h2 class="title" *ngIf="pollingImgData.configInfo.imgUrl.length!==0">轮播图顺序</h2>
+    <div class="settingDiv">
+      <ul class="bgList" [sortablejs]="pollingImgData.configInfo.imgUrl" [sortablejsOptions]="optionsData">
+        <li class="imgList" *ngFor="let item of pollingImgData.configInfo.imgUrl;let i=indx">
+          <div (click)="remove(item)">×</div>
+          <div class="bgBox" [ngStyle]="{'background-image': 'url('+appSer.appsetting.viewServerUrl+item.resourceInfo+')'}"></div>
+          <div class="bgName overEllipsis">{{item.resourceName}} </div>
+        </li>
+      </ul>
+    </div> -->
+    <div class="subBtn">
+      <div class="btn" (click)="changeData()">提交查看配置结果</div>
+
+    </div>
+  </div>
+
+  <div class="position" style="top:80px;" [ngClass]="{'hide': !isShowHistotyList}">
+    <div class="containerDiv">
+      <ul class="bgList">
+        <li *ngFor="let item of historyImagesList;let i=indx" [ngClass]="{'active': historyImagesIdList.indexOf(item.resourcesId)>-1}"
+          (click)="selectBg(item)">
+          <!-- *ngIf="pollingImgData.resourceInfo==item.resourcesUrl" -->
+          <span class="checkbox" *ngIf="historyImagesIdList.indexOf(item.resourcesId)>-1">
+            <input class="check" type="checkbox" id="channel_checkDiv{{i}}" disabled checked/>
+            <label for="channel_checkDiv{{i}}" class="check-label white"></label>
+          </span>
+          <div class="bgBox" [ngStyle]="{'background-image': 'url('+appSer.appsetting.viewServerUrl+item.resourcesUrl+')'}">
+          </div>
+          <div class="bgName overEllipsis" title="{{item.resourcesName}}"> {{item.resourcesName}}</div>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+</div>

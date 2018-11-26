@@ -1,0 +1,46 @@
+<div class="excel-import position">
+  <app-add-data-sourse-nav [step]="'excel'"></app-add-data-sourse-nav>
+  <div class="content position">
+    <div class="title">导入Excel</div>
+    <div class="fileBox">
+      <div class="fileBtn">
+        上传Excel
+        <input type="file" accept=".xls,.xlsx" (change)="upload($event)">
+      </div>
+    </div>
+    <div class="previewTable" [ngClass]="{'hidden':!isHaveData}">
+      <div class="title">预览</div>
+      <div class="excelContent">
+        <div class="fileName">{{excelName}}</div>
+        <ul class="sheetList clearfix">
+          <li *ngFor="let item of excelNames" (click)="changeData(item)" [ngClass]="{'active': currSheet==item}">
+            {{item}}
+          </li>
+        </ul>
+        <div class="tableList">
+          <div class="tableBox">
+            <div class="tableContentBox" id="tableList">
+              <table class="tableContent">
+                <tr class="tableTitle">
+                  <th class="overEllipsis" title="{{keyItem}}" *ngFor="let keyItem of dbTableData.key">
+                    {{keyItem}}
+                  </th>
+                </tr>
+                <tr *ngFor="let dataItem of dbTableData.data">
+                  <td class="overEllipsis" title="{{dataItem[keyItem]}}" *ngFor="let keyItem of dbTableData.key">
+                    {{dataItem[keyItem]}}
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="btnBox">
+        <button mat-raised-button color="primary" (click)="importExcel()">导入</button>
+      </div>
+    </div>
+  </div>
+</div>

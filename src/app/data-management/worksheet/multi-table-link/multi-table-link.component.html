@@ -1,0 +1,109 @@
+﻿<div class="multi-table-link position">
+  <div class="canvas-box position">
+    <div class="containerDiv">
+      <div id="table-link-canvas" class="table-link-canvas clearfix">
+        <div class="primary-table">
+          <div class="name">
+            <i class="icon fileIcon"></i>
+            <span class="overEllipsis">{{pkTableName}}</span>
+          </div>
+          <span class="line" *ngIf="dragTables.length>0"></span>
+        </div>
+        <div class="association-table">
+          <table class="noDataTable position" *ngIf="dragTables.length==0">
+            <tr>
+              <td>
+                <div class="noDataImg noLinkTable"></div>
+                <div class="noDataText">暂无关联信息，可拖入表进行关联</div>
+              </td>
+            </tr>
+          </table>
+          <ul>
+            <li class="clearfix" *ngFor="let item of dragTables;let i=index;" [ngClass]="{'first':i==0}">
+              <span class="vertical-line" *ngIf="i!=0"></span>
+              <span class="line"></span>
+              <i class="icon editIcon" (click)="editGraph(item)" title="编辑"></i>
+              <div class="name overEllipsis">
+                <i class="icon fileIconDrag"></i>
+                <span class="overEllipsis">{{item.dtName}}</span>
+                <i class="icon deleteIcon" (click)="deleteGraph(item)" title="删除"></i>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="table-box position">
+    <div class="titleBox">
+      <div class="fieldSetting" (click)="settingField()">
+        <i class="icon settingIcon"></i>
+        <span *ngIf="!isOpenSetting">字段设置</span>
+        <span *ngIf="isOpenSetting">收起设置</span>
+        <i *ngIf="isOpenSetting" class="icon upIcon"></i>
+        <i *ngIf="!isOpenSetting" class="icon downIcon"></i>
+      </div>
+      <div>
+        当前展示前{{dbData.length}}条数据，共{{pageCount}}条记录
+      </div>
+    </div>
+    <div class="tableList" [ngClass]="{'hidden':isOpenSetting}">
+      <div class="tableBox">
+        <div class="tableContentBox" id="tableList">
+          <table class="tableContent">
+            <tr class="tableTitle">
+              <th title="{{keyItem.remarkName}}" *ngFor="let keyItem of dbFieldsHtml;let i=index" class="tableTitle overEllipsis">
+                {{keyItem.remarkName}}
+              </th>
+            </tr>
+            <tr *ngFor="let dataItem of dbData">
+              <td *ngFor="let keyItem of dbFieldsHtml" title="{{dataItem[keyItem.colName]}}" class="overEllipsis">
+                {{dataItem[keyItem.colName]}}
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="tableList m-10" [ngClass]="{'hidden':!isOpenSetting}">
+      <div class="containerDiv">
+        <div [ngClass]="{'m-b-10': i!=(fields.length-1)}" *ngFor="let item of fields;let i=index">
+          <div class="tableName">
+            {{item.tableName}}
+          </div>
+          <div class="tableBox">
+            <table class="tableTitle fixed">
+              <tr>
+                <th>
+                  <label>
+                    <input type="checkbox" [(ngModel)]="item.isCheckedAll" (change)="checkAll(item)">全选</label>
+                </th>
+                <th>原字段名</th>
+                <th>新字段名</th>
+                <th>字段类型</th>
+              </tr>
+            </table>
+            <div class="tableContentBox">
+              <table class="tableContent fixed">
+                <tr *ngFor="let field of item.dataFields,let j=index ">
+                  <td>
+                    <label>
+                      <input type="checkbox" [(ngModel)]="field.isDisplay" (change)="changeField(field)">保留</label>
+                  </td>
+                  <td class="overEllipsis" title="{{field.colName}}">{{field.colName}}</td>
+                  <td>
+                    <div class="flexItem">
+                      <input title="{{field.remarkName}}" maxlength="25" class="upDataVal name overEllipsis forbidStatus" [(ngModel)]="field.remarkName" (keyup)="tooltipService.checkFormat(field.remarkName)" (blur)="checkNameIsExist(field,j)" />
+                      <span class="icon renameIcon" (click)="rename($event)" title="重命名"></span>
+                    </div>
+                  </td>
+                  <td>{{field.typeName}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

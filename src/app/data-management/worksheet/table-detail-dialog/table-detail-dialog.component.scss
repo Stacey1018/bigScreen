@@ -1,0 +1,25 @@
+@import "../../../../assets/css/commonDialog";
+.dialogMain {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  .title {
+      margin-bottom: 5px;
+      color: rgba(53, 60, 67, 0.6);
+  }
+  .tableBox {
+      flex: 1;
+      overflow: hidden;
+      table{
+        table-layout: fixed;
+        border-collapse: collapse;
+        td{
+          border:1px solid #D4D4D4;
+          background-color: #F3F3F3;
+          color: #353C43;
+          line-height: 36px;
+          text-align: center;
+        }
+      }
+  }
+}

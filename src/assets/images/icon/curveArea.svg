@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>曲线面积图</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="曲线面积图" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-6-Copy" transform="translate(4.000000, 5.000000)" fill="#819292" fill-rule="nonzero">
+            <polygon id="Shape" points="0.910500485 18.9657287 0.910500485 0 0 0 0 20 22 20 22 18.9657287"></polygon>
+        </g>
+        <g id="Group-6-Copy" transform="translate(4.000000, 5.000000)" fill="#819292" fill-rule="nonzero">
+            <polygon id="Shape" points="0.910500485 18.9657287 0.910500485 0 0 0 0 20 22 20 22 18.9657287"></polygon>
+        </g>
+        <path d="M10.6684539,11.0815434 C7.90629134,10.2113901 6.31766129,14.1942112 5.90256371,23.0300066 L26.0973505,23.0300066 C24.1571282,20.1087563 21.4106551,18.6481312 17.8579314,18.6481312 C12.4219469,18.6481312 15.131777,12.4876066 10.6684539,11.0815434 Z" id="Shape" fill="#1BC8C9" fill-rule="nonzero"></path>
+    </g>
+</svg>

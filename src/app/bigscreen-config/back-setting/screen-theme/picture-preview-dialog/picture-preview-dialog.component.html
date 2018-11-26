@@ -1,0 +1,5 @@
+<div class="dialog-previewpicture" [ngStyle]="{'background-image': 'url('+bgUrl+')'}" *ngIf='!isImage'>
+</div>
+<img [src]="bgUrl" alt="" width="100%" height="100%" *ngIf='isImage'>
+
+<a href="javascript:void(0)" class="closeDialogIcon" (click)="closeDialog()">x</a>

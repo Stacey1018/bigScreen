@@ -1,0 +1,25 @@
+<div class="data-sourse-type position">
+  <app-add-data-sourse-nav [step]="'type'"></app-add-data-sourse-nav>
+
+  <div class="data-sourse-list position">
+    <div class="data-name">Excel导入</div>
+    <div class="data-sourse clearfix">
+      <div class="item excel" routerLink="/dashboard/dataManagement/dataSource/excelImport">
+        <div class="text">Excel导入</div>
+      </div>
+    </div>
+    <div class="data-name">数据库分类</div>
+    <div class="data-title">请选择您要添加的数据连接</div>
+    <div class="data-sourse clearfix">
+      <div class="item mysql" routerLink="/dashboard/dataManagement/dataSource/dataBaseDeploy" [queryParams]="{'dbType':dbType.mySql}">
+        <div class="text">MySql</div>
+      </div>
+      <div class="item sqlServer" routerLink="/dashboard/dataManagement/dataSource/dataBaseDeploy" [queryParams]="{'dbType':dbType.sqlServer}">
+        <div class="text">SqlServer</div>
+      </div>
+      <div class="item oracle" routerLink="/dashboard/dataManagement/dataSource/dataBaseDeploy" [queryParams]="{'dbType':dbType.oracle}">
+        <div class="text">Oracle</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,167 @@
+<div class="list-box">
+  <div class="search-container">
+    <input type="text" id="selectByName" maxlength='25' placeholder="请输入名称搜索" [(ngModel)]="searchFileName" />
+    <div class="addfile-icon">
+      <div class="addfile-container panelPage">
+        <ul>
+          <li class="scene-file-add" (click)="addFile('panel')">
+            <span class="icon addScenceFileIcon"></span>
+            <label>新建仪表盘文件夹</label>
+          </li>
+          <li class="data-file-add" (click)="addFile('chart')">
+            <span class="icon addDataFileIcon"></span>
+            <label>新建图表文件夹</label>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="position" style="top: 50px;">
+    <div class="top-view" [ngClass]="{'open':dataSourceStatus}">
+      <div class="common-title" (click)="operateList('panel')">
+        <span class="icon panelIcon"></span>
+        <label>仪表盘列表</label>
+      </div>
+      <div class="position" style="top:32px;" [ngClass]="{'hidden': !dataSourceStatus}">
+        <div class="position" id="data-tree-thumbnail">
+          <div class="scence-rename-delete operate-container">
+            <ul>
+              <li class="scence-file-rename" (click)="renameFile('panel')">
+                <span class="icon renameIcon"></span>
+                <label>重命名</label>
+              </li>
+              <li class="scence-file-delete" (click)="deleteFile('panel')">
+                <span class="icon deleteDataIcon"></span>
+                <label>删除</label>
+              </li>
+            </ul>
+          </div>
+          <div class="scence-rename-remove operate-container">
+            <ul>
+              <li class="scence-rename" (click)="renameFile('panel')">
+                <span class="icon renameIcon"></span>
+                <label>重命名</label>
+              </li>
+              <li class="scence-remove" (click)="removePanel()">
+                <span class="icon moveIcon"></span>
+                <label>移动至</label>
+              </li>
+              <li class="scence-delete" (click)="deleteData('panel')">
+                <span class="icon deleteDataIcon"></span>
+                <label>删除</label>
+              </li>
+            </ul>
+          </div>
+          <div class="scene-ShowImg operate-container">
+            <img width='140' *ngIf='imgUrl' [src]='imgUrl'>
+          </div>
+          <div class="containerDiv scence" id="scence-view-scroll">
+            <ul class="tree-picture scencesfile" id="data-tree">
+              <li class="scence-file first-lever" *ngFor="let item of pmSer.panelfloderArray">
+                <div id='{{item.dashBoardId}}' class="common clearfix" (click)='showPanelsInFloder("panel", item.dashBoardId)' title='{{item.dashBoardName}}'>
+                  <i class="icon folderIcon"></i>
+                  <input type="text" maxlength='25' class="name firstname" [ngClass]="{'newName':item.isNewAdd}" value='{{item.dashBoardName}}'
+                    (keyup)="checkName('panel')" />
+                  <i class="icon editIcon" (click)="renameAndDelete('panel',item.dashBoardId, item.dashBoardName);$event.stopPropagation()"></i>
+                </div>
+                <ul class="second-lever" *ngIf="item.showList">
+                  <li class="scence-source common clearfix" *ngFor="let item2 of item.panelList" (click)='changePanel(item2)' [ngClass]="{'active': panelId==item2.dashBoardId}"
+                    id='{{item2.dashBoardId}}' title="{{item2.dashBoardName}}" (mouseout)="hideImg('panel')" (mouseover)="showImg(item2.dashBoardId, 'panel', item.thumb)">
+                    <i class="icon scenceFileIcon"></i>
+                    <input type="text" class="name secondname" maxlength='25' value='{{item2.dashBoardName}}' title='{{item2.dashBoardName}}'
+                      (keyup)="checkName('panel')" />
+                    <i class="icon editIcon" (click)="renameAndRemove('panel',item2.dashBoardId,item2.dashBoardName, item2.parentId);$event.stopPropagation()"></i>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="tree-picture rootscences">
+              <li class="scence-source common first-lever clearfix" *ngFor="let item of pmSer.panelArray" (click)='changePanel(item)' [ngClass]="{'active': panelId==item.dashBoardId}"
+                id='{{item.dashBoardId}}' title='{{item.dashBoardName}}' (mouseout)="hideImg('panel')" (mouseover)="showImg(item.dashBoardId, 'panel', item.thumb)">
+                <i class="icon scenceFileIcon"></i>
+                <input type="text" class="name firstname" maxlength=25 value='{{item.dashBoardName}}' (keyup)="checkName('panel')" />
+                <i class="icon editIcon" (click)="renameAndRemove('panel',item.dashBoardId,item.dashBoardName, '');$event.stopPropagation()"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-view" [ngClass]="{'open':!dataSourceStatus}">
+      <div class="common-title" (click)="operateList('dataView')">
+        <span class="icon tableIcon"></span>
+        <label>图表列表</label>
+      </div>
+      <div class="position" style="top:32px;" [ngClass]="{'hidden': dataSourceStatus}">
+        <div class="position" id="data-tree-thumbnail">
+          <div class="data-rename-delete operate-container">
+            <ul>
+              <li class="data-file-rename" (click)="renameFile('chart')">
+                <span class="icon renameIcon"></span>
+                <label>重命名</label>
+              </li>
+              <li class="data-file-delete" (click)="deleteFile('chart')">
+                <span class="icon deleteDataIcon"></span>
+                <label>删除</label>
+              </li>
+            </ul>
+          </div>
+          <div class="data-rename-remove operate-container">
+            <ul>
+              <li class="data-remove" (click)="renameFile('chart')">
+                <span class="icon renameIcon"></span>
+                <label>重命名</label>
+              </li>
+              <li class="data-remove" (click)="removeChart()">
+                <span class="icon moveIcon"></span>
+                <label>移动至</label>
+              </li>
+              <li class="data-remove" (click)="editChart()">
+                <span class="icon editDataIcon"></span>
+                <label>编辑</label>
+              </li>
+              <li class="data-remove" (click)="deleteData('chart')">
+                <span class="icon deleteDataIcon"></span>
+                <label>删除</label>
+              </li>
+            </ul>
+          </div>
+          <div class="data-ShowImg operate-container">
+            <img width='140' *ngIf='imgUrl' [src]='imgUrl'>
+          </div>
+          <div class="containerDiv" id="data-view-scroll">
+            <ul class="tree-picture datafile" id="datafile">
+              <li class="data-file first-lever" *ngFor="let item of chartService.chartFloderArray">
+                <div id='{{item.chartId}}' class="common clearfix" (click)='showPanelsInFloder("chart", item.chartId)' title='{{item.chartName}}'>
+                  <i class="icon folderIcon"></i>
+                  <input type="text" class="name firstname" maxlength='25' [ngClass]="{'newName':item.isNewAdd}" value='{{item.chartName}}'
+                    (keyup)="checkName('chart')" />
+                  <i class="icon editIcon" (click)="renameAndDelete('dataView',item.chartId, item.chartName);$event.stopPropagation()"></i>
+                </div>
+                <ul class="second-lever" *ngIf="item.showList" [sortablejs]="item.list" [sortablejsOptions]="options">
+                  <li class="data-source common clearfix cursorMove" id='{{item2.chartId}}' (mouseout)="hideImg('chart')" (mouseover)="showImg(item2.chartId, 'chart', item2.thumb)"
+                    *ngFor="let item2 of item.list" title='{{item2.chartName}}' style="position:relative">
+                    <i class="icon fileIcon fileIcon{{item2.chartType}}"></i>
+                    <input type="text" class="name secondname" maxlength='25' value='{{item2.chartName}}' (keyup)="checkName('chart')" />
+                    <i class="icon editIcon" (click)="renameAndRemove('chart',item2.chartId,item2.chartName,item2.parentId, item2.category);$event.stopPropagation()"></i>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="tree-picture rootdatas" [sortablejs]="chartService.chartArray" [sortablejsOptions]="options">
+              <li class="data-source common first-lever clearfix cursorMove" (mouseout)="hideImg('chart')" (mouseover)="showImg(item.chartId, 'chart', item.thumb)"
+                id='{{item.chartId}}' *ngFor="let item of chartService.chartArray" title='{{item.chartName}}'>
+                <i class="icon fileIcon fileIcon{{item.chartType}}"></i>
+                <input type="text" class="name firstname" maxlength='25' value='{{item.chartName}}' (keyup)="checkName('chart')" />
+                <i class="icon editIcon" (click)="renameAndRemove('chart',item.chartId,item.chartName,'', item.category);$event.stopPropagation()"></i>
+              </li>
+            </ul>
+            <div>
+              <button (click)='viewMore()' *ngIf='dataArray.length<pageCount'>查看更多</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

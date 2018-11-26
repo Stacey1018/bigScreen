@@ -1,0 +1,28 @@
+<div class="dialogContent">
+  <div class="dialogTitle">
+    请选择要导入的工作表
+    <a href="javascript:void(0)" class="closeIcon" (click)="btnCancel()">×</a>
+  </div>
+  <div class="dialogMain">
+    <div class="sheetBox">
+      <div class="allSelectedBox">
+        <input class="checkboxInput" id="allSelected" type="checkbox" [(ngModel)]="isCheckAll" (change)="checkAllTable()">
+        <label class="checkboxLabel" for="allSelected"></label>
+        <label class="overEllipsis name" for="allSelected">全选</label>
+      </div>
+      <div class="sheetList">
+        <div class="containerDiv">
+          <div class="item" *ngFor="let item of dbTables">
+            <input class="checkboxInput" id="{{item.tableId}}" type="checkbox" [(ngModel)]="item.isDisplay" (change)="checkExcelTable(item)">
+            <label class="checkboxLabel" for="{{item.tableId}}"></label>
+            <label class="overEllipsis name" for="{{item.tableId}}" title="{{item.remarkName}}">{{item.remarkName}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btnBox">
+    <button mat-raised-button color="primary" (click)="btnConfirm()">确定</button>
+    <button mat-raised-button color="primary" class="blueButton" (click)="btnCancel()">取消</button>
+  </div>
+</div>

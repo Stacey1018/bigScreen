@@ -1,0 +1,4 @@
+<router-outlet *ngIf="isLoadConfig"></router-outlet>
+<div class="loadingBox" id="loadingBox" *ngIf='!isLoadConfig'>
+  <img id="loadingIcon" src="./assets/images/loading.gif" alt="">
+</div>

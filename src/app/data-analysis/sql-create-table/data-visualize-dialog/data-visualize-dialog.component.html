@@ -1,0 +1,50 @@
+<div class="dialogContent">
+  <div class="dialogTitle">
+    配置图表信息
+    <a href="javascript:void(0)" class="closeIcon" (click)="btnCancel()">×</a>
+  </div>
+  <div class="dialogMain">
+    <div class="tooltip">*&nbsp;同一字段只能是维度或度量其中之一</div>
+    <div>
+      <label>选择图形</label>
+      <select [(ngModel)]="dataOptionParam.chartType" (change)="changeChartType()">
+        <option value="{{item.code}}" *ngFor="let item of chartTypes">{{item.typeName}}</option>
+      </select>
+    </div>
+    <div class="tableBox">
+      <table>
+        <tr>
+          <th>字段名称</th>
+          <th>设为维度</th>
+          <th>设为度量</th>
+          <th>设为图例</th>
+        </tr>
+      </table>
+      <div class="tableContent">
+        <div class="containerDiv">
+          <table>
+            <tr *ngFor="let dataItem of filterParam">
+              <td class="overEllipsis">
+                {{dataItem.fieldName}}
+              </td>
+              <td>
+                <input type="checkbox" [(ngModel)]="dataItem.isDimension">
+              </td>
+              <td>
+                <input type="checkbox" [(ngModel)]="dataItem.isMeasure">
+              </td>
+              <td>
+                <input type="checkbox" [(ngModel)]="dataItem.isLegend">
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="btnBox">
+    <button mat-raised-button color="primary" (click)='btnOK()'>确定</button>
+    <button mat-raised-button color="primary" class="blueButton" (click)='btnCancel()'>取消</button>
+  </div>
+</div>

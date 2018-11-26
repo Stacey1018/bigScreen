@@ -1,0 +1,35 @@
+$borderColor:#E7E7E7;
+$fontColor:#2D3948;
+.themeconfig-container {
+    width: 100%;
+    background-color: #fff;
+    .nav-container {
+        width: 100%;
+        height: 50px;
+        border: 1px solid $borderColor;
+        .navcommon {
+            float: left;
+            width: 186px;
+            height: 50px;
+            line-height: 48px;
+            text-align: center;
+            color: $fontColor;
+            border-bottom: 2px solid transparent;
+            background-color: rgba(93, 191, 226,0.08);
+            cursor: pointer;
+            outline: none;
+            &:hover,
+            &.active {
+                background-color: rgba(93, 191, 226,0.22);;
+                border-bottom: 2px solid #4FC2EB;
+                color: #11B3EC;
+            }
+        }
+    }
+    .content-container {
+        position: absolute;
+        width: 100%;
+        top: 50px;
+        bottom: 0;
+    }
+}

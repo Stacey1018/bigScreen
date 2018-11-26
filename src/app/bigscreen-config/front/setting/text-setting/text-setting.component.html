@@ -1,0 +1,52 @@
+<div class="settingBox">
+  <div class="settingTitle">
+    配置信息
+  </div>
+  <div class="position" style="top:40px;">
+    <div class="containerDiv">
+      <h2 class="title">标题样式</h2>
+      <div class="settingContain">
+        <div class="settingDiv">
+          <label class="settingName">标题文本</label>
+          <input type="text" class="settingValue" [(ngModel)]="textData.resourceName" (change)="changeData()">
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">字体</label>
+          <select class="settingValue" [(ngModel)]="textData.configInfo.fontFamily" (change)="changeData()">
+            <option value="微软雅黑">微软雅黑</option>
+            <option value="宋体">宋体</option>
+            <option value="黑体">黑体</option>
+            <option value="隶书">隶书</option>
+          </select>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">字号</label>
+          <input class="settingValue" type="number" [(ngModel)]="textData.configInfo.fontSize" (change)="changeData()">
+        </div>
+        <div class="settingDiv">
+          <label class="settingName ">字体颜色</label>
+          <div class="settingValue colorPickerDiv">
+            <span class="colorSpan" [ngStyle]="{'background-color': textData.configInfo.fontColor}"></span>
+            <input class="colorPicker" readonly [(colorPicker)]="textData.configInfo.fontColor" [(ngModel)]="textData.configInfo.fontColor" [cpPosition]="'bottom'" (colorPickerChange)="changeData()"/>
+          </div>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">字体粗细</label>
+          <select class="settingValue" [(ngModel)]="textData.configInfo.fontBold" (change)="changeData()">
+            <option value="normal">正常</option>
+            <option value="bold">加粗</option>
+          </select>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">对齐方式</label>
+          <select class="settingValue" [(ngModel)]="textData.configInfo.align" (change)="changeData()">
+            <option value="center">居中对齐</option>
+            <option value="flex-start">左对齐</option>
+            <option value="flex-end">右对齐</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

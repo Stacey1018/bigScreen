@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>删除</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="删除" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group">
+            <ellipse id="Oval" fill="#FFFFFF" cx="8.5" cy="8" rx="5.5" ry="5"></ellipse>
+            <g id="error" fill="#FA5555">
+                <path d="M11.279,4.736 C10.984,4.4415 10.505,4.4415 10.21,4.736 L7.9925,6.9535 L5.8635,4.8245 C5.577,4.5375 5.112,4.5375 4.825,4.8245 C4.5385,5.111 4.5385,5.576 4.825,5.863 L6.9545,7.992 L4.7365,10.21 C4.442,10.505 4.442,10.9835 4.7365,11.278 C5.032,11.5735 5.5105,11.5735 5.8055,11.278 L8.023,9.061 L10.1645,11.2015 C10.451,11.4885 10.916,11.4885 11.2025,11.2015 C11.489,10.915 11.489,10.45 11.2025,10.1635 L9.0615,8.0225 L11.279,5.805 C11.5735,5.51 11.5735,5.0315 11.279,4.736 M8,16 C3.582,16 0,12.418 0,8 C0,3.5815 3.582,0 8,0 C12.4185,0 16,3.5815 16,8 C16,12.418 12.4185,16 8,16" id="icon_error"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,45 @@
+<div class="settingBox">
+  <div class="settingTitle">
+    配置信息
+  </div>
+  <div class="position" style="top:40px;">
+    <div class="containerDiv">
+      <h2 class="title">数字样式</h2>
+      <div class="settingContain">
+        <div class="settingDiv">
+          <label class="settingName">数字</label>
+          <input type="text" class="settingValue" [(ngModel)]="drawData.configInfo.drawVal" (change)="changeData()">
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">字号</label>
+          <input class="settingValue" type="number" [(ngModel)]="drawData.configInfo.fontSize" (change)="changeData()">
+        </div>
+        <div class="settingDiv">
+          <label class="settingName ">数字颜色</label>
+          <div class="settingValue colorPickerDiv">
+            <span class="colorSpan" [ngStyle]="{'background-color': drawData.configInfo.fontColor}"></span>
+            <input class="colorPicker" readonly [(colorPicker)]="drawData.configInfo.fontColor" [(ngModel)]="drawData.configInfo.fontColor"
+              [cpPosition]="'bottom'" (colorPickerChange)="changeData()" />
+          </div>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName ">背景颜色</label>
+          <div class="settingValue colorPickerDiv">
+            <span class="colorSpan" [ngStyle]="{'background-color': drawData.configInfo.drawBgColor}"></span>
+            <input class="colorPicker" readonly [(colorPicker)]="drawData.configInfo.drawBgColor" [(ngModel)]="drawData.configInfo.drawBgColor"
+              [cpPosition]="'bottom'" (colorPickerChange)="changeData()" />
+          </div>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">刷新时间</label>
+          <input class="settingValue" type="number" [(ngModel)]="drawData.configInfo.drawTimeInterval" (change)="changeData()">
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">背景圆角</label>
+          <input class="settingValue" type="number" [(ngModel)]="drawData.configInfo.drawBorderRadius" (change)="changeData()">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

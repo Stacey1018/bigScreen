@@ -1,0 +1,72 @@
+.connectHomeBox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  overflow-y: auto;
+  padding: 0 20px;
+}
+
+.bigName {
+  height: 50px;
+  line-height: 50px;
+  font-size: 16px;
+}
+
+.smallName {
+  height: 40px;
+  line-height: 40px;
+}
+
+.grayBox {
+  width: 580px;
+  background-color: #EBEBEB;
+  padding: 10px;
+}
+
+.colBox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  position: relative;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  .errorMsgBox {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 580px;
+    color: red;
+    width: max-content;
+    line-height: 30px;
+  }
+}
+
+.ipVal,
+.portVal {
+  width: 160px;
+  height: 30px;
+  padding: 0 3px;
+  border-radius: 3px;
+  border: 1px solid rgba(57, 79, 105, 1);
+}
+
+.portVal {
+  width: 120px;
+}
+
+em {
+  margin: 0 10px;
+}
+
+.icon {
+  font-size: 24px;
+  color: #5DBFE2;
+  margin: 0 10px;
+}
+
+.btnBox {
+  margin: 15px 10px;
+}

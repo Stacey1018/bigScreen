@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>勾选-勾</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="勾选-勾" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M5,6.59008789 L3.70710678,5.29289322 C3.31658249,4.90236893 2.68341751,4.90236893 2.29289322,5.29289322 C1.90236893,5.68341751 1.90236893,6.31658249 2.29289322,6.70710678 L5,9.41421356 L9.70710678,4.70710678 C10.0976311,4.31658249 10.0976311,3.68341751 9.70710678,3.29289322 C9.31658249,2.90236893 8.68341751,2.90236893 8.29289322,3.29289322 L5,6.59008789 Z" id="Check" fill="#2CA7E0" fill-rule="nonzero"></path>
+    </g>
+</svg>

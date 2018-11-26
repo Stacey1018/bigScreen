@@ -1,0 +1,243 @@
+<div class="position">
+  <div class="workSheetList position">
+    <div class="workSheetListTitle">工作表</div>
+    <div class="workSheetListName">
+      <i class="icon workSheetIcon"></i>
+      <span class="name overEllipsis">{{dbTableName}}</span>
+      <i class="icon selectWorkSheet" title="切换工作表" (click)="selectWorkSheet();$event.stopPropagation();"></i>
+    </div>
+    <div class="listTitle">维度</div>
+    <div class="listBox">
+      <div class="containerDiv">
+        <ul class="dateList " [sortablejs]="dateFields" [sortablejsOptions]="options">
+          <li id='{{item.fieldId}}' class="first-lever" title='{{item.remarkName}}' [attr.data-id]='item.isDimensions' [attr.data-title]='item.colName'
+            *ngFor="let item of dateFields" (click)="operateBox(item)">
+            <div class="dateTitle dateTitleDiv">
+              <i class="icon up" [ngClass]="{'down':item.isShow == true}"></i>
+              <i class="icon dateIcon"></i>
+              <span class="name overEllipsis">{{item.remarkName}}</span>
+              <i class="icon switchIcon" (click)="convertFieldType(item.fieldId,0);$event.stopPropagation();" title="转换为度量"></i>
+            </div>
+            <ul class="second-lever" [sortablejs]="item.fields" [sortablejsOptions]="options" [ngClass]="{'hidden':item.isShow==false}">
+              <li id='{{field.fieldId}}' title='{{field.remarkName}}' [attr.data-id]='field.isDimensions' [attr.data-title]='field.parentId'
+                [attr.data-name]='item.colName' *ngFor="let field of item.fields">
+                <span class="name overEllipsis" title="{{field.remarkName}}">{{field.remarkName}}</span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul [sortablejs]="dimensionsFields" [sortablejsOptions]="options">
+          <li class="dateTitle" id='{{item.fieldId}}' title='{{item.remarkName}}' [attr.data-id]='item.isDimensions' [attr.data-title]='item.colName'
+            *ngFor="let item of dimensionsFields">
+            <i class="icon wdFileIcon"></i>
+            <span class="name overEllipsis">{{item.remarkName}}</span>
+            <i class="icon switchIcon" (click)="convertFieldType(item.fieldId,0);$event.stopPropagation();
+            " title="转换为度量"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="listTitle">度量</div>
+    <div class="listBox">
+      <div class="containerDiv">
+        <ul [sortablejs]="measureFields" [sortablejsOptions]="options">
+          <li id="{{item.fieldId}}" title='{{item.remarkName}}' [attr.data-id]='item.isDimensions' [attr.data-title]='item.colName'
+            *ngFor="let item of measureFields">
+            <i class="icon dlFileIcon"></i>
+            <span class="name overEllipsis">{{item.remarkName}}</span>
+            <i class="icon switchIcon" (click)="convertFieldType(item.fieldId,1)" title="转换为维度"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="centerBox position">
+    <div class="chartType">
+      <div class="titleBox">
+        <i class="right icon settingIcon" *ngIf="currType!=-1" (click)="setChart();$event.stopPropagation()" title="设置"></i>
+        <label [ngClass]="{'hidden': chartSetState}">图表类型</label>
+      </div>
+      <ul class="tableTypeList clearfix" [ngClass]="{'hidden': chartSetState}">
+        <li *ngFor="let item of chartTypes" [ngClass]="{'active':item.code==currType}" class="{{item.iconName}}" [ngStyle]="{'background-image': 'url(../../../../assets/images/icon/'+item.iconName+'.svg)'}"
+          (click)="changeChartType(item)" title="{{item.typeName}}"></li>
+      </ul>
+    </div>
+    <!-- <div class="colorTheme" [ngClass]="{'hidden': chartSetState}">
+      <div class="titleBox">颜色</div>
+      <select [(ngModel)]="colorThemeId" (change)="changeColorTheme()">
+        <option *ngFor="let item of colorThemes" style="color:black" [value]="item.themeId">{{item.themeName}}</option>
+      </select>
+    </div> -->
+    <div class="tableLabel clearfix" *ngIf="chartSetState">
+      <label class="left">图表标签</label>
+      <div class="right switchTableLabel">
+        开
+        <input id="switchChartTitle" class="switchCheckbox" type="checkbox" [(ngModel)]="chartTitleIsOpen" (change)="changeChartTitleState()">
+        <label for="switchChartTitle" class="switchLabel"></label>
+        关
+      </div>
+    </div>
+    <div class="tableLabel clearfix" *ngIf="chartSetState">
+      <label class="left">图例</label>
+      <div class="right switchTableLabel">
+        开
+        <input id="switchChartLegend" class="switchCheckbox" type="checkbox" [(ngModel)]="chartLegendIsOpen" (change)="changeLegendState()">
+        <label for="switchChartLegend" class="switchLabel"></label>
+        关
+      </div>
+    </div>
+    <div class="tableLabel numberSetting" *ngIf="currAxisType==1&&chartSetState">
+      <label>数值设置</label>
+      <div>
+        <label class="labelName">标题</label>
+        <input class="numberValue" type="text" [(ngModel)]="optionCondition.yAxisName">
+      </div>
+      <div>
+        <label class="labelName">单位</label>
+        <select class="numberValue" [(ngModel)]="optionCondition.unitName" (change)="setUnit()">
+          <option *ngFor="let item of unitName" [value]="item.value" style="color:black">{{item.text}}</option>
+        </select>
+      </div>
+      <div>
+        <label class="labelName">最大值</label>
+        <input class="numberValue" type="text" [(ngModel)]="optionCondition.max" [disabled]="maxIsAuto" (keyup)="changeValue($event,'max')">
+
+        <input class="checkboxInput" id="maxState" type="checkbox" [(ngModel)]="maxIsAuto" (change)="changeAutoState('max')">
+        <label class="checkboxLabel" for="maxState"></label>
+        <label for="maxState">自动</label>
+      </div>
+      <div>
+        <label class="labelName">最小值</label>
+        <input class="numberValue" type="text" [(ngModel)]="optionCondition.min" [disabled]="minIsAuto" (keyup)="changeValue($event,'min')">
+
+        <input class="checkboxInput" id="minState" type="checkbox" [(ngModel)]="minIsAuto" (change)="changeAutoState('min')">
+        <label class="checkboxLabel" for="minState"></label>
+        <label for="minState">自动</label>
+      </div>
+    </div>
+    <div class="filter" [ngClass]="{'hidden': chartSetState}">
+      <div class="titleBox">筛选器</div>
+      <div id="dragend" class="dragendBox">
+        <div class="containerDiv">
+          <table class="dragTipMsg" *ngIf="dragendFilterFields.length==0">
+            <tr>
+              <td>
+                拖拽字段到这里进行筛选
+              </td>
+            </tr>
+          </table>
+          <ul>
+            <li id='{{item.fieldId}}' *ngFor="let item of dragendFilterFields" title='{{item.colName}}'>
+              <span class="name overEllipsis">{{item.colName}}</span>
+              <div class="icon moreIcon">
+                <ul class="operateBox">
+                  <li (click)="removeFilter(item)">移除</li>
+                  <li (click)="openDialog(item)">编辑</li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rightBox position">
+    <ul class="rightNav" *ngIf="isShowRightNav" [ngStyle]="{'top': top+'px','left':left+'px'}">
+      <li [ngClass]="{'hidden':!isCalculate}">
+        <a href="javascript:void(0);">计算 ></a>
+        <ul>
+          <li>
+            <a href="javascript:void(0);" [ngClass]="{'activeColor':currItem.mathRule==1}" (click)="fieldCalcRules(mathRule.Sum)">求和</a>
+          </li>
+          <li>
+            <a href="javascript:void(0);" [ngClass]="{'activeColor':currItem.mathRule==2}" (click)="fieldCalcRules(mathRule.Avg)">平均值</a>
+          </li>
+          <li>
+            <a href="javascript:void(0);" [ngClass]="{'activeColor':currItem.mathRule==3}" (click)="fieldCalcRules(mathRule.Count)">计数</a>
+          </li>
+          <li>
+            <a href="javascript:void(0);" [ngClass]="{'activeColor':currItem.mathRule==4}" (click)="fieldCalcRules(mathRule.Max)">最大值</a>
+          </li>
+          <li>
+            <a href="javascript:void(0);" [ngClass]="{'activeColor':currItem.mathRule==5}" (click)="fieldCalcRules(mathRule.Min)">最小值</a>
+          </li>
+          <!-- <li>
+            <a href="javascript:void(0);" (click)="fieldCalcRules()">百分比</a>
+          </li>
+          <li>
+            <a href="javascript:void(0);" (click)="fieldCalcRules()">同比环比</a>
+          </li> -->
+        </ul>
+      </li>
+      <li>
+        <a href="javascript:void(0);">排序 ></a>
+        <ul>
+          <li>
+            <a href="javascript:void(0);" [ngClass]="{'activeColor':currItem.orderType==1}" (click)="fieldSort(orderType.Asc)">升序</a>
+          </li>
+          <li>
+            <a href="javascript:void(0);" [ngClass]="{'activeColor':currItem.orderType==2}" (click)="fieldSort(orderType.Desc)">降序</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="javascript:void(0);" (click)="removeField()">移除</a>
+      </li>
+    </ul>
+    <ul class="chartTypeNav" *ngIf="isShowChartTypeNav" [ngStyle]="{'top': top+'px','left':left+'px'}">
+      <li *ngFor="let item of comboChartTypes" class="{{item.iconName}}" [ngStyle]="{'background-image': 'url(../../../../assets/images/icon/'+item.iconName+'.svg)'}"
+        (click)="selectChartType(item)" title="{{item.typeName}}"></li>
+    </ul>
+    <div class="dimensionsBox">
+      <span>维度</span>
+      <ul id="dimensions" class="selectedDimensions clearfix">
+        <li id='{{item.fieldId}}' *ngFor="let item of dragendDimensionsFields" title='{{item.remarkName}}'>
+          <span class="name overEllipsis">{{item.remarkName}}</span>
+          <i class="icon moreIcon" (click)="setting($event,item);$event.stopPropagation()"></i>
+        </li>
+      </ul>
+    </div>
+    <div class="measureBox">
+      <span>度量</span>
+      <ul id="measure" class="selectedMeasure clearfix">
+        <li id='{{item.fieldId}}' *ngFor="let item of dragendMeasureFields" title='{{item.remarkName}}'>
+          <i class="icon chartTypeIcon" *ngIf="isChartDivDisplay && dragendMeasureFields.length>1 && currCombinationType==1" (click)="showChartType($event,item);$event.stopPropagation()"
+            [ngStyle]="{'background-image': 'url(../../../../assets/images/icon/'+item.iconName+'.svg)'}"></i>
+          <span class="name overEllipsis">{{item.remarkName}}</span>
+          <i class="icon moreIcon" (click)="setting($event,item);$event.stopPropagation()"></i>
+        </li>
+      </ul>
+    </div>
+    <div class="chartView">
+      <div class="chartViewBtnBox" *ngIf="isChartDivDisplay">
+        <button mat-raised-button color="primary" (click)="saveDialog()">保存</button>
+      </div>
+      <table class="noDataTable" *ngIf="dbFields.length==0 && !isTableDivDisplay">
+        <tr>
+          <td>
+            <div class="noDataImg addTableNoData"></div>
+            <div class="noDataText">暂无图表数据</div>
+          </td>
+        </tr>
+      </table>
+      <div class="dataBox" [ngClass]="{'hidden':!isChartDivDisplay}">
+        <div id="chart" class="position">
+        </div>
+      </div>
+      <div class="dataBox" *ngIf="dbFields.length && isTableDivDisplay">
+        <table>
+          <tr>
+            <th *ngFor="let keyItem of dbFields">
+              {{keyItem.colName}}
+            </th>
+          </tr>
+          <tr *ngFor="let dataItem of dbData">
+            <td *ngFor="let keyItem of dbFields">
+              {{dataItem[keyItem.colName]}}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+.settingDiv {
+    align-items: baseline !important;
+}
+
+.uploadBox {
+    display: flex;
+    flex-direction: column;
+    .subBtn {
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        .btn {
+            cursor: pointer;
+            width: 80%;
+            height: 36px;
+            line-height: 36px;
+            text-align: center;
+            color: #0A1627;
+            background: -webkit-linear-gradient(left, #05D0F2, #12B4FE);
+            /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(right, #05D0F2, #12B4FE);
+            /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(right, #05D0F2, #12B4FE);
+            /* Firefox 3.6 - 15 */
+            background: linear-gradient(to right, #05D0F2, #12B4FE);
+            /* 标准的语法 */
+        }
+    }
+    .imgListDiv {
+        margin-top: 20px;
+        border: 1px solid #656D8B;
+        .title {
+            color: rgba(255, 255, 255, 0.5);
+            height: 25px;
+            line-height: 25px;
+            width: 100%;
+            border-bottom: 1px solid #253249;
+        }
+        .imgList {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
+
+.settingImg {
+    flex-direction: column;
+}
+
+.imgListDiv {
+    .imgList {
+        height: 40px;
+        .img {
+            width: 70px;
+            height: 40px;
+        }
+    }
+}

@@ -1,0 +1,22 @@
+<div class="dialogContent">
+  <div class="dialogTitle">
+    保存
+    <a href="javascript:void(0)" class="closeIcon" (click)="btnCancel()">×</a>
+  </div>
+  <div class="dialogMain">
+    <div>
+      <label>图表名称</label>
+      <input type="text" placeholder="请输入图表名称" [(ngModel)]="chartName" (keyup)="tooltipService.checkFormat(chartName)" (blur)="tooltipService.checkFormat(chartName)">
+    </div>
+    <div>
+      <label>保存路径</label>
+      <select [(ngModel)]="chartFolderId">
+        <option *ngFor="let item of chartFolders" [value]="item.chartId">{{item.chartName}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="btnBox">
+    <button mat-raised-button color="primary" (click)="btnConfirm()">确定</button>
+    <button mat-raised-button color="primary" class="blueButton" (click)="btnCancel()">取消</button>
+  </div>
+</div>

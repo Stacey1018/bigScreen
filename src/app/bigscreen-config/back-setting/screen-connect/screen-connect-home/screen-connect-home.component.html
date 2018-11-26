@@ -1,0 +1,29 @@
+<div class="connectHomeBox">
+  <div class="bigName">连接大屏</div>
+  <div class="smallName">渲染机信息</div>
+  <div class="grayBox">
+    <div *ngFor="let item of saveRenderInfo.itemList;let i=index;" class="colBox">
+      <input class="ipVal" type="text" placeholder="请输入渲染机IP地址" [(ngModel)]="item.renderIp" (keyup)="tooltipService.checkFormatTip(item,'.errorMsgBox.render' + i)">
+      <em>:</em>
+      <input class="portVal m-r-20" type="text" placeholder="请输入渲染机端口" [(ngModel)]="item.renderPort" (keyup)="tooltipService.checkFormatTip(item,'.errorMsgBox.render' + i)">
+      <input class="ipVal" type="text" placeholder="请输入渲染机输出名称" [(ngModel)]="item.renderName" (keyup)="tooltipService.checkFormatTip(item,'.errorMsgBox.render' + i)"
+      (blur)="judgeRenderNameIsRepeated(item.renderName,i)">
+      <a class="icon" href="javascript:void(0);" (click)="deleteRenderInfo(i)" *ngIf="1!==saveRenderInfo.itemList.length">-</a>
+      <a class="icon" href="javascript:void(0);" (click)="addRenderInfo()" *ngIf="i+1===saveRenderInfo.itemList.length">+</a>
+      <div class="errorMsgBox render{{i}}">渲染机IP地址、端口、输出名称不可为空</div>
+    </div>
+  </div>
+  <div class="smallName">屏幕大小</div>
+  <div class="grayBox">
+    <div class="colBox">
+      <input class="portVal" type="number" placeholder="请输入宽度" [(ngModel)]="saveRenderInfo.resolutionX">
+      <em>*</em>
+      <input class="portVal" type="number" placeholder="请输入高度" [(ngModel)]="saveRenderInfo.resolutionY">
+      <div class="errorMsgBox physical">物理屏数不可为空</div>
+    </div>
+  </div>
+  <div class="btnBox">
+    <button mat-raised-button color="primary" class="m-r-20" (click)='btnSaveRenderInfo()'>保存</button>
+    <button mat-raised-button color="primary" class="blueButton" (click)='btnReset()'>重置</button>
+  </div>
+</div>

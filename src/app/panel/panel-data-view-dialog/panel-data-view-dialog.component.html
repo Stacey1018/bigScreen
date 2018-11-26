@@ -1,0 +1,22 @@
+<div class="dialogContent">
+  <div class="dialogTitle">
+    保存仪表盘
+    <a href="javascript:void(0)" class="closeIcon" (click)="closeDialog()">×</a>
+  </div>
+  <div class="dialogMain">
+    <div>
+      <label>仪表盘名称：</label>
+      <input type="text" [(ngModel)]='panelName' (keyup)="tooltipService.checkFormat(panelName)" />
+    </div>
+    <div>
+      <label>存&nbsp;储&nbsp;位&nbsp;置：</label>
+      <select [(ngModel)]='panelFloderId'>
+        <option *ngFor='let option of panelfloderArray' value={{option.dashBoardId}}>{{option.dashBoardName}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="btnBox">
+    <button mat-raised-button color="primary" (click)="savePanel()">确定</button>
+    <button mat-raised-button color="primary" class="blueButton" (click)="closeDialog()">取消</button>
+  </div>
+</div>

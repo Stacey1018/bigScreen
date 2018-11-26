@@ -1,0 +1,39 @@
+<div class="dialogContent">
+  <div class="dialogTitle">
+    移动至
+    <a href="javascript:void(0)" class="closeIcon" (click)="closeDialog()">×</a>
+  </div>
+  <div class="dialogMain">
+
+    <div class="searchFile clearfix">
+      <input class="left searchFileVal" type="text" placeholder="请输入文件夹名称搜索" required maxlength="25" [(ngModel)]="searchFileName">
+      <div class="addFile right" (click)="addSceneFile()">
+        <div class="inlineBlock">
+          <i class="folderIcon"></i>
+          <span>新建文件夹</span>
+        </div>
+      </div>
+    </div>
+    <div class="layer-content" [ngClass]="{'active': !newSceneFileFlag}">
+      <div class="file-list-container">
+        <div class="containerDiv">
+          <ul class="tree-picture" id="scencefiles">
+            <li [ngClass]="{'active': toSceneFileId==item.sceneId}" *ngFor="let item of defaultLayerSceneArray;let i=index" title="{{item.sceneName}}" (click)="chooseSceneFile(item.sceneId)">
+              <i class="folderIcon"></i>
+              <div class="overEllipsis" title="{{item.sceneName}}">{{item.sceneName}}</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="addFileMsg" *ngIf="newSceneFileFlag">
+        <input type="text" placeholder="请输入文件夹名称" required maxlength="25" class="fileName" [(ngModel)]="newFileName">
+        <input type="button" class="fileCancle fileBtn" (click)="btnCancel()" value="取消" />
+        <input type="button" class="fileBtn" (click)="btnAddSceneFile()" value="确定" />
+      </div>
+    </div>
+  </div>
+  <div class="btnBox">
+    <button mat-raised-button color="primary" (click)="btnRemove()">确定</button>
+    <button mat-raised-button color="primary" class="blueButton" (click)="closeDialog()">取消</button>
+  </div>
+</div>

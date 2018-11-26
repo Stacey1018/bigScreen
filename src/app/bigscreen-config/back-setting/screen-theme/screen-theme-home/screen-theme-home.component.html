@@ -1,0 +1,13 @@
+<div class="themeconfig-container">
+    <div class="nav-container">
+        <div class="upload-nav navcommon" (click)="switchThemeNav(0)" [ngClass]="{'active': themeNavMenu==0}" routerLink="/dashboard/bigScreen/backSetting/screenTheme/screenThemeUpload"
+            routerLinkActive="active">组件上传</div>
+        <!-- <div class="themeconfig-nav navcommon" (click)="switchThemeNav(1)" [ngClass]="{'active': themeNavMenu==1}" routerLink="/dashboard/bigScreen/backSetting/screenTheme/screenThemeBorder"
+            routerLinkActive="active">大屏配置</div> -->
+        <!-- <div class="themeconfig-nav navcommon" (click)="switchThemeNav(2)" [ngClass]="{'active': themeNavMenu==2}" routerLink="/dashboard/bigScreen/backSetting/screenTheme/screenThemeColor"
+            routerLinkActive="active">颜色主题</div> -->
+    </div>
+    <div class="content-container">
+        <router-outlet></router-outlet>
+    </div>
+</div>

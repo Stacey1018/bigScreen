@@ -1,0 +1,118 @@
+<!-- 场景预览页面 -->
+<div class="page-box">
+  <div class="page-left">
+    <app-front-scene-list (changeScene)="changeScene($event)" [isInteractOpen]="isInteractOpen"></app-front-scene-list>
+  </div>
+  <div class="page-center no-right">
+    <div class="center-container position">
+      <div class="operation-box scene">
+        <button class="addDataBtn creatPanelBtn" routerLink="/dashboard/bigScreen/front/createScene">新建场景</button>
+        <div class="operation-right">
+          <span class="applyScenceIcon" [ngClass]="{'disabled':notScene}" (click)="applyScene()">应用场景</span>
+          <span class="interactionIcon" [ngClass]="{'disabled':notScene}" (click)="screenInteract()">实时交互</span>
+          <span class="icon fullscreenIcon" [ngClass]="{'disabled':notScene}" (click)='fullScreen()'>全屏</span>
+        </div>
+      </div>
+      <div class="layout-container position scene-container bottom30" [ngClass]="{'fullscreen': isFullscreen,'hidden':notScene}"
+        id="layout-container">
+        <div class="pt-perspective">
+          <div class="pt-page">
+            <div class="layout-main daping" *ngIf="!notScene">
+              <div class="dataBgBox" [ngStyle]="{'width':(pageSize.width*boxRadio+60)+'px','height':(pageSize.height*boxRadio+60)+'px','padding':'30px'}">
+                <div id="dataBox" class="dataBox" [ngStyle]="{'width':pageSize.width+'px','height':pageSize.height+'px','background-image': 'url('+bgUrl+')','background-color':sceneBg.bgColor,'transform': 'scale(' + boxRadio + ')'}">
+                  <div class="dataItemBox sceneDataItemData" *ngFor="let item of sceneForm.itemList;let i=index;" [ngStyle]="{'width': item.sizeCol+'px','height': item.sizeRow+'px','top': item.positionY+'px','left': item.positionX+'px','z-index':item.layerNum}">
+                    <!-- 内容 start -->
+                    <!-- border -->
+                    <ng-container *ngIf="item.detailCode===frontSceneListComponent.dataTypeEnum.border">
+                      <div class="borderItem" id="dataItemBox{{item.itemId}}" [ngStyle]="{'background-image': 'url('+appSer.appsetting.viewServerUrl+item.resourceInfo+')'}">
+                      </div>
+                    </ng-container>
+                    <!-- 图表 -->
+                    <ng-container *ngIf="item.resourceCode===frontSceneListComponent.dataTypeEnum.echarts">
+                      <div class="chartItem" id="dataItemBox{{item.itemId}}">
+                      </div>
+                    </ng-container>
+                    <!-- 标题 -->
+                    <ng-container *ngIf="item.detailCode===frontSceneListComponent.dataTypeEnum.title">
+                      <app-text [textData]="item"></app-text>
+                    </ng-container>
+                    <!-- 单行文本跑马灯 -->
+                    <ng-container *ngIf="item.detailCode===frontSceneListComponent.dataTypeEnum.singleData">
+                      <app-single-data [id]="i" [singleTextData]="item"></app-single-data>
+                    </ng-container>
+                    <!-- 多行文本左翻 -->
+                    <ng-container *ngIf="item.detailCode===frontSceneListComponent.dataTypeEnum.multipleData">
+                      <app-multiple-data [multipleTextData]="item"></app-multiple-data>
+                    </ng-container>
+                    <!-- 多行文本上滚 -->
+                    <ng-container *ngIf="item.detailCode===frontSceneListComponent.dataTypeEnum.scrollTopData">
+                      <app-scroll-top [scrollTopData]="item"></app-scroll-top>
+                    </ng-container>
+                    <!-- 中国地图、世界地图 -->
+                    <ng-container *ngIf="item.detailCode===frontSceneListComponent.dataTypeEnum.chinaMap||item.detailCode===frontSceneListComponent.dataTypeEnum.worldMap">
+                      <app-based-map [id]="i" [mapType]="item.resourceInfo"></app-based-map>
+                    </ng-container>
+                    <!-- 3D球形地图 -->
+                    <ng-container *ngIf="item.detailCode===frontSceneListComponent.dataTypeEnum.sphericalMap">
+                      <app-spherical-map [id]="i"></app-spherical-map>
+                    </ng-container>
+                    <!---实时视频-->
+                    <ng-container *ngIf="item.detailCode===frontSceneListComponent.dataTypeEnum.realVideo">
+                      <app-video-plugin [videoData]="item"></app-video-plugin>
+                    </ng-container>
+                    <!--视频片段-->
+                    <ng-container *ngIf="item.detailCode===frontSceneListComponent.dataTypeEnum.historyVideo">
+                      <app-video-plugin [videoData]="item"></app-video-plugin>
+                    </ng-container>
+                    <!-- 图片 -->
+                    <ng-container *ngIf="item.detailCode===frontSceneListComponent.dataTypeEnum.image">
+                      <div class="imageItem" id="dataItemBox{{item.itemId}}" *ngIf="item.resourceInfo!=''" [ngStyle]="{'background-image': 'url('+appSer.appsetting.viewServerUrl+item.resourceInfo+')'}">
+                      </div>
+                      <div class="imageItem" id="dataItemBox{{item.itemId}}" *ngIf="item.resourceInfo==''" [ngStyle]="{'background-image': 'url(../../../../assets/images/component/imageItemBg.svg)'}">
+                      </div>
+                    </ng-container>
+                    <!-- 轮播图片 -->
+                    <ng-container *ngIf="item.detailCode===frontSceneListComponent.dataTypeEnum.pollingImage">
+                      <app-polling-image [pollingImgData]="item"></app-polling-image>
+                    </ng-container>
+                    <!-- 时间器 -->
+                    <ng-container *ngIf="item.detailCode===frontSceneListComponent.dataTypeEnum.timer">
+                      <app-timer [timerData]="item"></app-timer>
+                    </ng-container>
+                    <!-- 翻牌 -->
+                    <ng-container *ngIf="item.detailCode===frontSceneListComponent.dataTypeEnum.draw">
+                      <app-draw [drawData]="item"></app-draw>
+                    </ng-container>
+                    <!-- 轮播列表 -->
+                    <ng-container *ngIf="item.detailCode===frontSceneListComponent.dataTypeEnum.pollingData">
+                      <app-polling-data [id]="i" [pollingData]="item"></app-polling-data>
+                    </ng-container>
+                    <!-- 内容 end -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="layout-container position" *ngIf='notScene' style="background-color: #192539;">
+        <table class="noDataTable">
+          <tr>
+            <td>
+              <div class="noDataImg noScene"></div>
+              <div class="noDataText">暂无数据</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="zoomInOutBox" *ngIf="!notScene">
+        <span class="zoomOutIcon" (click)="zoomInOut(0)"></span>
+        <div class="rangeBox">
+          <input type="range" [min]="zoom.min" [max]="zoom.max" [step]="zoom.step" [val]="boxRadio" (onViewInit)="rangeChange()" app-rangeSlider
+            [(ngModel)]="boxRadio" [ngStyle]="{'background-size': (boxRadio/zoom.max*100)+'% 100%'}">
+        </div>
+        <span class="zoomInIcon" (click)="zoomInOut(1)"></span>
+      </div>
+    </div>
+  </div>
+</div>

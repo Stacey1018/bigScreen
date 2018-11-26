@@ -1,0 +1,528 @@
+<div class="settingBox">
+    <div class="settingTitle">
+        配置信息
+    </div>
+    <div class="position" style="top:40px;bottom: 60px;overflow-y: auto;">
+        <h2 class="title">全局配置</h2>
+        <div class="settingContain">
+            <div class="settingDiv">
+                <label class="settingName">字体</label>
+                <select class="settingValue" [(ngModel)]="this.option.textStyle.fontFamily" (change)="setOptionItem()">
+                    <option value="Arial">英文字体</option>
+                    <option value="Microsoft YaHei">微软雅黑</option>
+                    <option value="SimSun">宋体</option>
+                    <option value="SimHei">黑体</option>
+                    <option value="KaiTi">楷体</option>
+                </select>
+            </div>
+        </div>
+        <h2 class="title">标题属性</h2>
+        <div class="settingContain">
+            <div class="settingDiv">
+                <label class="settingName">标题</label>
+                <input class="settingValue" type="text" placeholder="请输入标题文字" [(ngModel)]="this.option.title.text" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">主标题文本超链接</label>
+                <input class="settingValue" type="text" placeholder="主标题文本超链接" [(ngModel)]="this.option.title.link" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">主标题超链接打开方式</label>
+                <select class="settingValue" placeholder="主标题超链接打开方式" [(ngModel)]="this.option.title.target" (change)="setOptionItem()">
+                    <option value="self">当前窗口打开</option>
+                    <option value="blank">新窗口打开</option>
+                </select>
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">主标题颜色</label>
+                <input class="settingValue" placeholder="请输入标题颜色" [(ngModel)]="this.option.title.textStyle.color" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">主文字粗细</label>
+                <select class="settingValue" placeholder="请输入文字粗细" [(ngModel)]="this.option.title.textStyle.fontWeight" (change)="setOptionItem()">
+                    <option value="normal">普通</option>
+                    <option value="bold">粗</option>
+                    <option value="lighter">细</option>
+                </select>
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">主文字大小</label>
+                <input class="settingValue" type="number" placeholder="请输入文字大小" [(ngModel)]="this.option.title.textStyle.fontSize" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">主标题上边距</label>
+                <input class="settingValue" type="text" placeholder="请输入标题上边距" [(ngModel)]="this.option.title.top" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">主标题下边距</label>
+                <input class="settingValue" type="text" placeholder="请输入标题下边距" [(ngModel)]="this.option.title.bottom" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">主标题左边距</label>
+                <input class="settingValue" type="text" placeholder="请输入标题左边距" [(ngModel)]="this.option.title.left" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">主标题右边距</label>
+                <input class="settingValue" type="text" placeholder="请输入标题右边距" [(ngModel)]="this.option.title.right" (keyup)="setOptionItem()">
+            </div>
+        </div>
+        <h2 class="title" *ngIf="this.option.yAxis!=null">数值型y轴相关属性</h2>
+        <div class="settingContain" *ngIf="this.option.yAxis!=null">
+            <div class="settingDiv">
+                <label class="settingName">是否显示y轴</label>
+                <input type="checkbox" placeholder="是否显示y轴" [(ngModel)]="this.option.yAxis.show" (change)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">y轴名称</label>
+                <input class="settingValue" type="text" placeholder="请输入y轴名称" [(ngModel)]="this.option.yAxis.name" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">y轴位置</label>
+                <select class="settingValue" [(ngModel)]="this.option.yAxis.position" (change)="setOptionItem()">
+                    <option value="left">左</option>
+                    <option value="right">右</option>
+                </select>
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">y轴标签最大值</label>
+                <select class="settingValue" [(ngModel)]="this.option.yAxis.max" (change)="setYLimit(this.option.yAxis.max,this.option.yAxis,'max')">
+                    <option value="null">自动取整</option>
+                    <option value="dataMax">数据最大值</option>
+                </select>
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">y轴标签最小值</label>
+                <select class="settingValue" [(ngModel)]="this.option.yAxis.min" (change)="setYLimit(this.option.yAxis.min,this.option.yAxis,'min')">
+                    <option value="null">自动取整</option>
+                    <option value="dataMin">数据最小值</option>
+                </select>
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">y轴名称的大小</label>
+                <input class="settingValue" type="text" placeholder="请输入y轴名称大小" [(ngModel)]="this.option.yAxis.nameTextStyle.fontSize" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">y轴名称距轴线距离</label>
+                <input class="settingValue" type="number" placeholder=" y轴名称距轴线距离" [(ngModel)]="this.option.yAxis.nameGap" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">y轴分隔段数</label>
+                <input type="number" class="settingValue" placeholder="y轴分隔段数" [(ngModel)]="this.option.yAxis.splitNumber" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">是否显示y轴线</label>
+                <input class="settingValue" type="checkbox" class="settingValue" placeholder="是否显示y轴线" [(ngModel)]="this.option.yAxis.axisLine.show"
+                    (change)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">y轴线颜色</label>
+                <input class="settingValue" type="text" placeholder="y轴线颜色" [(ngModel)]="this.option.yAxis.axisLine.lineStyle.color" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">是否显示网格线</label>
+                <input class="settingValue" type="checkbox" placeholder="是否显示网格线" [(ngModel)]="this.option.yAxis.splitLine.show" (change)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">网格线颜色</label>
+                <input class="settingValue" type="text" placeholder="网格线颜色" [(ngModel)]="this.option.yAxis.splitLine.lineStyle.color" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">是否显示y轴文字</label>
+                <input class="settingValue" type="checkbox" placeholder="是否显示y轴文字" [(ngModel)]="this.option.yAxis.axisLabel.show" (change)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">y轴文字颜色</label>
+                <input class="settingValue" type="text" placeholder="y轴文字颜色" [(ngModel)]="this.option.yAxis.axisLabel.color" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">y轴文字旋转角度</label>
+                <input class="settingValue" type="number" placeholder="y轴文字旋转角度" [(ngModel)]="this.option.yAxis.axisLabel.rotate" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">y轴文字粗细</label>
+                <select class="settingValue" [(ngModel)]="this.option.yAxis.axisLabel.fontWeight" (change)="setOptionItem()">
+                    <option value="normal">普通</option>
+                    <option value="bold">粗</option>
+                    <option value="lighter">细</option>
+                </select>
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">y轴文字大小</label>
+                <input class="settingValue" type="text" placeholder="y轴文字大小" [(ngModel)]="this.option.yAxis.axisLabel.fontSize" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">文字距离轴间距</label>
+                <input class="settingValue" type="number" placeholder="文字距离轴间距" [(ngModel)]="this.option.yAxis.axisLabel.margin" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">是否显示辅助线</label>
+                <input class="settingValue" type="checkbox" placeholder="是否显示辅助线" [(ngModel)]="this.option.yAxis.axisTick.show" (change)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">辅助线长度</label>
+                <input class="settingValue" type="number" placeholder="辅助线长度" [(ngModel)]="this.option.yAxis.axisTick.length" (keyup)="setOptionItem()">
+            </div>
+        </div>
+        <h2 class="title" *ngIf="this.option.xAxis!=null">数值型X轴相关属性</h2>
+        <div class="settingContain" *ngIf="this.option.xAxis!=null">
+            <div class="settingDiv">
+                <label class="settingName">是否显示x轴</label>
+                <input class="settingValue" type="checkbox" placeholder="是否显示x轴" [(ngModel)]="this.option.xAxis.show" (change)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">x轴名称</label>
+                <input class="settingValue" type="text" placeholder="请输入x轴名称" [(ngModel)]="this.option.xAxis.name" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">X轴名称的大小</label>
+                <input class="settingValue" type="text" placeholder="请输入X轴名称大小" [(ngModel)]="this.option.xAxis.nameTextStyle.fontSize" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">x轴名称距轴线距离</label>
+                <input class="settingValue" type="number" placeholder=" x轴名称距轴线距离" [(ngModel)]="this.option.xAxis.nameGap" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">x轴分隔段数</label>
+                <input class="settingValue" type="number" placeholder="x轴分隔段数" [(ngModel)]="this.option.xAxis.splitNumber" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">是否显示x轴线</label>
+                <input class="settingValue" type="checkbox" placeholder="是否显示x轴线" [(ngModel)]="this.option.xAxis.axisLine.show" (change)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">x轴线颜色</label>
+                <input type="text" placeholder="x轴线颜色" [(ngModel)]="this.option.xAxis.axisLine.lineStyle.color" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">是否显示网格线</label>
+                <input class="settingValue" type="checkbox" placeholder="是否显示网格线" [(ngModel)]="this.option.xAxis.splitLine.show" (change)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">网格线颜色</label>
+                <input class="settingValue" type="text" placeholder="网格线颜色" [(ngModel)]="this.option.xAxis.splitLine.lineStyle.color" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">网格线类型</label>
+                <select class="settingValue" type="text" placeholder="网格线类型" [(ngModel)]="this.option.xAxis.splitLine.lineStyle.type" (change)="setOptionItem()">
+                    <option value="solid"> 实线</option>
+                    <option value="dashed">虚线</option>
+                    <option value="dotted">点线</option>
+                </select>
+
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">是否显示x轴文字</label>
+                <input class="settingValue" type="checkbox" placeholder="是否显示x轴文字" [(ngModel)]="this.option.xAxis.axisLabel.show" (change)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">x轴文字颜色</label>
+                <input class="settingValue" type="text" placeholder="x轴文字颜色" [(ngModel)]="this.option.xAxis.axisLabel.color" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">x轴文字旋转角度</label>
+                <input class="settingValue" type="number" placeholder="x轴文字旋转角度" [(ngModel)]="this.option.xAxis.axisLabel.rotate" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">x轴文字粗细</label>
+                <select class="settingValue" [(ngModel)]="this.option.xAxis.axisLabel.fontWeight" (change)="setOptionItem()">
+                    <option value="normal">普通</option>
+                    <option value="bold">粗</option>
+                    <option value="lighter">细</option>
+                </select>
+
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">x轴文字大小</label>
+                <input class="settingValue" type="text" placeholder="x轴文字大小" [(ngModel)]="this.option.xAxis.axisLabel.fontSize" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">文字距离轴间距</label>
+                <input class="settingValue" type="number" placeholder="文字距离轴间距" [(ngModel)]="this.option.xAxis.axisLabel.margin" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">是否显示辅助线</label>
+                <input class="settingValue" type="checkbox" placeholder="是否显示辅助线" [(ngModel)]="this.option.xAxis.axisTick.show" (change)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">辅助线长度</label>
+                <input class="settingValue" type="number" placeholder="辅助线长度" [(ngModel)]="this.option.xAxis.axisTick.length" (keyup)="setOptionItem()">
+            </div>
+            <div class="settingDiv">
+                <label class="settingName">是否留白</label>
+                <input class="settingValue" type="checkbox" placeholder="是否留白" [(ngModel)]="this.option.xAxis.boundaryGap" (change)="setOptionItem()">
+            </div>
+        </div>
+        <h2 class="title">图形属性</h2>
+        <div class="content" id='series'>
+            <ul>
+                <li *ngFor="let item of this.option.series">
+
+                    <div *ngIf="item.type=='bar'">
+                        <p>柱形图</p>
+                        不同系列的柱间距离：
+                        <input type="text" placeholder="不同系列的柱间距离" [(ngModel)]="item.barGap" (keyup)="setOptionItem()"> 同系列的柱间距离：
+                        <input type="text" placeholder="同一系列的柱间距离" [(ngModel)]="item.barCategoryGap" (keyup)="setOptionItem()"> 柱条颜色:
+                        <input type="text" placeholder="柱条颜色" [(ngModel)]="item.itemStyle.normal.color.colorStops[0].color" (keyup)="setChangeColor(item.itemStyle.normal.color,item.itemStyle.normal.color.colorStops[0].color)"> 柱条渐变起始颜色:
+                        <input type="text" placeholder="柱条渐变起始颜色" [(ngModel)]="item.itemStyle.normal.color.colorStops[0].color" (keyup)="setOptionItem()"> 柱条渐变终止颜色:
+                        <input type="text" placeholder="柱条渐变终止颜色" [(ngModel)]="item.itemStyle.normal.color.colorStops[1].color" (keyup)="setOptionItem()"> 柱条边框颜色：
+                        <input type="text" placeholder="柱条边框颜色" [(ngModel)]="item.itemStyle.normal.barBorderColor" (keyup)="setOptionItem()"> 柱条圆角：
+                        <input type="number" placeholder="柱条圆角" [(ngModel)]="item.itemStyle.normal.barBorderRadius" (keyup)="setOptionItem()"> 柱条宽度：
+                        <input type="text" placeholder="柱条宽度" [(ngModel)]="item.barWidth" (keyup)="setOptionItem()"> 柱条边线宽度：
+                        <input type="number" placeholder="柱条边线宽度" [(ngModel)]="item.itemStyle.normal.barBorderWidth" (keyup)="setOptionItem()"> 标签位置：
+                        <select type="text" placeholder="标签位置" [(ngModel)]="item.label.normal.position" (change)="setOptionItem()">
+                            <option value="inside">中间</option>
+                            <option value="top">上</option>
+                            <option value="bottom">下</option>
+                            <option value="left">左</option>
+                            <option value="right">右</option>
+                        </select>
+
+                    </div>
+                    <div *ngIf="item.type=='line'">
+                        <p>折线图</p>
+                        线条宽度：
+                        <input type="text" placeholder="线条宽度" [(ngModel)]="item.lineStyle.normal.width" (keyup)="setOptionItem()"> 线条颜色：
+                        <input type="text" placeholder="线条颜色" [(ngModel)]="item.lineStyle.normal.color" (keyup)="setOptionItem()"> 是否显示线条拐点图标：
+                        <input type="checkbox" placeholder="是否显示线条拐点图标" [(ngModel)]="item.showSymbol" (change)="setOptionItem()"> 线条拐点大小：
+
+                        <input type="text" placeholder="线条拐点大小" [(ngModel)]="item.symbolSize" (keyup)="setOptionItem()"> 线条类型：
+                        <select type="text" placeholder="线条类型" [(ngModel)]="item.lineStyle.normal.type" (change)="setOptionItem()">
+                            <option value="solid"> 实线</option>
+                            <option value="dashed">虚线</option>
+                            <option value="dotted">点线</option>
+                        </select>
+                        近似曲线：
+                        <input type="checkbox" placeholder="近似曲线" [(ngModel)]="item.smooth" (change)="setOptionItem()"> 填充区域颜色:
+                        <input type="text" placeholder="填充区域颜色" [(ngModel)]="item.areaStyle.normal.color.colorStops[0].color" (keyup)="setChangeColor(item.areaStyle.normal.color,item.areaStyle.normal.color.colorStops[0].color)"> 填充区域渐变起始颜色:
+                        <input type="text" placeholder="填充区域渐变起始颜色" [(ngModel)]="item.areaStyle.normal.color.colorStops[0].color" (keyup)="setOptionItem()"> 填充区域渐变终止颜色:
+                        <input type="text" placeholder="填充区域渐变终止颜色" [(ngModel)]="item.areaStyle.normal.color.colorStops[1].color" (keyup)="setOptionItem()"> 是否是阶梯线图：
+                        <input type="checkbox" placeholder="是否是阶梯线图" [(ngModel)]="item.step" (change)="setOptionItem()"> 标签位置：
+                        <select type="text" placeholder="标签位置" [(ngModel)]="item.label.normal.position" (change)="setOptionItem()">
+                            <option value="inside">中间</option>
+                            <option value="top">上</option>
+                            <option value="bottom">下</option>
+                            <option value="left">左</option>
+                            <option value="right">右</option>
+                        </select>
+
+                    </div>
+                    <div *ngIf="item.type=='pie'">
+                        <p>饼图</p>
+                        饼图名称：
+                        <input type="text" placeholder="饼图名称" [(ngModel)]="item.name" (keyup)="setOptionItem()">
+                        <br/> 饼图中心点x位置：
+                        <input type="text" placeholder="饼图中心点x位置" [(ngModel)]="item.center[0]" (keyup)="setOptionItem()">
+                        <br/> 饼图中心点y位置：
+                        <input type="text" placeholder="饼图中心点y位置" [(ngModel)]="item.center[1]" (keyup)="setOptionItem()">
+                        <br/> 饼图内半径：
+                        <input type="text" placeholder="饼图内半径" [(ngModel)]="item.radius[0]" (keyup)="setOptionItem()">
+                        <br/> 饼图外半径：
+                        <input type="text" placeholder="饼图外半径" [(ngModel)]="item.radius[1]" (keyup)="setOptionItem()">
+                        <br/> 是否开启放大动画效果：
+                        <input type="checkbox" placeholder="是否开启放大动画效果" [(ngModel)]="item.hoverAnimation" (change)="setOptionItem()">
+                        <br/> 高亮时图形偏移距离：
+                        <input type="number" placeholder="高亮时图形偏移距离" [(ngModel)]="item.hoverOffset" (keyup)="setOptionItem()">
+                        <br/> 数据大小是否决定扇形半径：
+                        <input type="checkbox" placeholder="数据大小是否决定扇形半径" [(ngModel)]="item.roseType" (change)="setOptionItem()">
+                        <br/> 是否显示饼图标签：
+                        <input type="checkbox" placeholder="是否显示饼图标签" [(ngModel)]="item.label.normal.show" (change)="setOptionItem()">
+                        <br/> 是否显示标签引导线：
+                        <input type="checkbox" placeholder="是否显示标签引导线" [(ngModel)]="item.labelLine.normal.show" (change)="setOptionItem()">
+                        <br/> 一段标签引导线长度：
+                        <input type="number" placeholder="一段标签引导线长度" [(ngModel)]="item.labelLine.normal.length" (keyup)="setOptionItem()">
+                        <br/> 二段标签引导线长度：
+                        <input type="number" placeholder="二段标签引导线长度" [(ngModel)]="item.labelLine.normal.length2" (keyup)="setOptionItem()">
+                        <br/> 是否平滑引导线
+                        <input type="checkbox" placeholder="是否平滑引导线" [(ngModel)]="item.labelLine.normal.smooth" (change)="setOptionItem()">
+                        <br/> 引导线颜色：
+                        <input type="text" placeholder="引导线颜色" [(ngModel)]="item.labelLine.normal.lineStyle.color" (keyup)="setOptionItem()">
+                        <br/> 引导线宽度：
+                        <input type="text" placeholder="引导线宽度" [(ngModel)]="item.labelLine.normal.lineStyle.width" (keyup)="setOptionItem()">
+                        <br/> 引导线类型：
+                        <select type="text" placeholder="引导线类型" [(ngModel)]="item.labelLine.normal.lineStyle.type" (change)="setOptionItem()">
+                            <option value="solid"> 实线</option>
+                            <option value="dashed">虚线</option>
+                            <option value="dotted">点线</option>
+                        </select>
+                        <br/> 标签位置：
+                        <select type="text" placeholder="标签位置" [(ngModel)]="item.label.normal.position" (change)="setOptionItem()">
+                            <option value="inside">内部</option>
+                            <option value="outside">外部</option>
+                            <option value="center">中间</option>
+                        </select>
+                        饼图标签/类目： 是否显示类目：
+                        <input type="checkbox" placeholder="是否显示类目" [(ngModel)]="a_show" (change)="lableFormart(item.label.normal)"> 颜色：
+                        <input type="text" placeholder="颜色" [(ngModel)]="item.label.normal.rich.a.color" (keyup)="lableFormart(item.label.normal)"> 粗细：
+                        <select type="text" placeholder="粗细" [(ngModel)]="item.label.normal.rich.a.fontWeight" (change)="lableFormart(item.label.normal)">
+                            <option value="normal">普通</option>
+                            <option value="bold">粗</option>
+                            <option value="lighter">细</option>
+                        </select>
+                        字号：
+                        <input type="number" placeholder="字号" [(ngModel)]="item.label.normal.rich.a.fontSize" (keyup)="lableFormart(item.label.normal)"> 饼图标签/数值： 是否显示数值：
+                        <input type="checkbox" placeholder="是否显示数值" [(ngModel)]="b_show" (change)="lableFormart(item.label.normal)"> 颜色：
+                        <input type="text" placeholder="颜色" [(ngModel)]="item.label.normal.rich.b.color" (keyup)="lableFormart(item.label.normal)"> 粗细：
+                        <select type="text" placeholder="粗细" [(ngModel)]="item.label.normal.rich.b.fontWeight" (change)="lableFormart(item.label.normal)">
+                            <option value="normal">普通</option>
+                            <option value="bold">粗</option>
+                            <option value="lighter">细</option>
+                        </select>
+                        字号：
+                        <input type="number" placeholder="字号" [(ngModel)]="item.label.normal.rich.b.fontSize" (keyup)="lableFormart(item.label.normal)"> 数值显示方式：
+                        <select type="checkbox" placeholder="数值显示方式" [(ngModel)]="value" (change)="lableFormart(item.label.normal)">
+                            <option value="value">真实数值</option>
+                            <option value="persent">百分比</option>
+                        </select>
+
+                        <div *ngFor="let data of item.data;let i =index">
+                            系列名称：
+                            <input type="text" placeholder="系列名称" [(ngModel)]="data.name" (keyup)="setOptionItem()"> 饼图颜色:
+                            <input type="text" placeholder="饼图颜色" [(ngModel)]="data.itemStyle.normal.color.colorStops[0].color" (keyup)="setChangeColor(data.itemStyle.normal.color,data.itemStyle.normal.color.colorStops[0].color)"> 饼图渐变起始颜色:
+                            <input type="text" placeholder="饼图渐变起始颜色" [(ngModel)]="data.itemStyle.normal.color.colorStops[0].color" (keyup)="setOptionItem()"> 饼图渐变终止颜色:
+                            <input type="text" placeholder="饼图渐变终止颜色" [(ngModel)]="data.itemStyle.normal.color.colorStops[1].color" (keyup)="setOptionItem()"> -------------------------------------------
+                        </div>
+                    </div>
+                    <div *ngIf="item.type=='radar'">
+                        <p>雷达图</p>
+                        线条颜色：
+                        <input type="text" placeholder="线条颜色" [(ngModel)]="item.lineStyle.normal.color" (change)="setOptionItem()">
+                        <br/> 线条类型：
+                        <select type="text" placeholder="线条类型" [(ngModel)]="item.lineStyle.normal.type" (change)="setOptionItem()">
+                            <option value="solid"> 实线</option>
+                            <option value="dashed">虚线</option>
+                            <option value="dotted">点线</option>
+                        </select>
+                        <br/> 线条宽度：
+                        <input type="text" placeholder="线条宽度" [(ngModel)]="item.lineStyle.normal.width" (keyup)="setOptionItem()">
+                        <br/> 填充颜色：
+                        <input type="text" placeholder="填充颜色" [(ngModel)]="item.areaStyle.normal.color.colorStops[0].color" (keyup)="setChangeColor(item.itemStyle.normal.color,item.itemStyle.normal.color.colorStops[0].color)">
+                        <br/> 填充渐变起始颜色:
+
+                        <input type="text" placeholder="填充渐变起始颜色" [(ngModel)]="item.areaStyle.normal.color.colorStops[0].color" (keyup)="setOptionItem()">
+                        <br/> 填充渐变终止颜色:
+                        <input type="text" placeholder="填充渐变终止颜色" [(ngModel)]="item.areaStyle.normal.color.colorStops[1].color" (keyup)="setOptionItem()">
+                        <br/>
+                    </div>
+                    是否显示标签：
+                    <input type="checkbox" placeholder="是否显示标签" [(ngModel)]="item.label.normal.show" (change)="setOptionItem()"> 标签文字颜色：
+                    <input type="text" placeholder="标签文字颜色" [(ngModel)]="item.label.normal.textStyle.color" (keyup)="setOptionItem()"> 标签文字粗细：
+                    <select type="text" placeholder="标签文字粗细" [(ngModel)]="item.label.normal.textStyle.fontWeight" (change)="setOptionItem()">
+                        <option value="normal">普通</option>
+                        <option value="bold">粗</option>
+                        <option value="lighter">细</option>
+                    </select>
+                    标签文字大小：
+                    <input type="text" placeholder="标签文字大小" [(ngModel)]="item.label.normal.textStyle.fontSize" (keyup)="setOptionItem()">
+                </li>
+            </ul>
+        </div>
+        <h2 class="title" *ngIf="this.option.radar!=null">雷达图轴系</h2>
+        <div class="content" id='radar' *ngIf="this.option.radar!=null">
+            <ul>
+                <li *ngFor="let item of this.option.radar.indicator">
+                    轴系名称：
+                    <input type="text" placeholder="轴系名称" [(ngModel)]="item.name" (keyup)="setOptionItem()">
+                    <br/> 轴系最大值：
+                    <input type="text" placeholder="轴系名称" [(ngModel)]="item.max" (keyup)="setOptionItem()">
+                    <br/>
+                </li>
+            </ul>
+            雷达图绘制类型：
+            <select type="text" placeholder="雷达图绘制类型" [(ngModel)]="this.option.radar.shape" (change)="setOptionItem()">
+                <option value="polygon">多边形</option>
+                <option value="circle">圆形</option>
+            </select>
+            <br/> 指示器名称字体颜色：
+            <input type="text" placeholder="指示器名称字体颜色" [(ngModel)]="this.option.radar.name.textStyle.color" (keyup)="setOptionItem()">
+            <br/> 指示器名称文字字体：
+            <select type="text" placeholder="指示器名称文字字体" [(ngModel)]="this.option.radar.name.textStyle.fontFamily" (change)="setOptionItem()">
+                <option value="Arial">英文字体</option>
+                <option value="Microsoft YaHei">微软雅黑</option>
+                <option value="SimSun">宋体</option>
+                <option value="SimHei">黑体</option>
+                <option value="KaiTi">楷体</option>
+            </select>
+            <br/> 指示器名称文字风格：
+            <select placeholder="文字风格" [(ngModel)]="this.option.radar.name.textStyle.fontStyle" (change)="setOptionItem()">
+                <option value="normal">普通</option>
+                <option value="italic">斜体</option>
+            </select>
+            <br/> 指示器名称文字粗细：
+            <select type="text" placeholder="文字粗细" [(ngModel)]="this.option.radar.name.textStyle.fontWeight" (change)="setOptionItem()">
+                <option value="normal">普通</option>
+                <option value="bold">粗</option>
+                <option value="lighter">细</option>
+            </select>
+            <br/> 指示器名称文字大小：
+            <input type="number" placeholder="指示器名称文字大小" [(ngModel)]="this.option.radar.name.textStyle.fontSize" (keyup)="setOptionItem()">
+            <br/> 分割线宽度：
+
+            <input type="number" placeholder="分割线宽度" [(ngModel)]="this.option.radar.splitLine.lineStyle.width" (keyup)="setOptionItem()">
+            <br/> 分割线类型：
+            <select type="text" placeholder="分割线类型" [(ngModel)]="this.option.radar.splitLine.lineStyle.type" (change)="setOptionItem()">
+                <option value="solid"> 实线</option>
+                <option value="dashed">虚线</option>
+                <option value="dotted">点线</option>
+            </select>
+            <br/> 指示器分隔段数：
+            <input type="number" placeholder="指示器分隔段数" [(ngModel)]="this.option.radar.splitNumber" (keyup)="setOptionItem()">
+            <br/> 是否显示分隔区域：
+            <input type="checkbox" placeholder="是否显示分隔区域" [(ngModel)]="this.option.radar.splitArea.show" (keyup)="setOptionItem()">
+            <br/> 轴线颜色：
+            <input type="text" placeholder="轴线颜色" [(ngModel)]="this.option.radar.axisLine.lineStyle.color" (keyup)="setOptionItem()">
+            <br/>
+        </div>
+        <h2 class="title">图例属性</h2>
+        <div class="content" id='legend'>
+            是否显示图例：
+            <input type="checkbox" placeholder="是否显示图例" [(ngModel)]="this.option.legend.show" (change)="setOptionItem()"> 图例布局方式：
+            <select type="text" placeholder="图例布局方式" [(ngModel)]="this.option.legend.orient" (change)="setOptionItem()">
+                <option value="horizontal"> 水平排列</option>
+                <option value="vertical">竖直排列</option>
+            </select>
+            图例垂直位置：
+
+            <select type="text" placeholder="图例垂直位置" [(ngModel)]="this.option.legend.top" (change)="setOptionItem()">
+                <option value="top">上</option>
+                <option value="middle">中</option>
+                <option value="bottom">下</option>
+            </select>
+            图例水平位置：
+            <select type="text" placeholder="图例水平位置" [(ngModel)]="this.option.legend.left" (change)="setOptionItem()">
+                <option value="left">左</option>
+                <option value="center">中</option>
+                <option value="right">右</option>
+            </select>
+            图例文字颜色：
+
+            <input type="text" placeholder="图例文字颜色" [(ngModel)]="this.option.legend.textStyle.color" (keyup)="setOptionItem()"> 图例文字粗细：
+            <select type="text" placeholder="图例文字粗细" [(ngModel)]="this.option.legend.textStyle.fontWeight" (change)="setOptionItem()">
+                <option value="normal">普通</option>
+                <option value="bold">粗</option>
+                <option value="lighter">细</option>
+            </select>
+            图例文字大小：
+            <input type="text" placeholder="图例文字大小" [(ngModel)]="this.option.legend.textStyle.fontSize" (change)="setOptionItem()"> 图例间隔：
+            <input type="number" placeholder="图例间隔" [(ngModel)]="this.option.legend.itemGap" (keyup)="setOptionItem()">
+
+
+        </div>
+        <h2 class="title">网格属性</h2>
+        <div class="content" id='grid'>
+            网格距容器左侧距离：
+            <input type="text" placeholder="网格距容器左侧距离" [(ngModel)]="this.option.grid.left" (keyup)="setOptionItem()"> 网格距容器右侧距离：
+            <input type="text" placeholder="网格距容器右侧距离" [(ngModel)]="this.option.grid.right" (keyup)="setOptionItem()"> 网格距容器上侧距离：
+            <input type="text" placeholder="网格距容器上侧距离" [(ngModel)]="this.option.grid.top" (keyup)="setOptionItem()"> 网格距容器下侧距离：
+            <input type="text" placeholder="网格距容器下侧距离" [(ngModel)]="this.option.grid.bottom" (keyup)="setOptionItem()">
+
+        </div>
+        <h2 class="title">数据实时刷新时间</h2>
+        <div class="content" id='grid'>
+            <input type="text" placeholder="数据实时刷新时间" [(ngModel)]="echartData.timeLength">
+        </div>
+    </div>
+
+    <div class="position bottomBox" style="top:auto;">
+        <button (click)="changeOption()">提交</button>
+    </div>
+</div>

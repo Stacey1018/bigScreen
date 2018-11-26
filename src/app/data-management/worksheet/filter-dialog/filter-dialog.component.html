@@ -1,0 +1,94 @@
+<div class="dialogContent">
+  <div class="dialogTitle">
+    筛选器({{fieldName}})
+    <a href="javascript:void(0)" class="closeIcon" (click)="btnCancel()">×</a>
+  </div>
+  <div class="dialogMain">
+    <div class="dimensionBox" [ngClass]="{'hidden': type!='1'}">
+      <ul class="navBox">
+        <li [ngClass]="{'active':titleType==0}" (click)="switch(0)">精确筛选</li>
+        <li [ngClass]="{'active':titleType==1}" (click)="switch(1)">条件筛选</li>
+      </ul>
+      <div [ngClass]="{'hidden': titleType!=0}" class="navContent">
+        <div>
+          <input type="text" class="searchInput" [(ngModel)]="fieldValue">
+        </div>
+        <div class="selectAll">
+          <input class="checkboxInput" id="checkAll" type="checkbox" [(ngModel)]="isCheckedAll" (change)="checkAll()">
+          <label class="checkboxLabel" for="checkAll"></label>
+          <label class="name overEllipsis" for="checkAll">全选</label>
+        </div>
+        <div class="listBox">
+          <div class="containerDiv">
+            <ul>
+              <li *ngFor="let item of dimensionValueArr;let i=index;">
+                <input class="checkboxInput" id="checkAll{{i}}" type="checkbox" [(ngModel)]="item.isChecked" (change)="checkField(item[fieldName],item.isChecked)">
+                <label class="checkboxLabel" for="checkAll{{i}}"></label>
+                <label class="name overEllipsis" for="checkAll{{i}}">{{item[fieldName]}}</label>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div [ngClass]="{'hidden': titleType!=1}" class="navContent">
+        <select [(ngModel)]='filter.conditionRange' class="selectFilter">
+          <option value="0">包含下列所有条件</option>
+          <option value="1">包含下列任一条件</option>
+        </select>
+        <div class="listBox areaListBox">
+          <div class="containerDiv">
+            <div *ngFor="let item of filter.conditions;let i=index">
+              <span [ngClass]="{'visiHidden': i!=0}">地区</span>
+              <select [(ngModel)]='item.condition'>
+                <option [value]="filterType.Null">请选择</option>
+                <option [value]="filterType.Contain">包含</option>
+                <option [value]="filterType.NotContain">不包含</option>
+                <option [value]="filterType.Equal">等于</option>
+                <option [value]="filterType.NotEqual">不等于</option>
+              </select>
+              <input type="text" [(ngModel)]='item.value'>
+              <i class="icon delete" *ngIf="1!=filter.conditions.length" (click)="deleteConditionItemFilter(i)">-</i>
+              <i class="icon add" *ngIf="i+1==filter.conditions.length" (click)="addConditionItemFilter()">+</i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div [ngClass]="{'hidden': type!='0'}" class="measurebox">
+      <select [(ngModel)]='filter.condition'>
+        <option value="0">请选择</option>
+        <option [value]="filterType.Equal">等于</option>
+        <option [value]="filterType.NotEqual">不等于</option>
+        <option [value]="filterType.MoreThan">大于</option>
+        <option [value]="filterType.LessThan">小于</option>
+        <option [value]="filterType.MoreThanOrEqual">大于等于</option>
+        <option [value]="filterType.LessThanOrEqual">小于等于</option>
+        <option [value]="filterType.ValueInterval">区间</option>
+        <option [value]="filterType.Equal">不为空</option>
+      </select>
+      <ng-container *ngIf="filter.condition!=9">
+        <input type="text" [(ngModel)]='filter.conditionValue' placeholder="请输入名称数值">
+      </ng-container>
+      <ng-container *ngIf="filter.condition==9">
+        <input type="text" [(ngModel)]='minValue' placeholder="请输入名称数值">
+        <em>~</em>
+        <input type="text" [(ngModel)]='maxValue' placeholder="请输入名称数值">
+      </ng-container>
+    </div>
+    <div [ngClass]="{'hidden': type!='2'}" class="dateBox">
+      <div>
+        <label>开始日期</label>
+        <input type="text" id="startTime" [(ngModel)]="filter.startTime">
+      </div>
+      <div>
+        <label>截止日期</label>
+        <input type="text" id="endTime" [(ngModel)]="filter.endTime">
+      </div>
+    </div>
+  </div>
+  <div class="btnBox">
+    <button mat-raised-button color="primary" (click)="btnOK()">确定</button>
+    <button mat-raised-button color="primary" class="blueButton" (click)='btnCancel()'>取消</button>
+  </div>
+</div>

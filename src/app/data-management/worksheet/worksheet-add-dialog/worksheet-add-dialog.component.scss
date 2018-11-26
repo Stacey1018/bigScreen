@@ -1,0 +1,54 @@
+@import "../../../../assets/css/common";
+@import "../../../../assets/css/commonDialog";
+$imgUrl: "../../../../assets/images/";
+.dialogMain {
+    bottom: 0 !important;
+}
+
+.database-deploy {
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 80px;
+    border: 1px solid $borderColor;
+    .leftList {
+        width: 300px;
+        right: auto;
+        border-right: 1px solid $borderColor;
+        background-color: #E9EDF5;
+    }
+    .rightList {
+        left: 300px;
+        background-color: #F6F6F7;
+    }
+    .dbList,
+    .dbTableList {
+        background-color: #fff;
+        top: 45px;
+        text-align: center;
+        span {
+            display: block;
+            padding-top: 60px;
+            margin-top: 40px;
+            color: #cecece;
+            &.addDbDataIcon{
+              background-position: top center;
+              background-repeat: no-repeat;
+              background-image: url(#{$imgUrl}noDataSourceIcon.svg);
+            }
+        }
+        button {
+            margin-top: 40px;
+            background-color: #EBFAFF;
+        }
+    }
+}
+
+.cancelBtnBox {
+    top: auto;
+    bottom: 0;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border-top: 1px solid $borderColor;
+}

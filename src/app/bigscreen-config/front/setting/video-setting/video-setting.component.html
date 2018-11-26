@@ -1,0 +1,76 @@
+<div class="settingBox">
+  <div class="settingTitle">
+    配置信息
+  </div>
+  <ul class="navBox">
+    <li [ngClass]="{'active': !isShowHistotyList}" (click)="isShowHistotyList = false">视频上传</li>
+    <li [ngClass]="{'active': isShowHistotyList}" (click)="isShowHistotyList = true">历史上传</li>
+  </ul>
+  <div class="position" style="top:80px;" [ngClass]="{'hide': isShowHistotyList}">
+    <h2 class="title">选择上传</h2>
+    <div class="settingContain">
+      <div class="settingDiv">
+        <label class="settingName">视频文件</label>
+        <div class="uploadImg">
+          <a href="javascript:;" class="file">
+            <input class="file-upload" type="file" accept=".mp4,.webm" (click)='beforeUpload()' ng2FileSelect [uploader]="uploader" multiple/>点击上传
+          </a>
+          <div class="imgBox nodata" *ngIf="!videoData.resourceInfo">
+            <i></i>
+            暂无上传
+          </div>
+          <div class="imgBox" *ngIf="videoData.resourceInfo" [ngStyle]="{'background-image': 'url(../../../../../assets/images/component/mediaHistoryvideoIcon.svg)'}">
+          </div>
+        </div>
+      </div>
+      <!-- <ul *ngIf="uploader" class="matList">
+        <li *ngFor="let item of uploader.queue" class="matListItem">
+          <div>
+            <div>
+              <div style="width:85%;float:left;">
+                <div *ngIf="item.isUploading && item?.progress==100" role="progressbar" [ngStyle]="{ 'width': item?.progress -1+ '%' }"></div>
+                <div *ngIf="item.isUploading && item?.progress<100" role="progressbar" [ngStyle]="{ 'width': item?.progress + '%' }"></div>
+                <div *ngIf="item.isSuccess" role="progressbar" [ngStyle]="{ 'width': item?.progress + '%' }"></div>
+              </div>
+              <div *ngIf="item.isUploading && item?.progress==100">{{item?.progress -1}}%</div>
+              <div *ngIf="item?.progress<100">{{item?.progress}}%</div>
+              <div *ngIf="item.isSuccess">{{item?.progress}}%</div>
+            </div>
+          </div>
+          <div>
+            <span *ngIf="item.isUploading" style="margin-top: 27px;">上传中...</span>
+            <span *ngIf="item.isSuccess" style="margin-top: 27px;">上传成功</span>
+            <a href="javascript:void(0);" class="errorMsg" *ngIf="item.isError" (click)="item.upload()" style="margin-top: 27px;">上传失败，点击重新上传</a>
+          </div>
+        </li>
+      </ul> -->
+    </div>
+    <!-- <div *ngIf="videoData.resourceInfo!=''">
+      <div>
+        {{videoData.resourceName}}
+      </div>
+      <div>
+        {{videoData.resourceInfo}}
+      </div>
+    </div> -->
+  </div>
+  <div class="position" style="top:80px;" [ngClass]="{'hide': !isShowHistotyList}">
+    <div class="containerDiv">
+      <ul class="bgList">
+        <li *ngFor="let item of historyVideosList;let i = index" [ngClass]="{'active': videoData.resourceInfo==item.resourcesUrl}"
+          (click)="selectVideo(item)">
+          <span class="checkbox" *ngIf="videoData.resourceInfo==item.resourcesUrl">
+            <!-- <input class="check" type="checkbox" id="channel_checkDiv{{i}}" disabled checked/>
+              <label for="channel_checkDiv{{i}}" class="check-label white"></label> -->
+            <div (click)="deleteResourceById(item);$event.stopPropagation()">×</div>
+          </span>
+          <div class="bgBox" [ngStyle]="{'background-image': 'url(../../../../../assets/images/component/mediaHistoryvideoIcon.svg)'}">
+          </div>
+          <div class="bgName overEllipsis" title="{{item.resourcesName}}">{{item.resourcesName}}</div>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+</div>

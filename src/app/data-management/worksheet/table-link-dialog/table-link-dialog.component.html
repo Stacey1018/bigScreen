@@ -1,0 +1,41 @@
+<div class="dialogContent">
+  <div class="dialogTitle">
+    关联
+    <a href="javascript:void(0)" class="closeIcon" (click)="btnCancel()">×</a>
+  </div>
+  <div class="dialogMain">
+    <div class="linkBox">
+      <div class="tableBox">
+        <div class="tableName overEllipsis">表名：{{pkTableName}}</div>
+        <select *ngIf="primaryFields.length>0" (change)="changePrimaryField()" [(ngModel)]="linkTable.pkField">
+          <option *ngFor="let field of primaryFields" [value]="field.fieldId"> {{field.remarkName}}</option>
+        </select>
+        <select *ngIf="primaryFields.length==0" [(ngModel)]="linkTable.pkField">
+          <option selected="selected">无</option>
+        </select>
+      </div>
+      <span class="linkIcon"></span>
+      <div class="tableBox">
+        <div class="tableName overEllipsis">表名：{{linkDt.dtName}}</div>
+        <select *ngIf="linkFields.length>0" (change)="changeLinkField()" [(ngModel)]="linkTable.fkField">
+          <option *ngFor="let field of linkFields" [value]="field.fieldId">{{field.remarkName}}</option>
+        </select>
+        <select *ngIf="linkFields.length==0" [(ngModel)]="linkTable.fkField">
+          <option selected="selected" value=''>无</option>
+        </select>
+      </div>
+    </div>
+    <div class="linkType">
+      <span>连接方式</span>
+      <select [(ngModel)]="linkTable.linkType">
+        <option value="left join">左连接</option>
+        <option value="right join">右连接</option>
+        <option value="inner join">内连接</option>
+      </select>
+    </div>
+  </div>
+  <div class="btnBox">
+    <button mat-raised-button color="primary" (click)='btnConfirm()'>确定</button>
+    <button mat-raised-button color="primary" class="blueButton" (click)='btnCancel()'>取消</button>
+  </div>
+</div>

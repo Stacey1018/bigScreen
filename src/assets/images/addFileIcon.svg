@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard 9</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Artboard-9" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-Copy-5">
+            <g id="Buttons-/-Icon-/-Add-/-Default" stroke="#37C2F5">
+                <rect id="BG" x="0.5" y="0.5" width="29" height="29" rx="3"></rect>
+            </g>
+            <g id="Icons/icon-add" transform="translate(3.000000, 3.000000)">
+                <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                <path d="M11,11 L11,6.00684547 C11,5.45078007 11.4438648,5 12,5 C12.5522847,5 13,5.44994876 13,6.00684547 L13,11 L17.9931545,11 C18.5492199,11 19,11.4438648 19,12 C19,12.5522847 18.5500512,13 17.9931545,13 L13,13 L13,17.9931545 C13,18.5492199 12.5561352,19 12,19 C11.4477153,19 11,18.5500512 11,17.9931545 L11,13 L6.00684547,13 C5.45078007,13 5,12.5561352 5,12 C5,11.4477153 5.44994876,11 6.00684547,11 L11,11 Z" id="Shape" fill="#37C2F5"></path>
+            </g>
+        </g>
+    </g>
+</svg>

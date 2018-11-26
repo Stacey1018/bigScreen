@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>图表 走势图</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="蓝湖上传" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-2-Copy-2" transform="translate(-292.000000, -574.000000)" fill="#37C2F5" fill-rule="nonzero">
+            <g id="图表-走势图" transform="translate(292.000000, 574.000000)">
+                <path d="M20,0 L2.27373675e-13,0 L2.27373675e-13,20 L20,20 L20,0 Z M6.18461538,6.72307692 L1.53846154,11.3692308 L1.53846154,1.53846154 L18.4615385,1.53846154 L18.4615385,3.67692308 L11.5384615,10.6 L7.66153846,6.72307692 L6.18461538,6.72307692 Z M12.3230769,11.6153846 L18.4615385,5.47692308 L18.4615385,18.4615385 L1.53846154,18.4615385 L1.53846154,13.1692308 L6.92307692,7.78461538 L10.7538462,11.6153846 L12.3230769,11.6153846 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

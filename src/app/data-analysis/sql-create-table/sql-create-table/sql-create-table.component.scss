@@ -1,0 +1,281 @@
+$imgUrl:'../../../../assets/images/';
+@import '../../../../assets/css/common';
+$borderColor:#BAC0D6;
+.sql-create-table {
+    .sqlBox {
+        width: 300px;
+        right: auto;
+        z-index: 1;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        &.fullScreen {
+            width: auto;
+            right: 0;
+            z-index: 2;
+        }
+    }
+    .centerBox {
+        left: 300px;
+        right: 0;
+        border-left: 1px solid $borderColor;
+        z-index: 1;
+        background-color: #fff;
+        &.fullScreen {
+            left: 0;
+            right: 0;
+            z-index: 2;
+            border: none;
+        }
+    }
+    .fullscreenIcon,
+    .exitFullscreenIcon {
+        display: inline-block;
+        padding-left: 25px;
+        height: 20px;
+        line-height: 20px;
+        cursor: pointer;
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-image: url(#{$imgUrl}fullscreenIcon.svg);
+    }
+    .exitFullscreenIcon {
+        background-image: url(#{$imgUrl}exitFullscreenIcon.svg);
+    }
+    .tableMsgBox {
+        top: 45px;
+        width: 240px;
+        left: auto;
+        border-left: 1px solid $borderColor;
+    }
+}
+
+.h3Title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    &>div {
+        display: flex;
+        align-items: center;
+        button {
+            margin-right: 20px;
+        }
+    }
+}
+
+// left
+.dataBaseBox {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    padding: 5px 10px;
+    select {
+        width: 224px;
+        border: 1px solid $borderColor;
+        border-radius: 4px;
+        height: 36px;
+        line-height: 36px;
+    }
+}
+
+.sqlBoxContentBox {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 0 10px 20px;
+    border: 1px solid $borderColor;
+    .sqlBoxContent {
+        outline: none;
+        flex: 1;
+        overflow: auto;
+        border: 0;
+    }
+}
+
+.dbTablesList {
+    li {
+        padding: 0 10px;
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid #BAC0D6;
+        cursor: pointer;
+        &.active {
+            background-color: #44B7E0;
+            color: #fff;
+            &:hover {
+                background-color: #44B7E0;
+            }
+        }
+        &:hover {
+            background-color: rgba(68, 183, 224, 0.6);
+            color: #fff;
+        }
+    }
+}
+
+.sqlBtnBox {
+    height: 50px;
+    padding-left: 10px;
+}
+
+// right
+.tableBoxContent {
+    top: 45px;
+    display: flex;
+    background-color: #F6F6F7;
+    &.right240 {
+        right: 240px;
+    }
+    .tableList {
+        flex: 1;
+        margin: 15px;
+        overflow: auto;
+    }
+}
+
+//
+.tableMsgBox {
+    .tableName,
+    .tableLabel,
+    .tableType,
+    .tableColor {
+        padding: 10px;
+        border-bottom: 1px solid $borderColor;
+    }
+    .tableName,
+    .tableColor {
+        input,
+        select {
+            width: 100%;
+            border: 1px solid #CED1DC;
+            border-radius: 3px;
+            height: 30px;
+            line-height: 28px;
+            padding: 0 3px;
+            margin-top: 10px;
+        }
+    }
+    .tableLabel {
+        .switchTableLabel {
+            display: inline-flex;
+            align-items: center;
+            .switchLabel {
+                margin: 0 8px;
+            }
+        }
+    }
+    .tableType {
+        .tableTypeList {
+            margin: 10px -7px;
+            li {
+                float: left;
+                width: 30px;
+                height: 30px;
+                border: 1px solid #CED1DC;
+                border-radius: 2px;
+                cursor: pointer;
+                margin: 8px;
+                background-size: 24px;
+                background-position: center;
+                background-repeat: no-repeat;
+                &.active,
+                &:hover {
+                    border: 1px solid #00A0E0;
+                }
+                &.disabled {
+                    cursor: no-drop;
+                    border: 1px solid #CED1DC !important;
+                    &.active,
+                    &:hover {
+                        border: 1px solid #CED1DC !important;
+                    }
+                }
+            }
+        }
+    }
+    .btnBox {
+        height:50px;
+        top:auto;
+        padding: 8px 20px;
+        text-align: center;
+        border-top: 1px solid $borderColor;
+        input {
+            width: 80px;
+            color: #00A0E0;
+            border: 1px solid #00A0E0;
+            border-radius: 2px;
+            height: 32px;
+            line-height: 30px;
+            padding: 0 10px;
+            background-color: #fff;
+            cursor: pointer;
+        }
+    }
+    .comboChartTypesBox {
+        li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            .fieldName {
+                max-width: 160px;
+                margin-right: 8px;
+            }
+            .chartTypeIcon {
+                width: 50px;
+                height: 30px;
+                cursor: pointer;
+                border: 1px solid $borderColor;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+    .numberSetting {
+        padding: 10px;
+        &>div {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding: 8px 0;
+            .labelName {
+                width: 45px;
+                text-align-last: justify;
+                text-align: justify;
+                margin-right: 5px;
+            }
+            .numberValue {
+                flex: 1;
+                overflow: hidden;
+                border: 1px solid #CED1DC;
+                border-radius: 3px;
+                height: 30px;
+                line-height: 28px;
+                padding: 0 3px;
+            }
+            .checkboxLabel{
+              margin-left: 5px;
+            }
+        }
+    }
+}
+
+.chartTypeIconBox {
+    position: fixed;
+    top: 200px;
+    left: 500px;
+    border: 1px solid #D6D6D6;
+    z-index: 2;
+    background-color: #fff;
+    li {
+        border-bottom: 1px solid #D6D6D6;
+        width: 48px;
+        height: 30px;
+        background-position: center;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+}

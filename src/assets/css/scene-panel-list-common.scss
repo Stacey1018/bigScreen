@@ -1,0 +1,521 @@
+@import "common";
+$imgUrl: "../images/";
+$iconUrl: "../images/icon/";
+$navUrl: "../images/nav/";
+$listWidth :260px;
+$titleHeight:32px;
+.icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 10px;
+}
+
+.list-box {
+    height: 100%;
+    background-color: $themeColor;
+}
+
+// 查询的输入框
+.search-container {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    input {
+        float: left;
+        width: 200px;
+        height: 30px;
+        font-size: 14px;
+        margin-right: 10px;
+        line-height: 30px;
+        padding: 0 3px;
+        background-color: rgba(59, 88, 121, 0.71);
+        color: rgba(255, 255, 255, 0.5);
+        border: 0;
+        border-radius: 3px;
+        background-image: url(#{$imgUrl}searchIcon.svg);
+        background-repeat: no-repeat;
+        background-position: right center;
+        &.width100 {
+            width: 100%;
+        }
+    }
+}
+
+// 新建文件夹
+.addfile-icon {
+    position: relative;
+    float: left;
+    width: 30px;
+    height: 30px;
+    background:url(#{$imgUrl}addFileIcon.svg) no-repeat center;
+    cursor: pointer;
+    background-size: contain;
+    .addfile-container {
+        position: absolute;
+        right: 0px;
+        top: 29px;
+        z-index: 5;
+        width: 160px;
+        border-radius: 2px;
+        padding-top: 4px;
+        display: none;
+        background-image: url(#{$imgUrl}sj.svg);
+        background-repeat: no-repeat;
+        background-position: 140px 0;
+        &.panelPage {
+            width: 170px;
+            background-position: 150px 0;
+        }
+        ul {
+            box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.20);
+            background-color: #fff;
+            border-radius: 2px;
+            li {
+                height: 40px;
+                line-height: 40px;
+                padding: 5px 0 0 5px;
+                font-size: 12px;
+                color: #444444;
+                font-weight: normal;
+                border-bottom: 1px solid $borderColor;
+                cursor: pointer;
+                &:last-child {
+                    border-bottom: 0;
+                }
+                span,
+                label {
+                    float: left;
+                    height: 30px;
+                    line-height: 30px;
+                    cursor: pointer;
+                }
+                .addDataFileIcon {
+                    background-image: url(#{$imgUrl}newDataIcon.svg);
+                }
+                .addScenceFileIcon {
+                    background-image: url(#{$imgUrl}sceneIcon.svg);
+                }
+            }
+        }
+    }
+    &:hover .addfile-container {
+        display: block;
+    }
+}
+
+.common-title {
+    height: $titleHeight;
+    line-height: 30px;
+    color: #ffffff;
+    padding-left: 10px;
+    background: $titleBg;
+    border-left: 3px solid $blueColor;
+    background: rgba(115, 169, 247, 0.2);
+    cursor: pointer;
+    .dataIcon {
+        background-image: url(#{$imgUrl}dataIcon_hover.svg);
+    }
+    .scenceIcon {
+        background-image: url(#{$imgUrl}scenceIcon_hover.svg);
+    }
+    .tableIcon {
+        background-image: url(#{$imgUrl}tableIcon_hover.svg);
+    }
+    .panelIcon {
+        background-image: url(#{$imgUrl}panelIcon_hover.svg);
+    }
+    .workSheetIcon {
+        background-size: 18px;
+        background-image: url(#{$navUrl}workSheetBlue.svg);
+    }
+    * {
+        vertical-align: middle;
+    }
+    label {
+        color: $titleColor;
+    }
+    .downIcon {
+        float: right;
+        position: relative;
+        background-image: url(#{$imgUrl}downIcon.svg);
+        .operate-containerbox {
+            position: absolute;
+            left: auto;
+            right: -5px;
+            top: 20px;
+            color: #444444;
+            display: none;
+        }
+        &:hover {
+            background-image: url(#{$imgUrl}downIcon_hover.svg);
+            .operate-containerbox {
+                display: block;
+            }
+        }
+    }
+}
+
+.tree-picture {
+    position: relative;
+    padding-right: 0px;
+    li {
+        color: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+        .name {
+            float: left;
+            height: 30px;
+            line-height: 30px;
+            width: 160px;
+            color: rgba(255, 255, 255, 0.4);
+            border: none;
+            outline: medium;
+            pointer-events: none;
+            background: transparent;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            &.secondname {
+                width: 150px;
+            }
+            &.editStatus {
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                pointer-events: auto;
+                color: #ffffff;
+            }
+        }
+        .delete-scene {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            font-size: 16px;
+            text-align: center;
+            background-color: $themeColor;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+        }
+        &.drag-item {
+            z-index: 2;
+        }
+        &.tree-picture-li {
+            height: 40px;
+            line-height: 40px;
+            padding-left: 0;
+            color: $titleColor;
+            cursor: pointer;
+            background-color: transparent;
+            border-radius: 0;
+            position: absolute;
+            z-index: 1;
+        }
+    }
+    .common {
+        padding-left: 10px;
+        &:hover {
+            background-color: $hoverBg;
+        }
+        &.active {
+            background-color: $activeBg;
+            input {
+                color: $activeColor;
+            }
+            .folderIcon {
+                background-image: url(#{$imgUrl}folderIcon_hover.svg);
+            }
+            .scenceFileIcon {
+                background-image: url(#{$imgUrl}sceneIconBlue.svg);
+            }
+            .fileIcon {
+                background-image: url(#{$imgUrl}fileIcon_hover.svg);
+            }
+            .fileIcon0 {
+                background-image: url(#{$iconUrl}line.svg);
+            }
+            .dbIcon {
+                background-image: url(#{$imgUrl}databaseIcon.svg);
+            }
+            .settingIcon {
+                background-image: url(#{$imgUrl}settingIconBlue.svg);
+            }
+            .moreTableLinkIcon {
+                background-image: url(#{$imgUrl}moreTableLinkIconBlue.svg);
+            }
+            .fileIcon0 {
+                background-image: url(#{$iconUrl}line.svg);
+            }
+            .fileIcon1 {
+                background-image: url(#{$iconUrl}curve.svg);
+            }
+            .fileIcon2 {
+                background-image: url(#{$iconUrl}lineArea.svg);
+            }
+            .fileIcon3 {
+                background-image: url(#{$iconUrl}curveArea.svg);
+            }
+            .fileIcon4 {
+                background-image: url(#{$iconUrl}lineStack.svg);
+            }
+            .fileIcon5 {
+                background-image: url(#{$iconUrl}curveStack.svg);
+            }
+            .fileIcon6 {
+                background-image: url(#{$iconUrl}lineAreaStack.svg);
+            }
+            .fileIcon7 {
+                background-image: url(#{$iconUrl}curveAreaStack.svg);
+            }
+            .fileIcon8 {
+                background-image: url(#{$iconUrl}bar.svg);
+            }
+            .fileIcon9 {
+                background-image: url(#{$iconUrl}barCrosswise.svg);
+            }
+            .fileIcon10 {
+                background-image: url(#{$iconUrl}barStack.svg);
+            }
+            .fileIcon11 {
+                background-image: url(#{$iconUrl}barCrosswiseStack.svg);
+            }
+            .fileIcon12 {
+                background-image: url(#{$iconUrl}pie.svg);
+            }
+            .fileIcon13 {
+                background-image: url(#{$iconUrl}cycle.svg);
+            }
+            .fileIcon14 {
+                background-image: url(#{$iconUrl}pieRose.svg);
+            }
+            .fileIcon15 {
+                background-image: url(#{$iconUrl}scatter.svg);
+            }
+            .fileIcon16 {
+                background-image: url(#{$iconUrl}radar.svg);
+            }
+            .fileIcon17 {
+                background-image: url(#{$iconUrl}map.svg);
+            }
+            .fileIcon18 {
+                background-image: url(#{$iconUrl}gauge.svg);
+            } // 边框
+            .fileIcon501 {
+                background-image: url(#{$iconUrl}borderBlue.svg);
+            } // 装饰
+            .fileIcon502 {
+                // background-image: url(#{$iconUrl}decorateBlue.svg);
+            } // 标题
+            .fileIcon300 {
+                background-image: url(#{$iconUrl}titleBlue.svg);
+            } // 轮播列表
+            .fileIcon301 {
+                // background-image: url(#{$iconUrl}pollingDataBlue.svg);
+            } // 图片
+            .fileIcon200 {
+                background-image: url(#{$iconUrl}imageBlue.svg);
+            } // 轮播图片
+            .fileIcon201 {
+                // background-image: url(#{$iconUrl}pollingImageBlue.svg);
+            } // 视频片段
+            .fileIcon202 {
+                background-image: url(#{$iconUrl}historyVideoBlue.svg);
+            } // 实时视频
+            .fileIcon203 {
+                background-image: url(#{$iconUrl}realVideoBlue.svg);
+            } // 中国地图
+            .fileIcon100 {
+                background-image: url(#{$iconUrl}chinaMapBlue.svg);
+            } // 世界地图
+            .fileIcon102 {
+                background-image: url(#{$iconUrl}worldMapBlue.svg);
+            } // 3D球形地图
+            .fileIcon101 {
+                background-image: url(#{$iconUrl}sphericalMapBlue.svg);
+            } // 时间器
+            .fileIcon400 {
+                background-image: url(#{$iconUrl}timerBlue.svg);
+            }
+        }
+        &:hover {
+            .editIcon {
+                display: inline;
+            }
+        }
+        .editIcon {
+            display: none;
+            float: right;
+            cursor: pointer;
+            background-image: url(#{$imgUrl}more.svg);
+            &:hover {
+                background-image: url(#{$imgUrl}moreHover.svg);
+            }
+        }
+        .folderIcon {
+            float: left;
+            background-image: url(#{$imgUrl}folderIcon.svg);
+        }
+        .scenceFileIcon {
+            float: left;
+            background-image: url(#{$imgUrl}sceneIconGray.svg);
+        }
+        .fileIcon {
+            float: left;
+            background-image: url(#{$imgUrl}fileIcon.svg);
+            background-size: 20px;
+        }
+        .fileIcon0 {
+            background-image: url(#{$iconUrl}line_gray.svg);
+        }
+        .fileIcon1 {
+            background-image: url(#{$iconUrl}curve_gray.svg);
+        }
+        .fileIcon2 {
+            background-image: url(#{$iconUrl}lineArea_gray.svg);
+        }
+        .fileIcon3 {
+            background-image: url(#{$iconUrl}curveArea_gray.svg);
+        }
+        .fileIcon4 {
+            background-image: url(#{$iconUrl}lineStack_gray.svg);
+        }
+        .fileIcon5 {
+            background-image: url(#{$iconUrl}curveStack_gray.svg);
+        }
+        .fileIcon6 {
+            background-image: url(#{$iconUrl}lineAreaStack_gray.svg);
+        }
+        .fileIcon7 {
+            background-image: url(#{$iconUrl}curveAreaStack_gray.svg);
+        }
+        .fileIcon8 {
+            background-image: url(#{$iconUrl}bar_gray.svg);
+        }
+        .fileIcon9 {
+            background-image: url(#{$iconUrl}barCrosswise_gray.svg);
+        }
+        .fileIcon10 {
+            background-image: url(#{$iconUrl}barStack_gray.svg);
+        }
+        .fileIcon11 {
+            background-image: url(#{$iconUrl}barCrosswiseStack_gray.svg);
+        }
+        .fileIcon12 {
+            background-image: url(#{$iconUrl}pie_gray.svg);
+        }
+        .fileIcon13 {
+            background-image: url(#{$iconUrl}cycle_gray.svg);
+        }
+        .fileIcon14 {
+            background-image: url(#{$iconUrl}pieRose_gray.svg);
+        }
+        .fileIcon15 {
+            background-image: url(#{$iconUrl}scatter_gray.svg);
+        }
+        .fileIcon16 {
+            background-image: url(#{$iconUrl}radar_gray.svg);
+        }
+        .fileIcon17 {
+            background-image: url(#{$iconUrl}map_gray.svg);
+        }
+        .fileIcon18 {
+            background-image: url(#{$iconUrl}gauge_gray.svg);
+        } // 边框
+        .fileIcon501 {
+            background-image: url(#{$iconUrl}border.svg);
+        } // 装饰
+        .fileIcon502 {
+            // background-image: url(#{$iconUrl}decorate.svg);
+        } // 标题
+        .fileIcon300 {
+            background-image: url(#{$iconUrl}title.svg);
+        } // 轮播列表
+        .fileIcon301 {
+            // background-image: url(#{$iconUrl}pollingData.svg);
+        } // 图片
+        .fileIcon200 {
+            background-image: url(#{$iconUrl}image.svg);
+        } // 轮播图片
+        .fileIcon201 {
+            // background-image: url(#{$iconUrl}pollingImage.svg);
+        } // 视频片段
+        .fileIcon202 {
+            background-image: url(#{$iconUrl}historyVideo.svg);
+        } // 实时视频
+        .fileIcon203 {
+            background-image: url(#{$iconUrl}realVideo.svg);
+        } // 中国地图
+        .fileIcon100 {
+            background-image: url(#{$iconUrl}chinaMap.svg);
+        } // 世界地图
+        .fileIcon102 {
+            background-image: url(#{$iconUrl}worldMap.svg);
+        } // 3D球形地图
+        .fileIcon101 {
+            background-image: url(#{$iconUrl}sphericalMap.svg);
+        } // 时间器
+        .fileIcon400 {
+            background-image: url(#{$iconUrl}timer.svg);
+        }
+        .dbIcon {
+            float: left;
+            background-image: url(#{$imgUrl}databaseIconHover.svg);
+        }
+        .excelIcon {
+            float: left;
+            background-image: url(#{$imgUrl}excelIconHover.svg);
+        }
+        .settingIcon {
+            float: right;
+            cursor: pointer;
+            background-image: url(#{$imgUrl}settingIcon.svg);
+        }
+        .moreTableLinkIcon {
+            float: left;
+            background-image: url(#{$imgUrl}moreTableLinkIcon.svg);
+        }
+    }
+    .second-lever {
+        .common {
+            padding-left: 20px;
+        }
+    }
+    &.bottom {
+        z-index: 1;
+    }
+} // 上
+.top-view {
+    position: absolute;
+    top: 0;
+    bottom: auto;
+    width: 100%;
+    height: $titleHeight;
+    z-index: 4;
+    &.open {
+        height: auto;
+        bottom: $titleHeight;
+    }
+} // 下
+.bottom-view {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    height: $titleHeight;
+    z-index: 3;
+    &.open {
+        top: 34px;
+        height: auto;
+    }
+}
+
+.scene-ShowImg,
+.data-ShowImg {
+    img {
+        display: block;
+        background-color: #ffffff;
+    }
+}

@@ -1,0 +1,107 @@
+<div class="worklist-box position">
+  <div class="leftList list-box position">
+    <div class="search-container">
+      <input type="text" class="width100" id="searchName" placeholder="请输入工作表名称搜索" [(ngModel)]="searchTableName" />
+    </div>
+    <div class="position" style="top:50px;">
+      <div class="position">
+        <div class="common-title">
+          <span class="icon workSheetIcon"></span>
+          <label>工作表列表</label>
+        </div>
+        <div class="position" style="top:32px;" *ngIf="workSheets.length===0&&isLoadingComplete&&!isHasList">
+          <div class="noData">
+            暂无列表信息～
+          </div>
+        </div>
+        <div class="position" style="top:32px;" [ngClass]="{'hidden':!isHasList&&!(workSheets.length>0&&isLoadingComplete)}">
+          <div class="position" id="data-tree-thumbnail">
+            <div class="operate-container">
+              <ul>
+                <li class="data-file-rename" (click)="renameTableName()">
+                  <span class="icon renameIcon"></span>
+                  <label>重命名</label>
+                </li>
+                <li class="data-file-delete" (click)='deleteTable()'>
+                  <span class="icon deleteDataIcon"></span>
+                  <label>删除</label>
+                </li>
+              </ul>
+            </div>
+            <div class="containerDiv">
+              <ul class="tree-picture scencesfile" id="data-tree" *ngIf='dbTables.length===0'>
+                <li class="scence-file first-lever" *ngFor="let item of workSheets;let i=index">
+                  <div id='{{item.dashBoardId}}' class="common clearfix" title='{{item.dashBoardName}}' (click)="openChildList($event,item.isDB)">
+                    <i class="icon dbIcon" *ngIf="item.isDB==1"></i>
+                    <i class="icon excelIcon" *ngIf="item.isDB==0"></i>
+                    <input type="text" class="name firstname" value='{{item.remarkName}}' />
+                    <i class="icon settingIcon" (click)="editWorkSheet(item.hostId,item.dbId,item.remarkName);$event.stopPropagation()" title="设置"></i>
+                  </div>
+                  <ul class="second-lever" [ngClass]="{'hide': i!=0}" [sortablejs]="item.dataTables" [sortablejsOptions]="options">
+                    <ng-container *ngFor="let table of item.dataTables">
+                      <!--原始表-->
+                      <li class="scence-source common clearfix" *ngIf="table.isOriginal" [ngClass]="{'active':dbTableId==table.tableId,'disabledDrag':dbTableId==table.tableId}"
+                        title="{{table.remarkName}}" id="{{table.tableId}}" [attr.data-id]="table.remarkName" [attr.data-title]="table.dbId"
+                        (click)='changeTable(table)'>
+                        <i class="icon scenceFileIcon"></i>
+                        <input type="text" class="name secondname" maxlength='25' title="{{table.remarkName}}" [(ngModel)]="table.remarkName" (keyup)="tooltipService.checkFormat(table.remarkName)"
+                        />
+                        <i class="icon editIcon" (click)="showOperaBox(table);$event.stopPropagation()"></i>
+                      </li>
+                      <!--添加的关联表-->
+                      <li class="scence-source common clearfix disabledDrag" *ngIf="!table.isOriginal" [ngClass]="{'active':dbTableId==table.tableId}"
+                        title="{{table.remarkName}}" id="{{table.originalId}}" [attr.data-id]="table.originalName" [attr.data-title]="table.dbId"
+                        (click)='changeTable(table)'>
+                        <i class="icon moreTableLinkIcon"></i>
+                        <input type="text" class="name secondname" maxlength='25' title="{{table.remarkName}}" [(ngModel)]="table.remarkName" (keyup)="tooltipService.checkFormat(table.remarkName)">
+                        <i class="icon editIcon" (click)="showOperaBox(table);$event.stopPropagation()"></i>
+                      </li>
+                    </ng-container>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rightList position">
+    <div class="rightTitle">
+      <div class="addDataBtnBox">
+        <div class="addDataBtn creatWorkSheetBtn">添加工作表
+          <ul>
+            <li (click)="addWorkSheet(0)">导入Excel</li>
+            <li (click)="addWorkSheet(1)">已有数据库</li>
+          </ul>
+        </div>
+        <div routerLink="/dashboard/dataManagement/workSheet/chartAdd" [queryParams]="{dbId:dbId,dbTableId:dbTableId,
+          dbTableName:dbTableName}" routerLinkActive="active" class="addDataBtn creatWorkSheetBtn">新建图表</div>
+      </div>
+      <div class="iconBox" [ngClass]="{'hidden':type=='dataPreview'}">
+        <span class="icon resetIcon" (click)="btnCancel()">重置</span>
+        <span class="icon saveIcon" (click)="btnSave()">保存</span>
+      </div>
+
+    </div>
+    <div class="position rightContent" [ngClass]="{'hidden':!isHasList&&!(workSheets.length>0&&isLoadingComplete)}">
+      <ul class="navList">
+        <li [ngClass]="{'active':type=='dataPreview'}" (click)="dataPreview()">数据预览</li>
+        <li [ngClass]="{'active':type=='multiTableLink'}" (click)="multiTableLink()">多表关联</li>
+      </ul>
+      <div class="navContent position">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <div class="position rightContent" *ngIf="workSheets.length===0&&isLoadingComplete&&!isHasList">
+      <table class="noDataTable">
+        <tr>
+          <td>
+            <div class="noDataImg noDataBase"></div>
+            <div class="noDataText">暂无数据</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

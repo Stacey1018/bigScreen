@@ -1,0 +1,34 @@
+<div class="dialogContent">
+  <div class="dialogTitle">
+    添加工作表
+    <a href="javascript:void(0)" class="closeIcon" (click)="closeDialog()">×</a>
+  </div>
+  <div class="dialogMain">
+    <ng-container *ngIf="dataBases.length==0">
+      <a href="javascript:void(0);" routerLink="/dashboard/dataManagement/dataSource" routerLinkActive="active"></a>
+      <!-- <div class="database-deploy position">
+        <div class="leftList position">
+          <h3 class="h3Title">数据库列表
+          </h3>
+          <div class="dbList position">
+            <span class="addDbDataIcon">尚未添加数据源</span>
+            <button class="addDataBtn creatDataSourceBtn" (click)="addDataSource()">添加数据源</button>
+          </div>
+        </div>
+        <div class="rightList position">
+          <h3 class="h3Title">数据表
+          </h3>
+          <div class="dbTableList position">
+            <span>暂无表信息</span>
+          </div>
+        </div>
+      </div> -->
+      <div class="cancelBtnBox position">
+        <button mat-raised-button class="blueButton" color="primary" (click)="closeDialog()">取消</button>
+      </div>
+    </ng-container>
+    <div *ngIf="dataBases.length">
+      <app-database-deploy [className]="'edit'" [pageType]="pageType"></app-database-deploy>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="dialogContent">
+  <div class="dialogTitle">
+    配置数据表
+    <a href="javascript:void(0)" class="closeIcon" (click)="closeDialog()">×</a>
+  </div>
+  <div class="dialogMain">
+    <div class="dbNameBox clearfix">
+      <label class="left labelName">数据库名称</label>
+      <div>
+        <input type="text" maxlength="25" class="dbName overEllipsis" title="{{remarkName}}" [(ngModel)]='remarkName' (keyup)="tooltipService.checkFormat(remarkName)">
+        <span class="renameIcon" (click)="dbRename($event)" title="重命名"></span>
+      </div>
+    </div>
+    <div>
+      <label class="left labelName">配置数据表</label>
+      <div class="dbTableList">
+        <div class="containerDiv">
+          <ul>
+            <li *ngFor="let item of dbTables">
+              <input class="checkboxInput" id="{{item.tableId}}" type="checkbox" [(ngModel)]="item.isDisplay" (change)="checkDataTable(item)">
+              <label class="checkboxLabel" for="{{item.tableId}}"></label>
+
+              <input type="text" maxlength="25" class="daTableName overEllipsis" [(ngModel)]="item.remarkName" (keyup)="tooltipService.checkFormat(item.remarkName)">
+              <span class="renameIcon" (click)="dbTableRename($event,item)" title="重命名"></span>
+            </li>
+          </ul>
+        </div>
+        <div class="allSelectedBox">
+            <input class="checkboxInput" id="dtIsCheckAll" type="checkbox" [(ngModel)]="dtIsCheckAll" (change)="checkAll()">
+            <label class="checkboxLabel" for="dtIsCheckAll"></label>
+            <label for="dtIsCheckAll">全选</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btnBox">
+    <button mat-raised-button color="primary" (click)="btnConfirm()">确定</button>
+    <button mat-raised-button color="primary" class="blueButton" (click)="closeDialog()">取消</button>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<!-- 新建仪表盘页面 -->
+<div class="page-box">
+  <div class="page-left">
+    <app-panel-data-source></app-panel-data-source>
+  </div>
+  <div class="page-center no-right">
+    <div class="center-container position">
+      <div class="operation-box">
+        <button class="addDataBtn creatPanelBtn" (click)="createPanel()">新建仪表盘</button>
+        <div class="operation-right" [ngClass]="{'hidden':!pmSer.display}" *ngIf='!pmSer.flag'>
+          <span class="icon saveIcon" (click)='saveAddItemToPanel()'>保存</span>
+          <span class="icon cancelIcon" (click)='cancel()'>取消</span>
+        </div>
+        <div class="operation-right" [ngClass]="{'hidden':pmSer.display}" *ngIf='!pmSer.flag'>
+          <span class="icon refreshIcon" (click)='refresh()'>刷新</span>
+          <span class="icon editIcon" (click)='editPanel()'>编辑</span>
+          <span class="icon exportIcon" (click)='exportPDF()'>导出</span>
+          <span class="icon fullscreenIcon" (click)='fullScreen()'>全屏</span>
+        </div>
+      </div>
+      <div class="layout-container position panel-container" id="panel-container" *ngIf='!pmSer.flag' [ngClass]="{'fullscreen': isFullscreen}">
+        <div class="layout-main" id="gridsterBox-layout">
+          <gridster *ngIf='layout.options' class="gridster" [options]="layout.options">
+            <gridster-item [item]="item" *ngFor="let item of layout.dashboard">
+              <span class="deleteItemIcon" [ngClass]="{'hidden':!pmSer.display}" (click)='removeDataSource(item.id)' title="删除"></span>
+              <div class='panelItem panelItem{{item.id}}'></div>
+            </gridster-item>
+          </gridster>
+        </div>
+      </div>
+      <div class="layout-container position" *ngIf='pmSer.flag' id="panel-container">
+        <div class="position" *ngIf='pmSer.flag'>
+          <table class="noDataTable">
+            <tr>
+              <td>
+                <div class="noDataImg"></div>
+                <div class="noDataText">暂无数据</div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

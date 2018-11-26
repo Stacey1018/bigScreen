@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>对勾</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="大屏数据可视化--后台" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="对勾" fill-rule="nonzero" fill="#74797E">
+            <g id="Forms-/-Checkbox-/-Selected-Copy-2" transform="translate(2.000000, 3.000000)">
+                <path d="M3,3.59008789 L1.70710678,2.29289322 C1.31658249,1.90236893 0.683417511,1.90236893 0.292893219,2.29289322 C-0.0976310729,2.68341751 -0.0976310729,3.31658249 0.292893219,3.70710678 L3,6.41421356 L7.70710678,1.70710678 C8.09763107,1.31658249 8.09763107,0.683417511 7.70710678,0.292893219 C7.31658249,-0.0976310729 6.68341751,-0.0976310729 6.29289322,0.292893219 L3,3.59008789 Z" id="Check"></path>
+            </g>
+        </g>
+    </g>
+</svg>

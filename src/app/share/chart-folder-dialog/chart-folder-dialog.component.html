@@ -1,0 +1,22 @@
+<div class="dialogContent">
+  <div class="dialogTitle">
+    移动图表
+    <a href="javascript:void(0)" class="closeIcon" (click)="closeDialog()">×</a>
+  </div>
+  <div class="dialogMain">
+    <div>
+      将图表
+      <span>'{{chartUpdateName}}'</span>移动到
+    </div>
+    <div>
+      选择文件夹
+      <select [(ngModel)]='chartFloderId'>
+        <option *ngFor='let item of chartFloderArray' value={{item.chartId}}>{{item.chartName}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="btnBox">
+    <button mat-raised-button color="primary" (click)="confirmremove()">确定</button>
+    <button mat-raised-button color="primary" class="blueButton" (click)="closeDialog()">取消</button>
+  </div>
+</div>

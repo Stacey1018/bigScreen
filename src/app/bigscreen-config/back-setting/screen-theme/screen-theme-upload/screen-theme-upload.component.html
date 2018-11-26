@@ -1,0 +1,72 @@
+<div class="content-container">
+  <div class="upload-top topcommon">
+    <div class="topcommon-left">
+      <select class="topcommon-select" name="" [value]='uploadTypeValue' #currentBackgroundImage (change)='changeSearchType(currentBackgroundImage.value)'>
+        <option value="{{item.value}}" *ngFor="let item of themeType">
+          {{item.viewValue}}
+        </option>
+      </select>
+      <input class="search-picture-input" type="text" name='selectByName' [(ngModel)]='typeName' placeholder="请输入关键字搜索">
+    </div>
+    <span class="upload-img">上传组件
+      <mat-form-field class="background-select">
+        <mat-select placeholder="上传组件">
+          <mat-option class="background-option" value="background">
+            <div class="file-box">
+              <span class="choose-name">上传背景</span>
+              <input class="file-upload" type="file" accept=".jpg,.jpeg,.svg,.gif,.png" (click)='beforeUpload(dataTypeEnum.background)' ng2FileSelect
+                [uploader]="uploader" multiple />
+            </div>
+          </mat-option>
+          <mat-option class="background-option" value="border">
+            <div class="file-box">
+              <span class="choose-name">上传边框</span>
+              <input class="file-upload" type="file" accept=".jpg,.jpeg,.svg,.gif,.png" (click)='beforeUpload(dataTypeEnum.border)' ng2FileSelect
+                [uploader]="uploader" multiple/>
+            </div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </span>
+
+    <div class="upload-content tabcommon">
+
+      <div class="upload-main maincommon">
+        <div class="menu-bar">
+          <span class="licommon first">图片</span>
+          <span class="licommon second">名称</span>
+          <span class="licommon third">状态</span>
+          <span class="licommon forth">组件类型</span>
+          <span class="licommon fifth">操作</span>
+        </div>
+        <div class="scroll-container">
+          <table class="noDataTable" *ngIf='themes.length==0'>
+            <tr>
+              <td>
+                <div class="noDataImg"></div>
+                <div class="noDataText">暂无数据</div>
+              </td>
+            </tr>
+          </table>
+          <div class="containerDiv">
+            <!-- 上传成功列表 -->
+            <ul class="upload-ul-container">
+              <li class="upload-li-common" *ngFor='let item of themes'>
+                <div class="licommon first">
+                  <div class="imgcommon" [ngStyle]="{'background-image': 'url('+item.imgUrl+')'}">
+                  </div>
+                </div>
+                <span class="licommon second">{{item.resourcesName}}</span>
+                <span class="licommon third">完成</span>
+                <span class="licommon forth">{{item.resourcesType}}</span>
+                <div class="licommon operate fifth">
+                  <span class="operate-preview" (click)='previewPicture(item.imgUrl)'>预览</span>
+                  <span class="operate-delete" (click)='deletePicture(item.resourcesId)'>删除</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

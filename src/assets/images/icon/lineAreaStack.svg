@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>折线面积堆叠</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="折线面积堆叠" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="折线图-2-copy" transform="translate(4.000000, 4.000000)" fill-rule="nonzero">
+            <polygon id="Shape" fill="#00A0E0" points="22 11.2228475 12.9867058 18 7.49566316 13.780269 2 17.220296 2 13.0908267 7.78375076 4.78005147 13.0138127 11.5200562 22 1"></polygon>
+            <polygon id="Shape" fill="#FFAF65" points="22 19 2 19 2 16.3361807 7.78375818 13.4919432 13.0138268 17.3217902 22 10"></polygon>
+            <polygon id="Shape" fill="#819292" points="23 22 0 22 0 0 0.951892311 0 0.951892311 20.8622782 23 20.8622782"></polygon>
+            <polygon id="Shape" fill="#E96000" points="13.0640959 18 7.75514169 13.8351025 2.44437566 17.1213066 2 16.1861896 7.81271751 12.5893948 13.059667 16.7056495 21.4658886 10 22 10.8718293"></polygon>
+            <polygon id="Shape" fill="#159A8D" points="1.711306 13 1 12.2908427 6.87293714 3.5304134 12.0508132 10.2115787 20.3473247 0 21 0.788581926 12.0352131 11.8226735 6.92291209 5.22607465"></polygon>
+        </g>
+    </g>
+</svg>

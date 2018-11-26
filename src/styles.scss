@@ -1,0 +1,697 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css';
+@import './assets/css/theme';
+@import './assets/css/common';
+@import './assets/css/flatpickr.min.css';
+@import './assets/css/mCustomScrollbar';
+@import './assets/css/rangeslider';
+@import './assets/css/runNumber';
+$imgUrl:'./assets/images/';
+$placeholderColor:#959CA7;
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Microsoft Yahei', '微软雅黑', 'Heiti', '黑体';
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400;
+}
+
+.mat-button,
+.mat-raised-button,
+.mat-icon-button,
+.mat-fab,
+.mat-mini-fab {
+    font-family: 'Microsoft Yahei', '微软雅黑', 'Heiti', '黑体';
+}
+
+html,
+body {
+    height: 100%;
+    color: #444444;
+    overflow: hidden;
+    position: relative;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    outline: 0;
+}
+
+img {
+    border: none;
+}
+
+em,
+dfn,
+i {
+    font-style: normal;
+}
+
+table {
+    width: 100%;
+}
+
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.hide {
+    display: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.visiHidden {
+    visibility: hidden !important;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.cursorMove {
+    cursor: move !important;
+}
+
+.inlineBlock {
+    display: inline-block;
+}
+
+.textLeft {
+    text-align: left !important;
+}
+
+.red {
+    color: red;
+}
+
+//button
+.whiteButton {
+    border: 1px solid #D2D6DC;
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.blueButton {
+    background-color: #ffffff !important;
+    border: 1px solid $blueColor !important;
+    color: $blueColor !important;
+}
+
+.position {
+    position: absolute;
+    top: 0;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+}
+
+.overEllipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+input,
+textarea,
+button {
+    outline: none;
+}
+
+input[type=radio],
+input[type=checkbox] {
+    width: 15px;
+    height: 15px;
+    vertical-align: middle;
+}
+
+textarea {
+    resize: none;
+}
+
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: $placeholderColor;
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: $placeholderColor;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: $placeholderColor;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: $placeholderColor;
+}
+
+.p-10 {
+    padding: 10px;
+}
+
+.m-10 {
+    margin: 10px;
+}
+
+.m-r-20 {
+    margin-right: 20px !important;
+}
+
+.m-l-10 {
+    margin-left: 10px;
+}
+
+.m-b-10 {
+    margin-bottom: 10px;
+}
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(./assets/fonts/material.woff2) format('woff2');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+//新加fixed定位,解决保存布局页面出先现白色区域的问题
+app-root {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: fixed;
+}
+
+//仪表盘girdster样式
+.gridster.fixed {
+    background: transparent !important;
+}
+
+.gridsterBox.panel {
+    gridster-item {
+        border: 1px solid #F1F5F7;
+        background-color: #fff !important;
+    }
+    .row {
+        border: 1px solid rgba(164, 169, 170, 0.1) !important;
+    }
+    .column {
+        border: 1px solid rgba(164, 169, 170, 0.1) !important;
+    }
+}
+
+//loading
+.loadingBox {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    img {
+        width: 380px;
+        height: 160px;
+    }
+}
+
+// 后台
+// 重置弹出框的样式
+.swal2-popup .swal2-title {
+    font-size: 13px !important;
+    background-color: #f1f1f2 !important;
+    padding-left: 15px !important;
+    height: 32px;
+    line-height: 32px;
+    text-align: left !important;
+    color: #353c43 !important;
+    font-weight: 400 !important;
+}
+
+.swal2-popup .swal2-input {
+    width: 90% !important;
+    font-size: 14px !important;
+}
+
+.swal2-popup .swal2-styled {
+    margin: 0px 15px 20px !important;
+    padding: 6px 32px !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+}
+
+.swal2-popup .swal2-styled.cancelButtonClass {
+    border: 1px solid $blueColor !important;
+    color: $blueColor !important;
+    background: #ffffff !important
+}
+
+.swal2-popup .swal2-styled:focus {
+    box-shadow: 0 0 0 !important;
+}
+
+.swal2-popup .swal2-validationerror {
+    background-color: transparent !important;
+    color: #f27474 !important;
+}
+
+.swal2-popup .swal2-content {
+    margin: 40px 0 20px !important;
+    font-size: 14px !important;
+    color: #353c43 !important;
+    font-weight: 600 !important;
+}
+
+.swal2-popup .swal2-close {
+    top: 0 !important;
+    right: 0 !important;
+    color: #353c43 !important;
+    width: 38px !important;
+    height: 32px !important;
+    line-height: 32px !important;
+    font-size: 20px !important;
+} //新添加解决保存布局的样式问题
+.swal2-title {
+    width: 400px;
+    position: absolute !important;
+    left: 0px;
+    top: 0px;
+    line-height: 32px;
+    padding-left: 20px;
+}
+
+//修改按钮变灰
+.mat-button-focus-overlay {
+    opacity: 0 !important;
+}
+
+//dialog
+.mat-dialog-container {
+    padding: 0px !important;
+    overflow: initial !important;
+}
+
+mat-option {
+    margin-right: 0px;
+}
+
+//后台上传组件里面的select
+.mat-option-text {
+    width: 232px !important;
+    overflow: hidden !important;
+}
+
+/*checkbox*/
+
+.checkboxInput {
+    display: none;
+}
+
+.checkboxLabel {
+    position: relative;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    border: 1px solid #C8DAE9;
+    vertical-align: middle;
+}
+
+.checkboxInput:checked+.checkboxLabel {
+    border: 1px solid $blueColor;
+    background-color: $blueColor;
+}
+
+.checkboxInput:checked+.checkboxLabel:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    width: 8px;
+    height: 5px;
+    border: 2px solid #ffffff;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    -ms-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+// 开关
+.switchCheckbox {
+    display: none;
+}
+
+.switchLabel {
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: #02B0F0;
+    border-radius: 10px;
+    position: relative;
+}
+
+.switchLabel::before {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    background-color: #ffffff;
+}
+
+.switchCheckbox:checked+.switchLabel::before {
+    left: 21px;
+}
+
+//无数据
+.noDataTable {
+    width: 100%;
+    height: 80%;
+    text-align: center;
+    .noDataImg {
+        margin: auto;
+        width: 128px;
+        height: 86px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-image: url('#{$imgUrl}noDataImg.svg');
+        &.noTable {
+            background-image: url('#{$imgUrl}noTable.svg');
+        }
+        &.noLinkTable {
+            background-image: url('#{$imgUrl}noLinkTable.svg');
+        }
+        &.noDataBase {
+            background-image: url('#{$imgUrl}noDataBase.svg');
+        }
+        &.noScene {
+            background-image: url('#{$imgUrl}noSceneData.svg');
+        }
+        &.addTableNoData {
+            background-image: url('#{$imgUrl}createTable/noData.svg');
+        }
+    }
+    .noDataText {
+        height: 36px;
+        line-height: 36px;
+        color: #A1A1AE;
+    }
+}
+
+.h3Title {
+    height: 45px;
+    line-height: 44px;
+    border-bottom: 1px solid $borderColor;
+    padding-left: 15px;
+}
+
+// 表格
+.tableList {
+    display: flex;
+    flex-direction: column;
+    .tableBox {
+        flex: 1;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #979797;
+        &.noBorder {
+            border: 0px;
+        }
+    }
+    table {
+        &.fixed {
+            table-layout: fixed;
+        }
+        border-collapse: collapse;
+        td,
+        th {
+            word-wrap: break-word;
+            padding: 7px 3px;
+            line-height: 25px;
+            min-width: 100px;
+            max-width: 400px;
+            &.number {
+                width: 80px;
+                min-width: 80px;
+                max-width: 80px;
+            }
+        }
+    }
+    .tableName {
+        background-color: #52A1B5;
+        color: #ffffff;
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+    }
+    .tableTitle {
+        th {
+            position: relative;
+            background-color: #d1eff1;
+            border: 1px solid #ffffff;
+        }
+    }
+    .upDataVal {
+        display: block;
+        width: 100%;
+        text-align: center;
+        border: 0px;
+        background-color: transparent;
+        outline: medium;
+        &.forbidStatus {
+            pointer-events: none;
+            &.editStatus {
+                background-color: rgba(97, 131, 144, 0.2);
+                pointer-events: auto;
+            }
+        }
+    }
+    .flexItem {
+        display: flex;
+        align-items: center;
+        .upDataVal {
+            width: auto;
+            flex: 1;
+        }
+    }
+    .tableContentBox {
+        flex: 1;
+        overflow: auto;
+        background-color: #fff;
+    }
+    .tableContent {
+        tr {
+            td {
+                border: 1px solid rgba(151, 151, 151, 0.37);
+                font-size: 12px;
+                &.number {
+                    font-size: 14px;
+                    text-align: center;
+                    background-color: #d1eff1;
+                }
+            }
+        }
+    }
+}
+
+.addDataBtn {
+    height: 36px;
+    line-height: 34px;
+    border: 1px solid #02B0F0;
+    color: #02B0F0;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: 10px center;
+    padding-left: 40px;
+    padding-right: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    &.creatPanelBtn {
+        background-image: url(#{$imgUrl}creatPanelIcon.svg);
+    }
+    &.creatWorkSheetBtn {
+        background-image: url(#{$imgUrl}creatWorkSheetIcon.svg);
+    }
+    &.creatDataSourceBtn {
+        background-image: url(#{$imgUrl}creatDataSourceIcon.svg);
+    }
+    &.creatTableBtn {
+        background-image: url(#{$imgUrl}creatTableIcon.svg);
+    }
+    &:disabled {
+        filter: grayscale(1);
+        cursor: no-drop;
+    }
+}
+
+// 操作的弹出框
+.operate-container,
+.operate-containerbox {
+    position: fixed;
+    width: 140px;
+    z-index: 7;
+    display: none;
+    left: 115px;
+    padding-top: 4px;
+    background-image: url(#{$imgUrl}sj.svg);
+    background-repeat: no-repeat;
+    background-position: 115px 0;
+    &.top {
+        padding: 0px 0 4px 0;
+        background-image: url(#{$imgUrl}sj_b.svg);
+    }
+    ul {
+        box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.20);
+        background: #ffffff;
+        border-radius: 2px;
+        li {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            padding: 5px 0 0 15px;
+            box-shadow: 0 1px 0 0 #ececee;
+            cursor: pointer;
+            span {
+                float: left;
+            }
+            label {
+                float: left;
+                height: 30px;
+                line-height: 30px;
+                color: #444444;
+                cursor: pointer;
+            }
+            &:last-child {
+                box-shadow: 0 0 0 0 #ececee;
+            }
+            .pollIcon {
+                background-image: url(#{$imgUrl}pollIcon.svg);
+            }
+            .moveIcon {
+                background-image: url(#{$imgUrl}moveIcon.svg);
+            }
+            .renameIcon {
+                background-image: url(#{$imgUrl}renameIcon.svg);
+            }
+            .deleteDataIcon {
+                background-image: url(#{$imgUrl}deleteDataIcon.svg);
+            }
+            .editDataIcon {
+                background-image: url(#{$imgUrl}editDataIcon.svg);
+            }
+            &:hover,
+            &.active {
+                background-color: #F5F7FA;
+                label {
+                    color: $secondBlueColor !important;
+                }
+                .pollIcon {
+                    background-image: url(#{$imgUrl}pollIcon_hover.svg);
+                }
+                .moveIcon {
+                    background-image: url(#{$imgUrl}moveIcon_hover.svg);
+                }
+                .renameIcon {
+                    background-image: url(#{$imgUrl}renameIcon_hover.svg);
+                }
+                .deleteDataIcon {
+                    background-image: url(#{$imgUrl}deleteDataIcon_hover.svg);
+                }
+                .editDataIcon {
+                    background-image: url(#{$imgUrl}editDataIconBlue.svg);
+                }
+            }
+        }
+    }
+}
+
+.tooltipMsg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99999;
+    display: none;
+    padding: 10px 20px;
+    line-height: 30px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 3px;
+    &.show {
+        display: inline-block;
+    }
+}
+
+// 颜色拾色器
+.color-picker .arrow.arrow-bottom {
+    left: 210px !important;
+}
+
+.video-plugin .camera{
+  height: 100%;
+}
+.vjs-has-started .vjs-control-bar{
+  display: none!important;
+}
+.swiper-container{
+    z-index: -1;
+}

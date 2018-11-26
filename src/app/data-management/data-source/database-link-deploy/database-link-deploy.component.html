@@ -1,0 +1,67 @@
+<div class="database-link-deploy position">
+  <app-add-data-sourse-nav [step]="'link'" [isDivDisplay]="isDivDisplay" (testLink)="returnToTestLink()">
+  </app-add-data-sourse-nav>
+  <div class="database-link-deploy-content position">
+    <div class="db-msg-box" *ngIf="!isDivDisplay">
+      <div class="db-msg-name">
+        <ng-container [ngSwitch]="dbType">
+          <span class="sqlServer" *ngSwitchCase="0"></span>
+          <span class="mysql" *ngSwitchCase="1"></span>
+          <span class="oracle" *ngSwitchCase="2"></span>
+        </ng-container>
+      </div>
+      <div class="db-msg-content">
+        <div class="db-msg-title">
+          基本信息
+        </div>
+        <div class="db-msg">
+          <i>*</i>
+          <label>连接名称</label>
+          <input autofocus type="text" maxlength='25' [(ngModel)]="dbLinkForm.remarkName" (keyup)="tooltipService.checkFormatTip(dbLinkForm.remarkName,'name','.remarkNameTip')" (blur)="checkIsNull(dbLinkForm.remarkName,'remarkName')">
+          <span class="remarkNameTip">数据连接名称不能为空</span>
+        </div>
+        <div class="db-msg">
+          <i>*</i>
+          <label>服务器IP</label>
+          <input type="text" [(ngModel)]="dbLinkForm.ip" (keyup)="tooltipService.checkFormatTip(dbLinkForm.ip,'ip','.ipTip')" (blur)="checkIsNull(dbLinkForm.ip,'ip')">
+          <span class="ipTip">服务器IP不能为空</span>
+        </div>
+        <div class="db-msg">
+          <i>*</i>
+          <label>端口</label>
+          <input type="text" [(ngModel)]="dbLinkForm.port" (keyup)="tooltipService.checkFormatTip(dbLinkForm.port,'port','.portTip')" (blur)="checkIsNull(dbLinkForm.port,'port')">
+          <span class="portTip">端口不能为空</span>
+        </div>
+        <div class="db-msg" *ngIf="dbType==2">
+          <i>*</i>
+          <label>实例名</label>
+          <input type="text" [(ngModel)]="dbLinkForm.serverName" (blur)="checkIsNull(dbLinkForm.serverName,'serverName')">
+          <span class="serverNameTip">实例名不能为空</span>
+        </div>
+        <div class="db-msg">
+          <i>*</i>
+          <label>用户名</label>
+          <input type="text" [(ngModel)]="dbLinkForm.userName" maxlength='25' (keyup)="tooltipService.checkFormatTip(dbLinkForm.userName,'name','.userNameTip')"
+            (blur)="checkIsNull(dbLinkForm.userName,'userName')">
+          <span class="userNameTip">用户名不能为空</span>
+        </div>
+        <div class="db-msg">
+          <i>*</i>
+          <label>密码</label>
+          <input type="password" [(ngModel)]="dbLinkForm.passWord" maxlength='25' (keyup)="tooltipService.checkFormatTip(dbLinkForm.passWord,'passWord','.passWordTip')"
+            (blur)="checkIsNull(dbLinkForm.passWord,'passWord')">
+          <span class="passWordTip">密码不能为空</span>
+        </div>
+        <div class="db-msg">
+          <div class="btnBox">
+            <button class="testBtn" (click)="dbLink()">测试连接</button>
+            <button class="nextBtn" [disabled]="!isSuccess" (click)="goToNext()">下一步</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="isDivDisplay">
+      <app-database-deploy [dbHostId]='dbHostId' (emitter)="onChange($event)"></app-database-deploy>
+    </div>
+  </div>
+</div>

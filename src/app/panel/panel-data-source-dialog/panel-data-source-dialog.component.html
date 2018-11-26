@@ -1,0 +1,23 @@
+
+<div class="dialogContent">
+  <div class="dialogTitle">
+    移动仪表盘
+    <a href="javascript:void(0)" class="closeIcon" (click)="closeDialog()">×</a>
+  </div>
+  <div class="dialogMain">
+    <div>
+      将仪表盘
+      <span>'{{panelUpdateName}}'</span>移动到
+    </div>
+    <div>
+      选择文件夹
+      <select [(ngModel)]='panelFloderId'>
+        <option *ngFor='let item of panelfloderArray' value={{item.dashBoardId}}>{{item.dashBoardName}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="btnBox">
+    <button mat-raised-button color="primary" (click)="confirmremove()">确定</button>
+    <button mat-raised-button color="primary" class="blueButton" (click)="closeDialog()">取消</button>
+  </div>
+</div>

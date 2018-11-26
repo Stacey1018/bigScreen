@@ -1,0 +1,76 @@
+<div class="data-source-list position" *ngIf="dbHosts.length===0&&isLoadingComplete">
+  <button mat-raised-button routerLink="/dashboard/dataManagement/dataSource/dataSourceType" routerLinkActive="active">添加数据源</button>
+</div>
+
+<div class="data-source-list position">
+  <div class="leftList position">
+    <h3 class="h3Title"><i class="icon dbIcon"></i>数据库连接</h3>
+    <div class="dbListBox position" *ngIf="dbHosts.length===0&&isLoadingComplete">
+      <div class="noDataTip">
+        暂无列表信息~
+      </div>
+    </div>
+    <div class="dbListBox position" *ngIf="dbHosts.length>0&&isLoadingComplete">
+      <div class="operate-container">
+        <ul>
+          <li class="data-file-rename" (click)='editDBLink()'>
+            <span class="icon editDataIcon"></span>
+            <label>编辑</label>
+          </li>
+          <li class="data-file-delete" (click)='deleteDBLink()'>
+            <span class="icon deleteDataIcon"></span>
+            <label>删除</label>
+          </li>
+        </ul>
+      </div>
+      <div class="containerDiv">
+        <ul class="dbList">
+          <li *ngFor="let item of dbHosts" [ngClass]="{'active': item.hostId == currHostId}" title="{{item.remarkName}}">
+            <i class="icon dbIcon"  [ngClass]="{'excelIcon': item.dataBaseType==3}"></i>
+            <span class="dbName overEllipsis" id='{{item.hostId}}' (click)="getDBList(item.hostId)">{{item.remarkName}}</span>
+            <i class="icon editIcon" (click)="showOperaBox(item);$event.stopPropagation()" *ngIf="item.dataBaseType!==3"></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="rightList position">
+    <h3 class="h3Title">
+      数据源列表
+      <button class="addDataBtn creatDataSourceBtn" routerLink="/dashboard/dataManagement/dataSource/dataSourceType">添加数据源</button>
+    </h3>
+    <div class="contentTable position" *ngIf="dbHosts.length===0&&isLoadingComplete">
+      <table class="noDataTable">
+        <tr>
+          <td>
+            <div class="noDataImg noDataBase"></div>
+            <div class="noDataText">暂无数据</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="contentTable position" *ngIf="dbHosts.length>0&&isLoadingComplete">
+      <div class="contentTableTitle">
+        <table>
+          <tr>
+            <th>名称</th>
+            <th width="260">操作</th>
+          </tr>
+        </table>
+      </div>
+      <div class="contentTableList position">
+        <div class="containerDiv">
+          <table>
+            <tr *ngFor="let item of dataBases">
+              <td class="overEllipsis" title="{{item.remarkName}}">{{item.remarkName}}</td>
+              <td width="260">
+                <span class="edit" (click)='editDB(item)'>编辑</span>
+                <span class="delete" (click)='deleteDB(item)'>删除</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+$imgUrl:'../../../../assets/images/';
+.pollIcon {
+    margin-top: 1px;
+    cursor: pointer;
+    background-image: url(#{$imgUrl}pollIcon_hover.svg);
+    &.disabled{
+      cursor: not-allowed;
+      background-image: url(#{$imgUrl}pollIcon.svg);
+    }
+}

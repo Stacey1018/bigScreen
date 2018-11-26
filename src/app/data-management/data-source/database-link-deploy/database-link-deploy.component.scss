@@ -1,0 +1,115 @@
+$imgUrl: "../../../../assets/images/dbIcon/";
+.database-link-deploy {
+    background-color: #E9EDF3;
+}
+
+.database-link-deploy-content {
+    top: 36px;
+    background-color: #fff;
+}
+
+.db-msg-box {
+    width: 800px;
+    margin: 30px auto 0;
+    display: flex;
+    align-items: center;
+    .db-msg-name {
+        width: 190px;
+        height: 190px;
+        font-size: 16px;
+        color: #787993;
+        margin-right: 60px;
+        span {
+            display: inline-block;
+            width: 190px;
+            height: 190px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            &.mysql {
+                background-image: url(#{$imgUrl}mysql.svg);
+            }
+            &.sqlServer {
+                background-image: url(#{$imgUrl}sqlServer.svg);
+            }
+            &.oracle {
+                background-image: url(#{$imgUrl}oracle.svg);
+            }
+        }
+    }
+    .db-msg-content {
+        flex: 1;
+    }
+    .db-msg-title {
+      font-size: 24px;
+      color: #25265E;
+      margin-top: 30px;
+      margin-bottom: 10px;
+  }
+    .db-msg {
+        position: relative;
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+    }
+    .btnBox {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button {
+            width: 108px;
+            height: 42px;
+            line-height: 42px;
+            border-radius: 23px;
+            border: 0px;
+            cursor: pointer;
+        }
+        .testBtn {
+            margin-right: 20px;
+            background-color: rgba(255, 112, 82, 0.2);
+            color: #FF7052;
+        }
+        .nextBtn {
+            background-color: rgba(18, 150, 219, 0.2);
+            color: #1296DB;
+            &:disabled {
+                cursor: no-drop;
+                background-color: #ccc;
+                color: rgba(255, 255, 255, 0.6);
+            }
+        }
+    }
+}
+
+.db-msg {
+    i {
+        color: #FF7052;
+        margin-right: 3px;
+    }
+    label {
+        width: 80px;
+        text-align: justify;
+        text-align-last: justify;
+        margin-right: 10px;
+    }
+    span {
+        position: absolute;
+        top: 38px;
+        left: 100px;
+        color: #FF7052;
+        display: none;
+        white-space: nowrap;
+    }
+}
+
+input {
+    display: block;
+    flex: 1;
+    height: 36px;
+    padding: 0 3px;
+    line-height: 34px;
+    border: 1px solid #C2CBDC;
+    margin-right: 10px;
+    background-color: transparent;
+}

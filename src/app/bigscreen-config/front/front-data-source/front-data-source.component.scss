@@ -1,0 +1,174 @@
+$imgUrl:"../../../../assets/images/component/";
+.componentTitle {
+    height: 40px;
+    color: rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    background-color: #1E2F43;
+    border-bottom: 1px solid #000E24;
+    .icon {
+        width: 18px;
+        height: 18px;
+        margin-top: 3px;
+        cursor: pointer;
+    }
+}
+
+// 全部组件和已选组件
+.allDataIcon {
+    background-image: url('#{$imgUrl}allData.svg');
+    &.active {
+        background-image: url('#{$imgUrl}allDataBlue.svg');
+    }
+}
+
+.selectedDataIcon {
+    background-image: url('#{$imgUrl}selectedData.svg');
+    &.active {
+        background-image: url('#{$imgUrl}selectedDataBlue.svg');
+    }
+}
+
+.comGrounpList {
+    width: 50px;
+    right: auto;
+    background-color: #1E2F43;
+    ul li {
+        height: 30px;
+        background-color: RGBA(115, 169, 247, 0.2);
+        margin-bottom: 1px;
+        border-left: 3px solid transparent;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+        &:hover,
+        &.active {
+            background-color: #0E1D32;
+            border-left: 3px solid #2CA7E0;
+        }
+    }
+}
+
+.comDataList {
+    left: 50px;
+    background-color: #0A1627;
+}
+
+.dataItemBox {
+    li {
+        padding: 10px 20px;
+        cursor: move;
+        .imgBox {
+            height: 100px;
+            border: 1px solid transparent;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #202C3C;
+        }
+        .textBox {
+            height: 30px;
+            line-height: 30px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+        &:hover {
+            .imgBox {
+                border: 1px solid #2CA7E0;
+            }
+            .textBox {
+                color: rgba(255, 255, 255, 1);
+            }
+        }
+    }
+}
+
+.borderItemBox {
+    li {
+        .imgBox {
+            background-size: contain;
+        }
+    }
+}
+
+.basedMapIcon {}
+
+.sphericalMapIcon {}
+
+// 已选数据
+.selectedDataBox {
+    li {
+        height: 30px;
+        color: rgba(255, 255, 255, 0.4);
+        cursor: move;
+        &:hover,
+        &.active {
+            background-color: #1E2D40;
+        }
+        &.active .name {
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+} // 左侧小图标
+.material {
+    background-image: url('#{$imgUrl}materialIcon.svg');
+}
+
+.chart {
+    background-image: url('#{$imgUrl}chartIcon.svg');
+}
+
+.map {
+    background-image: url('#{$imgUrl}mapIcon.svg');
+}
+
+.text {
+    background-image: url('#{$imgUrl}textIcon.svg');
+}
+
+.media {
+    background-image: url('#{$imgUrl}mediaIcon.svg');
+}
+
+.other {
+    background-image: url('#{$imgUrl}otherIcon.svg');
+} // 地图
+.chinaMapIcon {
+    background-image: url('#{$imgUrl}chinaMapIcon.svg');
+}
+
+.worldMapIcon {
+    background-image: url('#{$imgUrl}worldMapIcon.svg');
+}
+
+.sphericalMapIcon {
+    background-image: url('#{$imgUrl}mapAbbrIcon.svg');
+} // 文本
+.titleIcon {
+    background-image: url('#{$imgUrl}textTitleIcon.svg');
+}
+
+.pollingDataIcon {
+    background-image: url('#{$imgUrl}textPollinIcon.svg');
+} // 媒体
+.imgIcon {
+    background-image: url('#{$imgUrl}mediaImgIcon.svg');
+}
+
+.PollingImage {
+    background-image: url('#{$imgUrl}mediaPollingIcon.svg');
+}
+
+.HistoryVideo {
+    background-image: url('#{$imgUrl}mediaHistoryvideoIcon.svg');
+}
+
+.RealVideo {
+    background-image: url('#{$imgUrl}mediaRealvideoIcon.svg');
+} // 其他
+.timerIcon {
+    background-image: url('#{$imgUrl}otherTimerIcon.svg');
+}
+
+.drawIcon {
+}

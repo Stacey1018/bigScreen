@@ -1,0 +1,27 @@
+.colsNameBox {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    .labelNameBox {
+      flex: 1;
+    }
+    span {
+        color: #fff;
+        cursor: pointer;
+        margin-right: 8px;
+        &:last-child {
+            margin-right: 0;
+        }
+        &.active {
+            color: #51afff;
+        }
+    }
+}
+
+.pollingDataTextarea {
+    width: 100%;
+    height: 100%;
+    color: #A1B1C5;
+    border: 1px solid #1E2F43;
+    background-color: #0E1013;
+}

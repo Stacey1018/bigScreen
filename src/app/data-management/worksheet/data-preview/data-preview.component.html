@@ -1,0 +1,70 @@
+<div class="data-preview">
+  <div class="titleBox">
+    <div class="fieldSetting" (click)="settingData()">
+      <i class="icon settingIcon"></i>
+      <span *ngIf="!isOpenSetting">字段设置</span>
+      <span *ngIf="isOpenSetting">收起设置</span>
+      <i *ngIf="isOpenSetting" class="icon upIcon"></i>
+      <i *ngIf="!isOpenSetting" class="icon downIcon"></i>
+    </div>
+    <div>
+      当前展示前{{dbData.length}}条数据，共{{pageCount}}条记录
+    </div>
+  </div>
+  <div class="settingData" [ngClass]="{'hide':!isOpenSetting}">
+    <div>
+      <div class="type">
+        <span class="icon dataIcon"></span>日期
+      </div>
+      <div class="list">
+        <label class="item overEllipsis" *ngFor="let dateField of dateFields">
+          <input type="checkbox" [(ngModel)]="dateField.isDisplay" title="{{dateField.remarkName}}" (change)="updateIsDisplay(dateField)"> {{dateField.remarkName}}
+        </label>
+      </div>
+    </div>
+    <div>
+      <div class="type">
+        <span class="icon textIcon"></span>文本
+      </div>
+      <div class="list">
+        <label class="item overEllipsis" *ngFor="let textField of textFields">
+          <input type="checkbox" [(ngModel)]="textField.isDisplay" title="{{textField.remarkName}}" (change)="updateIsDisplay(textField)"> {{textField.remarkName}}
+        </label>
+      </div>
+    </div>
+    <div>
+      <div class="type">
+        <span class="icon numberIcon"></span>数值
+      </div>
+      <div class="list">
+        <label class="item overEllipsis" title="{{valueField.remarkName}}" *ngFor="let valueField of valueFields">
+          <input type="checkbox" [(ngModel)]="valueField.isDisplay" (change)="updateIsDisplay(valueField)"> {{valueField.remarkName}}
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="tableList">
+    <div class="tableName">
+      {{dbRemarkName}}
+    </div>
+    <div class="tableBox">
+      <div class="tableContentBox" id="tableList">
+        <table class="tableContent">
+          <tr class="tableTitle">
+            <th class="number"></th>
+            <th class="overEllipsis" title="{{keyItem.remarkName}}" *ngFor="let keyItem of dbFieldsHtml;let i=index">
+              <span class="name upDataVal overEllipsis" (dblclick)="dblClick($event)">{{keyItem.remarkName}}</span>
+              <input class="name upDataVal overEllipsis position" maxlength="25" (keyup)="tooltipService.checkFormat(keyItem.remarkName)" style="display:none;" [(ngModel)]="keyItem.remarkName" (blur)="rename($event,keyItem)" />
+            </th>
+          </tr>
+          <tr *ngFor="let dataItem of dbData;let i=index">
+            <td class="number">{{i+1}}</td>
+            <td class="overEllipsis" title="{{dataItem[keyItem.colName]}}" *ngFor="let keyItem of dbFieldsHtml">
+              {{dataItem[keyItem.colName]}}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

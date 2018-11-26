@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="27px" viewBox="0 0 27 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>关闭屏</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="关闭屏" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="btn_add">
+            <circle id="Oval" fill="#12ACE5" cx="13.5" cy="13.5" r="13.5"></circle>
+            <g id="Group" transform="translate(13.500000, 13.500000) rotate(45.000000) translate(-13.500000, -13.500000) translate(7.593750, 7.593750)" fill="#FFFFFF">
+                <rect id="Rectangle-2" x="5.0625" y="0" width="1.6875" height="11.8125" rx="0.84375"></rect>
+                <rect id="Rectangle-2" transform="translate(5.906250, 5.906250) rotate(-90.000000) translate(-5.906250, -5.906250) " x="5.0625" y="0" width="1.6875" height="11.8125" rx="0.84375"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

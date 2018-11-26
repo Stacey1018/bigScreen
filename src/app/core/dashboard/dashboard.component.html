@@ -1,0 +1,54 @@
+<div class="bs-content">
+  <!-- nav-menu -->
+  <div class="nav-menu">
+    <div class="left-menu">
+      <img class="logo" src="./assets/images/logo.svg">
+      <img class="name" src="./assets/images/name.svg">
+    </div>
+    <div class="nav-menu-list">
+      <ul class="firstNavUl">
+        <li class="firstNavLi">
+          <a href="javascript:void(0);" routerLink="/dashboard/dataManagement" routerLinkActive="active">数据管理</a>
+          <ul class="secondNavUl">
+            <li class="secondNavLi">
+              <a href="javascript:void(0);" routerLink="/dashboard/dataManagement/dataSource" routerLinkActive="active">
+                <i class="dataSource icon"></i>数据源</a>
+            </li>
+            <li class="secondNavLi">
+              <a href="javascript:void(0);" routerLink="/dashboard/dataManagement/workSheet" routerLinkActive="active">
+                <i class="workSheet icon"></i>工作表</a>
+            </li>
+          </ul>
+        </li>
+        <li class="firstNavLi">
+          <a href="javascript:void(0);" routerLink="/dashboard/dataAnalysis" routerLinkActive="active">数据分析</a>
+          <ul class="secondNavUl">
+            <li class="secondNavLi">
+              <a href="javascript:void(0);" routerLink="/dashboard/dataAnalysis/sqlCreateTable" routerLinkActive="active">
+                <i class="icon dataVisualization"></i>可视化</a>
+            </li>
+          </ul>
+        </li>
+        <li class="firstNavLi">
+          <a href="javascript:void(0);" routerLink="/dashboard/panel" routerLinkActive="active">仪表盘</a>
+        </li>
+        <li class="firstNavLi">
+          <a href="javascript:void(0);" routerLink="/dashboard/bigScreen" routerLinkActive="active">数据大屏</a>
+          <ul class="secondNavUl">
+            <li class="secondNavLi">
+              <a href="javascript:void(0);" routerLink="/dashboard/bigScreen/front" routerLinkActive="active">
+                <i class="icon bigScreen"></i>数据大屏</a>
+            </li>
+            <li class="secondNavLi">
+              <a href="javascript:void(0);" routerLink="/dashboard/bigScreen/backSetting" routerLinkActive="active">
+                <i class="icon dataConfig"></i>数据配置</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="app-dashboard position">
+    <router-outlet></router-outlet>
+  </div>
+</div>

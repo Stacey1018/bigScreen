@@ -1,0 +1,22 @@
+<ul class="navUl">
+  <li routerLink="/dashboard/dataManagement/dataSource/dataSourceList" routerLinkActive="active">
+    <div class="text">数据库连接列表</div>
+    <span class="sj"></span>
+  </li>
+  <li routerLink="/dashboard/dataManagement/dataSource/dataSourceType" routerLinkActive="active">
+    <div class="text">选择数据源</div>
+    <span class="sj"></span>
+  </li>
+  <li *ngIf="step==='excel'" [ngClass]="{'disable': step==='excel','active':step==='excel'}" (click)="returnToTestLink()">
+      <div class="text">导入Excel</div>
+      <span class="sj"></span>
+    </li>
+  <li *ngIf="step!=='excel'" [ngClass]="{'disable': step=='type','active':isDivDisplay==false}" (click)="returnToTestLink()">
+    <div class="text">测试连接</div>
+    <span class="sj"></span>
+  </li>
+  <li *ngIf="step!=='excel'" [ngClass]="{'disable': true,'active':isDivDisplay==true}">
+    <div class="text">配置数据列表信息</div>
+    <span class="sj"></span>
+  </li>
+</ul>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>横向柱状图</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="横向柱状图" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Shape" fill="#E96000" fill-rule="nonzero" transform="translate(11.000000, 10.000000) rotate(90.000000) translate(-11.000000, -10.000000) " points="13 6.0507624 9 6 9 14 13 14"></polygon>
+        <polygon id="Shape" fill="#0CA294" fill-rule="nonzero" transform="translate(14.500000, 15.000000) rotate(90.000000) translate(-14.500000, -15.000000) " points="16.5 7.59521202 12.5 7.5 12.5 22.5 16.5 22.5"></polygon>
+        <polygon id="Shape" fill="#35A0D6" fill-rule="nonzero" transform="translate(12.500000, 20.000000) rotate(90.000000) translate(-12.500000, -20.000000) " points="14.5 14.5698286 10.5 14.5 10.5 25.5 14.5 25.5"></polygon>
+        <polygon id="Shape" fill="#819292" fill-rule="nonzero" points="4.91049556 23.9657432 4.91049556 5 4 5 4 25 26 25 26 23.9657432"></polygon>
+    </g>
+</svg>

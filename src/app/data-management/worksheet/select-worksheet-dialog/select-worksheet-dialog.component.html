@@ -1,0 +1,46 @@
+<div class="dialogContent">
+  <div class="dialogTitle">
+    工作表选择
+    <a href="javascript:void(0)" class="closeIcon" (click)="closeDialog()">×</a>
+  </div>
+  <div class="dialogMain">
+    <div>
+      <input type="text" placeholder="请选择工作表" class="selectedWorkSheet m-b-10" disabled [(ngModel)]="remarkName">
+    </div>
+    <div class="worksheetListBox">
+      <input type="text" id="searchInput" class="selectedWorkSheet search" [(ngModel)]="searchTableName">
+      <div class="worksheetList">
+        <div class="containerDiv">
+          <div class="tab-checkout" *ngIf="workSheets.length===0&&isLoadingComplete&&!isHasList">
+            <div class="noData">
+              暂无列表信息～
+            </div>
+          </div>
+          <div class="tab-checkout" [ngClass]="{'hidden':!isHasList&&!(workSheets.length>0&&isLoadingComplete)}">
+            <div class="tabs-content" id="data-tree-thumbnail">
+              <ul class="tree-picture scencesfile" id="data-tree" *ngIf='dbTables.length===0'>
+                <li class="scence-file first-lever" *ngFor="let item of workSheets;let i=index" (click)="operateBox(item)">
+                  <div class="common clearfix" title='{{item.dashBoardName}}'>
+                    <i class="icon dbIcon" *ngIf="item.isDB==1"></i>
+                    <i class="icon excelIcon" *ngIf="item.isDB==0"></i>
+                    <input type="text" class="name firstname" value='{{item.remarkName}}' />
+                  </div>
+                  <ul class="second-lever">
+                    <li *ngFor="let table of item.dataTables" class="scence-source common clearfix" [ngClass]="{'active':dbTableId==table.tableId,'hidden':item.isShow==false}" (click)='changeTable(table);$event.stopPropagation();'>
+                      <i class="icon scenceFileIcon"></i>
+                      <input type="text" class="name secondname" title="{{table.remarkName}}" [(ngModel)]="table.remarkName" />
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btnBox">
+    <button mat-raised-button color="primary" (click)="btnConfirm()">确定</button>
+    <button mat-raised-button color="primary" class="blueButton" (click)='closeDialog()'>取消</button>
+  </div>
+</div>

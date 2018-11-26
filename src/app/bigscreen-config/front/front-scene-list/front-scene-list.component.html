@@ -1,0 +1,85 @@
+<div class="list-box">
+  <div class="search-container">
+    <input type="text" id="selectByName" maxlength='25' placeholder="请输入名称搜索" [(ngModel)]="searchFileName" />
+    <div class="addfile-icon"  (click)="addFile()" title="新建场景文件夹">
+    </div>
+  </div>
+  <div class="position" style="top:50px;">
+    <div class="position">
+      <div class="common-title">
+        <label>场景</label>
+        <div class="icon pollIcon right" [ngClass]="{'disabled': currSceneId===''}" title="轮巡" (click)="scenePolling('polling')">
+        </div>
+      </div>
+      <div class="position" style="top: 32px;">
+        <div class="position" id="data-tree-thumbnail">
+          <div class="scence-rename-delete operate-container">
+            <ul>
+              <li class="scence-file-rename" (click)="renameFile()">
+                <span class="icon renameIcon"></span>
+                <label>重命名</label>
+              </li>
+              <li class="scence-file-delete" (click)="deleteFile()">
+                <span class="icon deleteDataIcon"></span>
+                <label>删除</label>
+              </li>
+            </ul>
+          </div>
+          <div class="scence-rename-remove operate-container">
+            <ul>
+              <li class="scence-rename" (click)="editScene()">
+                <span class="icon renameIcon"></span>
+                <label>编辑</label>
+              </li>
+              <li class="scence-remove" (click)="removeScene()">
+                <span class="icon moveIcon"></span>
+                <label>移动至</label>
+              </li>
+              <li class="scence-rename" (click)="renameFile()">
+                <span class="icon renameIcon"></span>
+                <label>重命名</label>
+              </li>
+              <li class="scence-delete" (click)="deleteScene()">
+                <span class="icon deleteDataIcon"></span>
+                <label>删除</label>
+              </li>
+            </ul>
+          </div>
+          <div class="scene-ShowImg operate-container">
+            <img width='140' *ngIf='imgUrl' [src]='imgUrl'>
+          </div>
+          <div class="containerDiv" id="scence-view-scroll">
+            <ul class="tree-picture scencesfile" id="data-tree">
+              <li class="scence-file first-lever" *ngFor="let item of sceneMethodSer.sceneFolderArray">
+                <div id='{{item.sceneId}}' class="common clearfix" (click)="showSecLevelFile(item.sceneId)" title='{{item.sceneName}}'>
+                  <i class="icon folderIcon"></i>
+                  <input type="text" maxlength="25" class="name firstname" [ngClass]="{'newName':item.isNewAdd}" value='{{item.sceneName}}'
+                    (keyup)="checkName()" />
+                  <i class="icon editIcon" (click)="folderRenameAndDelete(item.sceneId, item.sceneName);$event.stopPropagation()"></i>
+                </div>
+                <ul class="second-lever" *ngIf="item.showList">
+                  <li class="scence-source common clearfix" *ngFor="let item2 of item.sceneList" (mouseout)="hideImg('scene')" (mouseover)="showImg(item2.sceneId, 'scene', item2.url)"
+                    (click)='changeSceneInfo(item2)' id='{{item2.sceneId}}' title="{{item2.sceneName}}" [ngClass]="{'active': item2.sceneId == currSceneId}">
+                    <i class="icon scenceFileIcon"></i>
+                    <input type="text" class="name secondname" maxlength="25" value='{{item2.sceneName}}' title='{{item2.sceneName}}' (keyup)="checkName()"
+                    />
+                    <i class="icon editIcon" (click)="dataRenameAndRemove(item2.sceneId,item2.sceneName);$event.stopPropagation()"></i>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="tree-picture rootscences">
+              <li class="scence-source common first-lever clearfix" *ngFor="let item of sceneMethodSer.sceneFileArray" (click)='changeSceneInfo(item)'
+                id='{{item.sceneId}}' title='{{item.sceneName}}' [ngClass]="{'active': item.sceneId==currSceneId}" (mouseout)="hideImg('scene')"
+                (mouseover)="showImg(item.sceneId, 'scene', item.url)">
+                <i class="icon scenceFileIcon"></i>
+                <input type="text" class="name firstname" maxlength="25" value='{{item.sceneName}}' (keyup)="checkName()" />
+                <i class="icon editIcon" (click)="dataRenameAndRemove(item.sceneId,item.sceneName);$event.stopPropagation()"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

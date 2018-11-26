@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>折线堆叠</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="折线堆叠" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Shape" fill="#787993" fill-rule="nonzero" points="26 25.1666667 4 25.1666667 4 5 4.91050569 5 4.91050569 24.1237551 26 24.1237551"></polygon>
+        <polygon id="Shape" fill="#898AA1" fill-rule="nonzero" points="16.1562967 20.5833333 10.8031012 16.7655106 5.44807879 19.7778644 5 18.9206738 10.8611568 15.6236119 16.1518309 19.3968454 24.6281043 13.25 25.1666667 14.0491769"></polygon>
+        <polygon id="Shape" fill="#C9CEDF" fill-rule="nonzero" points="5.88390021 20.9166667 5.16666667 20.2666058 11.0885449 12.2362123 16.30957 18.3606138 24.675219 9 25.3333333 9.72286677 16.2938399 19.8374507 11.1389364 13.7905684"></polygon>
+    </g>
+</svg>

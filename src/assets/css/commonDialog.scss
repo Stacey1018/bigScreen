@@ -1,0 +1,55 @@
+.dialogContent {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .modelBox {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index:2;
+    }
+    .dialogTitle {
+        height: 32px;
+        line-height: 32px;
+        background: #f1f1f2;
+        color: rgba(53, 60, 67, 0.6);
+        padding-left: 15px;
+        .closeIcon {
+            float: right;
+            width: 32px;
+            height: 32px;
+            text-align: center;
+            line-height: 32px;
+            color: #353c43;
+            font-size: 20px;
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+    }
+    .dialogMain {
+        position: absolute;
+        top: 32px;
+        bottom: 60px;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        &.bottom0{
+          bottom: 0px;
+        }
+    }
+    .btnBox {
+        position: absolute;
+        bottom: 0;
+        height: 50px;
+        width: 100%;
+        text-align: center;
+        button {
+            margin-right: 15px;
+            box-shadow: none;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

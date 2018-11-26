@@ -1,0 +1,26 @@
+<div class="pollingDataBox">
+  <div class="tableTitle">
+    <ul [ngStyle]="{'background-color': pollingData.configInfo.tableTitle.bgColor}">
+      <li [ngStyle]="{'flex': pollingData.configInfo.serialNumber.widthRatio}"></li>
+      <li [ngStyle]="{'flex': item.widthRatio,'font-size': pollingData.configInfo.tableTitle.fontSize+'px','color': pollingData.configInfo.tableTitle.fontColor,'font-weight':pollingData.configInfo.tableTitle.fontBold,'justify-content':pollingData.configInfo.tableTitle.align,'font-family': pollingData.configInfo.fontFamily}"
+        *ngFor="let item of pollingData.configInfo.colsData" class="overEllipsis" title="{item.colsName}}">{{item.colsName}}</li>
+    </ul>
+  </div>
+  <div class="tableContent" id="tableContent{{id}}">
+    <ul *ngFor="let pollingDataItem of pollingData.configInfo.pollingData;let i=index;" [ngStyle]="{'height':(100/pollingData.configInfo.sizeRows)+'%','background-color':i%2==0?pollingData.configInfo.evenBgColor:pollingData.configInfo.oddBgColor}">
+      <li class="serialNumberBox" [ngStyle]="{'flex': pollingData.configInfo.serialNumber.widthRatio}">
+        <span [ngStyle]="{'color':pollingData.configInfo.serialNumber.fontColor,'font-size':pollingData.configInfo.serialNumber.fontSize+'px','background-color':pollingData.configInfo.serialNumber.bgColor,'width':pollingData.configInfo.serialNumber.radius*2+'px','height':pollingData.configInfo.serialNumber.radius*2+'px','font-weight':pollingData.configInfo.serialNumber.fontBold}">{{i+1}}</span>
+      </li>
+      <li *ngFor="let colsDataItem of pollingData.configInfo.colsData;" [ngStyle]="{'flex': colsDataItem.widthRatio,'font-size': colsDataItem.fontSize+'px','color': colsDataItem.fontColor,'font-weight':colsDataItem.fontBold,'justify-content':colsDataItem.align,'font-family': pollingData.configInfo.fontFamily}"
+        class="overEllipsis" title="{{pollingDataItem[colsDataItem.colsFieldName]}}">{{pollingDataItem[colsDataItem.colsFieldName]}}</li>
+    </ul>
+
+    <ul *ngFor="let pollingDataItem of pollingData.configInfo.pollingData;let i=index;" [ngStyle]="{'height':(100/pollingData.configInfo.sizeRows)+'%','background-color':i%2==0?pollingData.configInfo.evenBgColor:pollingData.configInfo.oddBgColor}">
+      <li class="serialNumberBox" [ngStyle]="{'flex': pollingData.configInfo.serialNumber.widthRatio}">
+        <span [ngStyle]="{'color':pollingData.configInfo.serialNumber.fontColor,'font-size':pollingData.configInfo.serialNumber.fontSize+'px','background-color':pollingData.configInfo.serialNumber.bgColor,'width':pollingData.configInfo.serialNumber.radius*2+'px','height':pollingData.configInfo.serialNumber.radius*2+'px','font-weight':pollingData.configInfo.serialNumber.fontBold}">{{i+1}}</span>
+      </li>
+      <li *ngFor="let colsDataItem of pollingData.configInfo.colsData;" [ngStyle]="{'flex': colsDataItem.widthRatio,'font-size': colsDataItem.fontSize+'px','color': colsDataItem.fontColor,'font-weight':colsDataItem.fontBold,'justify-content':colsDataItem.align,'font-family': pollingData.configInfo.fontFamily}"
+        class="overEllipsis" title="{{pollingDataItem[colsDataItem.colsFieldName]}}">{{pollingDataItem[colsDataItem.colsFieldName]}}</li>
+    </ul>
+  </div>
+</div>

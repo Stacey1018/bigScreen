@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>已选择</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="已选择" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(1.000000, 1.000000)">
+            <circle id="Oval-3" fill="#FFFFFF" cx="8.5" cy="8.5" r="6.5"></circle>
+            <path d="M12.883,3.403 C9.838,5.3515 7.6315,7.8025 6.637,9.0375 L4.2115,7.05 L3.136,7.95 L7.331,12.4075 C8.0565,10.4775 10.3445,6.7025 13.139,4.0205 L12.883,3.403 Z M0,8 C0,3.5815 3.582,0 8,0 C12.4185,0 16,3.5815 16,8 C16,12.4185 12.4185,16 8,16 C3.582,16 0,12.4185 0,8 Z" id="icon_yes" fill="#67C23A"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,56 @@
+@import "../../../../assets/css/common";
+$imgUrl: "../../../../assets/images/dbIcon/";
+.data-sourse-type {
+    background-color: #E9EDF3;
+}
+
+.data-sourse-list {
+    top: 36px;
+    left: 5%;
+    right: 5%;
+    .data-name {
+        font-size: 24px;
+        color: #25265E;
+        margin-top: 20px;
+    }
+    .data-title {
+        display: inline-block;
+        background-color: #EAF7FF;
+        color: #456191;
+        font-size: 12px;
+        height: 34px;
+        line-height: 34px;
+        padding: 0 15px;
+    }
+    .data-sourse {
+        .item {
+            width: 190px;
+            height: 190px;
+            margin: 20px;
+            padding-top: 150px;
+            line-height: 40px;
+            float: left;
+            cursor: pointer;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            .text {
+                color: #fff;
+                text-align: center;
+                background: rgba(0, 0, 0, 0.4);
+            }
+            &.mysql {
+                background-image: url(#{$imgUrl}mysql.svg);
+            }
+            &.sqlServer {
+                background-image: url(#{$imgUrl}sqlServer.svg);
+            }
+            &.oracle {
+                background-image: url(#{$imgUrl}oracle.svg);
+            }
+            &.excel {
+                background-image: url(#{$imgUrl}excel.svg);
+            }
+        }
+    }
+}

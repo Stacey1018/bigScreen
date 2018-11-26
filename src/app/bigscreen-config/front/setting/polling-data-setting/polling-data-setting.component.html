@@ -1,0 +1,180 @@
+﻿<div class="settingBox">
+  <div class="settingTitle">
+    配置信息
+  </div>
+  <ul class="navBox">
+    <li [ngClass]="{'active': !isShowDataList}" (click)="isShowDataList = false">配置</li>
+    <li [ngClass]="{'active': isShowDataList}" (click)="isShowDataList = true">数据</li>
+  </ul>
+  <div class="position" style="top:80px;" [ngClass]="{'hidden': isShowDataList}">
+    <div class="containerDiv">
+      <h2 class="title">全局</h2>
+      <div class="settingContain">
+        <div class="settingDiv">
+          <label class="settingName">字体</label>
+          <select class="settingValue" [(ngModel)]="pollingData.configInfo.fontFamily" (change)="changeData()">
+            <option value="微软雅黑">微软雅黑</option>
+            <option value="宋体">宋体</option>
+            <option value="黑体">黑体</option>
+            <option value="隶书">隶书</option>
+          </select>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">表格行数</label>
+          <input class="settingValue" type="number" [(ngModel)]="pollingData.configInfo.sizeRows" (change)="changeData()">
+        </div>
+      </div>
+      <h2 class="title">表头</h2>
+      <div class="settingContain">
+        <div class="settingDiv">
+          <label class="settingName">背景颜色</label>
+          <div class="settingValue colorPickerDiv">
+            <span class="colorSpan" [ngStyle]="{'background-color': pollingData.configInfo.tableTitle.bgColor}"></span>
+            <input class="colorPicker" readonly [(colorPicker)]="pollingData.configInfo.tableTitle.bgColor" [(ngModel)]="pollingData.configInfo.tableTitle.bgColor"
+              [cpPosition]="'bottom'" (colorPickerChange)="changeData()" />
+          </div>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">字号</label>
+          <input class="settingValue" type="number" [(ngModel)]="pollingData.configInfo.tableTitle.fontSize" (change)="changeData()">
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">字体颜色</label>
+          <div class="settingValue colorPickerDiv">
+            <span class="colorSpan" [ngStyle]="{'background-color': pollingData.configInfo.tableTitle.fontColor}"></span>
+            <input class="colorPicker" readonly [(colorPicker)]="pollingData.configInfo.tableTitle.fontColor" [(ngModel)]="pollingData.configInfo.tableTitle.fontColor"
+              [cpPosition]="'bottom'" (colorPickerChange)="changeData()" />
+          </div>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">字体粗细</label>
+          <select class="settingValue" [(ngModel)]="pollingData.configInfo.tableTitle.fontBold" (change)="changeData()">
+            <option value="normal">正常</option>
+            <option value="bold">加粗</option>
+          </select>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">对齐方式</label>
+          <select class="settingValue" [(ngModel)]="pollingData.configInfo.tableTitle.align" (change)="changeData()">
+            <option value="center">居中对齐</option>
+            <option value="flex-start">左对齐</option>
+            <option value="flex-end">右对齐</option>
+          </select>
+        </div>
+      </div>
+      <h2 class="title">行配置</h2>
+      <div class="settingContain">
+        <div class="settingDiv">
+          <label class="settingName">奇数背景</label>
+          <div class="settingValue colorPickerDiv">
+            <span class="colorSpan" [ngStyle]="{'background-color': pollingData.configInfo.oddBgColor}"></span>
+            <input class="colorPicker" readonly [(colorPicker)]="pollingData.configInfo.oddBgColor" [(ngModel)]="pollingData.configInfo.oddBgColor"
+              [cpPosition]="'bottom'" (colorPickerChange)="changeData()" />
+          </div>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">偶数背景</label>
+          <div class="settingValue colorPickerDiv">
+            <span class="colorSpan" [ngStyle]="{'background-color': pollingData.configInfo.evenBgColor}"></span>
+            <input class="colorPicker" readonly [(colorPicker)]="pollingData.configInfo.evenBgColor" [(ngModel)]="pollingData.configInfo.evenBgColor"
+              [cpPosition]="'bottom'" (colorPickerChange)="changeData()" />
+          </div>
+        </div>
+      </div>
+      <h2 class="title">序列号</h2>
+      <div class="settingContain">
+        <div class="settingDiv">
+          <label class="settingName">背景颜色</label>
+          <div class="settingValue colorPickerDiv">
+            <span class="colorSpan" [ngStyle]="{'background-color': pollingData.configInfo.serialNumber.bgColor}"></span>
+            <input class="colorPicker" readonly [(colorPicker)]="pollingData.configInfo.serialNumber.bgColor" [(ngModel)]="pollingData.configInfo.serialNumber.bgColor"
+              [cpPosition]="'bottom'" (colorPickerChange)="changeData()" />
+          </div>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">列宽占比</label>
+          <input type="number" class="settingValue" [(ngModel)]="pollingData.configInfo.serialNumber.widthRatio" (change)="changeData()">
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">半径</label>
+          <input class="settingValue" type="number" [(ngModel)]="pollingData.configInfo.serialNumber.radius" (change)="changeData()">
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">字号</label>
+          <input class="settingValue" type="number" [(ngModel)]="pollingData.configInfo.serialNumber.fontSize" (change)="changeData()">
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">字体颜色</label>
+          <div class="settingValue colorPickerDiv">
+            <span class="colorSpan" [ngStyle]="{'background-color': pollingData.configInfo.serialNumber.fontColor}"></span>
+            <input class="colorPicker" readonly [(colorPicker)]="pollingData.configInfo.serialNumber.fontColor" [(ngModel)]="pollingData.configInfo.serialNumber.fontColor"
+              [cpPosition]="'bottom'" (colorPickerChange)="changeData()" />
+          </div>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">字体粗细</label>
+          <select class="settingValue" [(ngModel)]="pollingData.configInfo.serialNumber.fontBold" (change)="changeData()">
+            <option value="normal">正常</option>
+            <option value="bold">加粗</option>
+          </select>
+        </div>
+      </div>
+      <h2 class="title">自定义列</h2>
+      <div class="settingContain">
+        <div class="colsNameBox">
+          <div class="labelNameBox">
+            <span [ngClass]="{'active': currColDataIndex == i}" *ngFor="let item of pollingData.configInfo.colsData;let i=index;" (click)="currColDataIndex = i">{{item.colsName}}</span>
+          </div>
+          <span (click)="addLabel()">加</span>
+          <span (click)="deleteLabel()">删</span>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">列名</label>
+          <input type="text" class="settingValue" [(ngModel)]="pollingData.configInfo.colsData[currColDataIndex].colsName" (change)="changeData()">
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">列字段名</label>
+          <input type="text" class="settingValue" [(ngModel)]="pollingData.configInfo.colsData[currColDataIndex].colsFieldName" (change)="changeData()">
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">列宽占比</label>
+          <input type="number" class="settingValue" [(ngModel)]="pollingData.configInfo.colsData[currColDataIndex].widthRatio" (change)="changeData()">
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">字号</label>
+          <input class="settingValue" type="number" [(ngModel)]="pollingData.configInfo.colsData[currColDataIndex].fontSize" (change)="changeData()">
+        </div>
+        <div class="settingDiv">
+          <label class="settingName ">字体颜色</label>
+          <div class="settingValue colorPickerDiv">
+            <span class="colorSpan" [ngStyle]="{'background-color': pollingData.configInfo.colsData[currColDataIndex].fontColor}"></span>
+            <input class="colorPicker" readonly [(colorPicker)]="pollingData.configInfo.colsData[currColDataIndex].fontColor" [(ngModel)]="pollingData.configInfo.colsData[currColDataIndex].fontColor"
+              [cpPosition]="'bottom'" (colorPickerChange)="changeData()" />
+          </div>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">字体粗细</label>
+          <select class="settingValue" [(ngModel)]="pollingData.configInfo.colsData[currColDataIndex].fontBold" (change)="changeData()">
+            <option value="normal">正常</option>
+            <option value="bold">加粗</option>
+          </select>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">对齐方式</label>
+          <select class="settingValue" [(ngModel)]="pollingData.configInfo.colsData[currColDataIndex].align" (change)="changeData()">
+            <option value="center">居中对齐</option>
+            <option value="flex-start">左对齐</option>
+            <option value="flex-end">右对齐</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottomBox position" style="top:auto;" [ngClass]="{'hidden': !isShowDataList}">
+    <button (click)="submit()">提交</button>
+  </div>
+  <div class="position" style="top:80px;bottom: 60px;" [ngClass]="{'hidden': !isShowDataList}">
+    <textarea class="pollingDataTextarea" [(ngModel)]="pollingDataString"></textarea>
+  </div>
+</div>

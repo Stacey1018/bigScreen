@@ -1,0 +1,259 @@
+$imgUrl:"../../assets/images/setting/";
+.settingBox {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.settingTitle {
+    background-color: #1E2F43;
+    color: rgba(255, 255, 255, 0.8);
+    padding-left: 15px;
+    height: 34px;
+    line-height: 34px;
+    border-bottom: 1px solid #000E24;
+}
+
+.title {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    height: 50px;
+    line-height: 60px;
+    padding-left: 15px;
+}
+
+.navBox {
+    height: 40px;
+    border-bottom: 1px solid #000E24;
+    li {
+        float: left;
+        cursor: pointer;
+        width: 50%;
+        line-height: 39px;
+        color: #fff;
+        text-align: center;
+        background-color: #202C3C;
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        &.active {
+            border-top: 3px solid #2CA7E0;
+            background-color: #0E1D32;
+        }
+    }
+}
+
+// 设置内容区域
+.settingContain {
+    background-color: #0E1D32;
+    padding: 10px 0;
+    .settingDiv {
+        color: rgba(255, 255, 255, 0.7);
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+        margin-bottom: 15px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        &.textareaDiv{
+            align-items: flex-start;
+        }
+        .settingName {
+            display: inline-block;
+            width: 60px;
+            text-align: justify;
+            text-align-last: justify;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .settingValue {
+            flex: 1;
+            height: 30px;
+            margin-left: 5px;
+            border: 1px solid #3F4660;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 0 3px;
+            background-color: #09182D;
+            border-radius: 0;
+            font-size: 12px;
+            position: relative;
+        }
+        .textareaValue{
+            height: 80px;
+        }
+        select {
+            background: url(#{$imgUrl}downArrow.svg) no-repeat right;
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+        }
+    }
+}
+
+.colorPickerDiv {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    .colorSpan {
+        width: 30px;
+        height: 20px;
+        margin-right: 5px;
+        cursor: pointer;
+    }
+    .colorPicker {
+        cursor: pointer;
+        position: absolute;
+        left: -67px;
+        right: 0;
+        padding-left: 105px;
+        padding-right: 28px;
+        height: 28px;
+        background: url(#{$imgUrl}colorPicker.svg) no-repeat right;
+        border: 0;
+        color: rgba(255, 255, 255, 0.7);
+        overflow: hidden;
+        width: 227px;
+    }
+    &::after {
+        content: "";
+        height: 30px;
+        position: absolute;
+        border-left: 1px solid #3F4660;
+        top: 0px;
+        right: 30px;
+    }
+}
+
+.checkbox {
+    display: none;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    input[type="checkbox"] {
+        display: none;
+    }
+    .check-label {
+        border-radius: 2px;
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        background-repeat: no-repeat;
+        background-size: 14px; // background-color: #fff;
+    }
+    .check:checked+.check-label {
+        background-image: url(#{$imgUrl}checked.svg);
+    }
+    .check:checked+.check-label.white {
+        // background-image: url(#{$imgUrl}checkedWhite.svg);
+    }
+    &.timerCheckbox {
+        display: flex;
+        position: relative;
+        margin-left: 10px;
+    }
+}
+
+// 背景图片和历史图片列表
+.bgList {
+    li {
+        border-bottom: 2px solid #0A1627;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        position: relative;
+        cursor: pointer;
+        .bgBox {
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            background-color: rgba(62, 142, 215, 0.13);
+            width: 80px;
+            height: 42px;
+            margin-left: 20px;
+        }
+        &.active {
+            background-color: #202C3C;
+            .checkbox {
+                display: flex;
+            }
+        }
+        .bgName {
+            color: rgba(255, 255, 255, 0.7);
+            margin-left: 10px;
+            flex: 1;
+        }
+    }
+}
+
+.uploadImg {
+    flex: 1;
+    width: 30px;
+    margin-left: 5px;
+    position: relative;
+    .file {
+        position: relative;
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        color: #2CA7E0;
+        background-color: #09182D;
+        border: 1px dashed #656D8B;
+        cursor: pointer;
+        .file-upload {
+            position: absolute;
+            font-size: 100px;
+            right: 0;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            cursor: pointer
+        }
+    }
+    .imgBox {
+        width: 100%;
+        height: 120px;
+        border: 1px dashed #656D8B;
+        ;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        &.nodata {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            i {
+                width: 32px;
+                height: 40px;
+                margin-bottom: 5px;
+                background: url(#{$imgUrl}nodataImg.svg) no-repeat center;
+            }
+        }
+    }
+}
+.bottomBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  button {
+      cursor: pointer;
+      padding: 0 20px;
+      height: 36px;
+      line-height: 36px;
+      text-align: center;
+      background: linear-gradient(137deg, rgba(5, 208, 242, 1) 0%, rgba(18, 180, 254, 1) 100%);
+      border-radius: 2px;
+      border: 0;
+      color: #0A1627;
+  }
+}

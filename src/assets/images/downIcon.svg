@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>下拉菜单</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="下拉菜单" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.625622736">
+        <g id="下拉按钮-copy" fill="#FFFFFF" fill-rule="nonzero">
+            <path d="M13.3,0 L0.7,0 C0.28,0 0,0.28 0,0.7 L0,13.3 C0,13.72 0.28,14 0.7,14 L13.3,14 C13.72,14 14,13.72 14,13.3 L14,0.7 C14,0.28 13.72,0 13.3,0 Z M13.3,12.6 C13.3,13.02 13.02,13.3 12.6,13.3 L1.4,13.3 C0.98,13.3 0.7,13.02 0.7,12.6 L0.7,1.4 C0.7,0.98 0.98,0.7 1.4,0.7 L12.6,0.7 C13.02,0.7 13.3,0.98 13.3,1.4 L13.3,12.6 Z" id="Shape"></path>
+            <path d="M9.60894185,4.73103448 L4.29450642,4.73103448 C3.5952386,4.73103448 3.17567791,5.56676088 3.73509217,6.12391181 L6.39230988,8.77037875 C6.67201701,9.04895421 7.23143127,9.04895421 7.51113839,8.77037875 L10.1683561,6.12391181 C10.7277704,5.70604862 10.3082097,4.73103448 9.60894185,4.73103448 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

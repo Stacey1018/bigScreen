@@ -1,0 +1,85 @@
+<div class="settingBox">
+  <div class="settingTitle">
+    配置信息
+  </div>
+  <div class="position" style="top:40px;">
+    <div class="containerDiv">
+      <h2 class="title">图标样式</h2>
+      <div class="settingContain">
+        <div class="settingDiv">
+          <label class="settingName">是否显示</label>
+          <span class="checkbox timerCheckbox">
+            <input class="check" type="checkbox" id="checkDiv" [(ngModel)]="timerData.configInfo.isShowIcon" (change)="changeData()"
+            />
+            <label for="checkDiv" class="check-label white"></label>
+          </span>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">图标大小</label>
+          <input class="settingValue" type="number" [(ngModel)]="timerData.configInfo.iconSize" (change)="changeData()">
+        </div>
+        <div class="settingDiv ">
+          <label class="settingName">图标颜色</label>
+          <div class="settingValue colorPickerDiv">
+            <span class="colorSpan" [ngStyle]="{'background-color': timerData.configInfo.iconColor}"></span>
+            <input class="colorPicker" readonly [(colorPicker)]="timerData.configInfo.iconColor" [(ngModel)]="timerData.configInfo.iconColor"
+              [cpPosition]="'bottom'" (colorPickerChange)="changeData()" />
+          </div>
+        </div>
+
+        <div class="settingDiv">
+          <label class="settingName">图标间距</label>
+          <input class="settingValue" type="number" [(ngModel)]="timerData.configInfo.iconSpacing" (change)="changeData()">
+        </div>
+      </div>
+      <h2 class="title">时间样式</h2>
+      <div class="settingContain">
+        <div class="settingDiv">
+          <label class="settingName">时间格式</label>
+          <select class="settingValue" [(ngModel)]="timerData.configInfo.timerType" (change)="changeData()">
+            <option value="yyyy-MM-dd hh:mm:ss">yyyy-MM-dd hh:mm:ss</option>
+            <option value="yyyy-MM-dd">yyyy-MM-dd</option>
+            <option value="hh:mm:ss">hh:mm:ss</option>
+          </select>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">字体</label>
+          <select class="settingValue" [(ngModel)]="timerData.configInfo.fontFamily" (change)="changeData()">
+            <option value="微软雅黑">微软雅黑</option>
+            <option value="宋体">宋体</option>
+            <option value="黑体">黑体</option>
+            <option value="隶书">隶书</option>
+          </select>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">字号</label>
+          <input class="settingValue" type="number" [(ngModel)]="timerData.configInfo.fontSize" (change)="changeData()">
+        </div>
+
+        <div class="settingDiv">
+          <label class="settingName ">字体颜色</label>
+          <div class="settingValue colorPickerDiv">
+            <span class="colorSpan" [ngStyle]="{'background-color': timerData.configInfo.fontColor}"></span>
+            <input class="colorPicker" readonly [(colorPicker)]="timerData.configInfo.fontColor" [(ngModel)]="timerData.configInfo.fontColor"
+              [cpPosition]="'bottom'" (colorPickerChange)="changeData()"/>
+          </div>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">字体粗细</label>
+          <select class="settingValue" [(ngModel)]="timerData.configInfo.fontBold" (change)="changeData()">
+            <option value="normal">正常</option>
+            <option value="bold">加粗</option>
+          </select>
+        </div>
+        <div class="settingDiv">
+          <label class="settingName">对齐方式</label>
+          <select class="settingValue" [(ngModel)]="timerData.configInfo.align" (change)="changeData()">
+            <option value="center">居中对齐</option>
+            <option value="flex-start">左对齐</option>
+            <option value="flex-end">右对齐</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+@import "../../../../assets/css/common";
+$imgUrl:"../../../../assets/images/";
+$backgroundColor:#202C3C;
+.nav-menu-list {
+    position: absolute;
+    width: 140px;
+    height: 100%;
+    background-color: $themeColor;
+    li {
+        width: 140px;
+        height: 30px;
+        line-height: 30px;
+        cursor: pointer;
+        overflow: hidden;
+        color: rgb(138, 169, 207);
+        outline: none;
+        padding-left: 10px;
+        vertical-align: middle;
+        .icon {
+            float: left;
+            width: 20px;
+            height: 30px;
+            margin-right: 10px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .connect-icon {
+            background-image: url('#{$imgUrl}connectGray.svg');
+        }
+        .config-icon {
+            background-image: url('#{$imgUrl}configGray.svg');
+        }
+        .layout-icon {
+            background-image: url('#{$imgUrl}layoutGray.svg');
+        }
+        .theme-icon {
+            background-image: url('#{$imgUrl}themeGray.svg');
+        }
+        &:hover {
+            background-color: $hoverBg;
+        }
+        &.active {
+            color: $activeColor;
+            background-color: $activeBg;
+            .connect-icon {
+              background-image: url('#{$imgUrl}connectLight.svg');
+          }
+            .config-icon {
+                background-repeat: no-repeat;
+                background-image: url('#{$imgUrl}configLight.svg');
+            }
+            .layout-icon {
+                background-image: url('#{$imgUrl}layoutLight.svg');
+            }
+            .theme-icon {
+                background-image: url('#{$imgUrl}themeLight.svg');
+            }
+            .character-icon {
+                color: $titleColor;
+            }
+        }
+    }
+}
+
+.back-end-content {
+    left: 140px;
+    background-color: $backgroundColor;
+}

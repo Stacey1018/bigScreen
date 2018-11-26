@@ -1,0 +1,50 @@
+<div class="database-deploy position">
+  <div class="database-deploy-content position {{className}}">
+    <div class="leftList position">
+      <h3 class="h3Title" *ngIf="pageType!='0'">数据库列表
+      </h3>
+      <h3 class="h3Title" *ngIf="pageType=='0'">Excel文件列表
+      </h3>
+      <div class="dbList position">
+        <div class="containerDiv">
+          <ul>
+            <li *ngFor="let item of dataBases" id="{{item.dbId}}" [ngClass]="{'active':selectedDbId == item.dbId}" title="{{item.remarkName}}"
+              (click)='checkDataBase(item)'>
+              <i class="icon dbIcon" *ngIf="pageType!='0'"></i>
+              <i class="icon excelIcon" *ngIf="pageType=='0'"></i>
+              <input type="text" class="dbName" maxlength='25' title="{{item.remarkName}}" [(ngModel)]='item.remarkName' (keyup)="tooltipService.checkFormat(item.remarkName)">
+              <span class="icon selectedIcon" *ngIf="item.isDisplay"></span>
+              <span class="icon renameIcon" (click)="dbRename(item);$event.stopPropagation()" title="重命名"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="rightList position">
+      <h3 class="h3Title">数据表
+        <input class="checkboxInput" id="dtIsCheckAll" type="checkbox" [(ngModel)]="dtIsCheckAll" (change)="dtCheckAll()">
+        <label class="checkboxLabel" for="dtIsCheckAll"></label>
+      </h3>
+      <div class="dbTableList position">
+        <div class="containerDiv">
+          <ul>
+            <li *ngFor="let item of dbTables" id="{{item.tableId}}" title="{{item.remarkName}}">
+              <input class="checkboxInput" id="label{{item.tableId}}" type="checkbox" [(ngModel)]="item.isDisplay" (change)="checkDataTable(item)">
+              <label class="checkboxLabel" for="label{{item.tableId}}"></label>
+              
+              <span class="dbTableNameSpan">{{item.remarkName}}</span>
+              <input type="text" style="display:none;" class="dbTableName" maxlength='25' title="{{item.remarkName}}" [(ngModel)]='item.remarkName'
+                (keyup)="tooltipService.checkFormat(item.remarkName)">
+              <span class="icon renameIcon" (click)="dbTableRename(item);$event.stopPropagation()" title="重命名"></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btnBox position">
+    <button class="confirmBtn" *ngIf='dbHostId!==undefined' (click)="btnConfirm()">确定</button>
+    <button mat-raised-button *ngIf='dbHostId===undefined' color="primary" (click)="btnConfirm()">确定</button>
+    <button mat-raised-button *ngIf='dbHostId===undefined' class="blueButton" color="primary" (click)="btnCancel()">取消</button>
+  </div>
+</div>

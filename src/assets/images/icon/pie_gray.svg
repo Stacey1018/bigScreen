@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>饼图--灰态</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="饼图--灰态" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="饼状图-copy" transform="translate(5.000000, 5.000000)" fill-rule="nonzero">
+            <path d="M0,10 C9.54459679e-16,15.5228475 4.4771525,20 10,20 C15.5228475,20 20,15.5228475 20,10 C20,4.4771525 15.5228475,1.59076613e-16 10,0 C4.4771525,-3.18153226e-16 9.54459679e-16,4.4771525 0,10 Z" id="Shape" fill="#787993"></path>
+            <path d="M10,0 C4.47716084,0 0,4.47713845 0,10 L10,10 L10,0 Z" id="Shape" fill="#BAC0D6"></path>
+            <path d="M10,10 L19,5.24602826 C17.2720766,2.13226734 13.8995838,0.014239146 10.0186124,0 L10,10 Z" id="Shape" fill="#DBE4F2"></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,146 @@
+<div class="dialogContent">
+  <div class="dialogTitle">
+    设置
+    <a href="javascript:void(0)" class="closeIcon" (click)="closeDialog()">×</a>
+  </div>
+  <div class="dialogMain">
+    <div class="box clearfix">
+      <label class="name">场景轮巡：</label>
+      <div class="value">
+        <input id="chooseBtn" type="checkbox" value="pollingData.isPolling" [(ngModel)]='pollingData.isPolling' class="chooseBtn">
+        <label for="chooseBtn" class="chooseLabel"></label>
+      </div>
+    </div>
+    <div class="box clearfix">
+      <label class="name">切换方式：</label>
+      <select class="value switchType" [(ngModel)]='pollingData.switchType' (change)="switchTypeChange(pollingData.switchType,'switchType')">
+        <option value="0">从右到左</option>
+        <option value="1">从左到右</option>
+        <option value="2">从下到上</option>
+        <option value="3">从上到下</option>
+      </select>
+    </div>
+    <div class="box clearfix">
+      <label class="name">时间间隔：</label>
+      <div class="value time">
+        <input type="number" min="0" [(ngModel)]='pollingData.time' (change)="switchTypeChange(pollingData.time,'time')" />
+        <label>秒</label>
+      </div>
+    </div>
+    <div class="box clearfix">
+      <label class="name">选择场景：</label>
+      <div class="sceneListBox">
+        <input type="text" class="search" [(ngModel)]="searchValue" required maxlength=14 placeholder="请输入场景名称搜索" id="searchFileInput">
+        <table>
+          <tr>
+            <th width="40"></th>
+            <th class="textLeft">场景</th>
+            <th width="120">单个切换方式</th>
+            <th>单个时间间隔</th>
+          </tr>
+        </table>
+        <div class="tablelist">
+          <div class="containerDiv">
+            <div *ngFor="let item of defaultSceneFolderArr,let k = index">
+              <!-- 文件夹 -->
+              <table>
+                <tr>
+                  <td width="2">
+                  </td>
+                  <td class="overEllipsis textLeft" title="{{item.sceneName}}">
+                    <label for="td_{{item.sceneId}}">
+                      <i class="folderIcon"></i>
+                      <span>{{item.sceneName}}</span>
+                    </label>
+                  </td>
+                </tr>
+              </table>
+              <!-- 文件夹下的数据 -->
+              <table>
+                <tr *ngFor="let item2 of item.sceneList,let j=index">
+                  <td width="40">
+                    <label for="td_{{item2.sceneId}}">
+                      <input type="checkbox" class="checkboxInput " id="td_{{item2.sceneId}}" value="{{item2.isPolling}}" [(ngModel)]='item2.isPolling'
+                        (change)='checkScene(item2,j,k)'>
+                      <label for="td_{{item2.sceneId}}" class="checkboxLabel filecheckboxInput"></label>
+                    </label>
+                  </td>
+                  <td class="secondItem overEllipsis textLeft fileTextLeft" title="{{item2.sceneName}}">
+                    <label for="td_{{item2.sceneId}}">
+                      <i class="imgIcon"></i>
+                      <span>{{item2.sceneName}}</span>
+                    </label>
+                  </td>
+                  <td width="120">
+                    <label for="td_{{item2.sceneId}}">
+                      <div *ngIf='item2.isPolling'>
+                        <select class="pollingType" [(ngModel)]='item2.pollingType' (click)='changeTypeOrTime(item2, "type")'>
+                          <option value="0">从右到左</option>
+                          <option value="1">从左到右</option>
+                          <option value="2">从下到上</option>
+                          <option value="3">从上到下</option>
+                        </select>
+                      </div>
+                    </label>
+                  </td>
+                  <td>
+                    <label for="td_{{item2.sceneId}}">
+                      <div *ngIf='item2.isPolling' class="time">
+                        <input type="number" min="0" [(ngModel)]='item2.pollingTime' (click)='changeTypeOrTime(item2, "time")' />
+                        <label>秒</label>
+                      </div>
+                    </label>
+                  </td>
+                </tr>
+              </table>
+
+            </div>
+            <table>
+              <!-- 没有文件夹下的数据 -->
+              <tr *ngFor="let item of defaultSceneArr,let j=index">
+                <td width="30">
+                  <label for="td_{{item.sceneId}}">
+                    <input type="checkbox" class="checkboxInput" id="td_{{item.sceneId}}" value="{{item.isPolling}}" [(ngModel)]='item.isPolling'
+                      (change)='checkScene(item,j)' />
+                    <label for="td_{{item.sceneId}}" class="checkboxLabel"></label>
+                  </label>
+                </td>
+                <td class="overEllipsis textLeft" title="{{item.sceneName}}">
+                  <label for="td_{{item.sceneId}}">
+                    <i class="imgIcon"></i>
+                    <span>{{item.sceneName}}</span>
+                  </label>
+                </td>
+                <td width="120">
+                  <label for="td_{{item.sceneId}}">
+                    <div *ngIf='item.isPolling'>
+                      <select class="pollingType" [(ngModel)]='item.pollingType' (click)='changeTypeOrTime(item, "type")'>
+                        <option value="0">从右到左</option>
+                        <option value="1">从左到右</option>
+                        <option value="2">从下到上</option>
+                        <option value="3">从上到下</option>
+                      </select>
+                    </div>
+                  </label>
+                </td>
+                <td>
+                  <label for="td_{{item.sceneId}}">
+                    <div *ngIf='item.isPolling' class="time">
+                      <input type="number" min="0" [(ngModel)]='item.pollingTime' (click)='changeTimeOrTime(item, "time")' />
+                      <label>秒</label>
+                    </div>
+                  </label>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btnBox">
+    <button mat-raised-button color="primary" (click)="startPolling()">确定</button>
+    <button mat-raised-button color="primary" class="blueButton" (click)="resetDialog(true)">重置</button>
+    <button mat-raised-button color="primary" class="blueButton" (click)="closeDialog()">取消</button>
+  </div>
+</div>

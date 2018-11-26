@@ -1,0 +1,201 @@
+<!-- 新建场景页面 -->
+<div class="page-box position" style="top:-50px;">
+  <div class="operation-box createScene">
+    <a class="returnSceneIcon" href="javascript:void(0);" routerLink="/dashboard/bigScreen/front/sceneView">返回</a>
+    <div class="operation-right">
+      <span class="saveScenceIcon" (click)='saveScene()'>保存</span>
+      <span class="icon fullscreenIcon" (click)='fullScreen()'>全屏</span>
+    </div>
+  </div>
+  <div class="position" style="top:42px;">
+    <div class="page-left">
+      <app-front-data-source (addLayoutData)="addLayoutData($event)"></app-front-data-source>
+    </div>
+    <div class="page-center" [ngClass]="{'fullscreen': isFullscreen}">
+      <div class="center-container position">
+        <div class="layout-container position scene-container bottom30 top0" (click)="frontDataSourceComponent.selectedItemId=''"
+          [ngClass]="{'fullscreen': isFullscreen}" id="layout-container">
+          <div class="layout-main daping">
+            <div class="dataBgBox" [ngStyle]="{'width':((sceneId === '' ? defSer.screenWidth : pageSize.width)*boxRadio+60)+'px','height':((sceneId === '' ? defSer.screenHeight : pageSize.height)*boxRadio+60)+'px','padding':'30px'}">
+              <div class="dataBox" id="dataBox" [ngStyle]="{'width':(sceneId === '' ? defSer.screenWidth : pageSize.width)+'px','height':(sceneId === '' ? defSer.screenHeight : pageSize.height)+'px','background-image': 'url('+bgUrl+')','background-color':sceneBg.bgColor,'transform': 'scale(' + boxRadio + ')'}">
+                <div id="guide-h" class="guide"></div>
+                <div id="guide" class="guide"></div>
+                <div id="guide-w" class="guide"></div>
+                <div class="dataItemBox" app-drag [itemData]="item" (itemChange)="itemChangeFun($event)" [ngClass]="{'active': frontDataSourceComponent.selectedItemId==item.itemId}"
+                  (click)="frontDataSourceComponent.selectItem(item.itemId);$event.stopPropagation();" (contextmenu)="contextmenu($event,item.itemId)"
+                  *ngFor="let item of layoutList;let i=index;" [ngStyle]="{'width': item.sizeCol+'px','height': item.sizeRow+'px','top': item.positionY+'px','left': item.positionX+'px','z-index':(frontDataSourceComponent.dataIdList.length-frontDataSourceComponent.dataIdList.indexOf(item.itemId))}">
+                  <!-- 拖拽的盒子 -->
+                  <div class="handlerBox">
+                    <span class="top-left-handler"></span>
+                    <span class="top-handler"></span>
+                    <span class="top-right-handler"></span>
+                    <span class="left-handler"></span>
+                    <span class="right-handler"></span>
+                    <span class="bottom-left-handler"></span>
+                    <span class="bottom-handler"></span>
+                    <span class="bottom-right-handler"></span>
+                  </div>
+                  <!-- 拖拽的盒子 -->
+                  <!-- 内容 start -->
+                  <!-- 边框 -->
+                  <ng-container *ngIf="item.itemData.detailCode===frontDataSourceComponent.dataTypeEnum.border">
+                    <div class="borderItem" id="dataItemBox{{item.itemId}}" [ngStyle]="{'background-image': 'url('+appSer.appsetting.viewServerUrl+item.itemData.resourceInfo+')'}">
+                    </div>
+                  </ng-container>
+                  <!-- 图表 -->
+                  <ng-container *ngIf="item.itemData.resourceCode===frontDataSourceComponent.dataTypeEnum.echarts">
+                    <div class="chartItem" id="dataItemBox{{item.itemId}}">
+                    </div>
+                  </ng-container>
+                  <!-- 图片 -->
+                  <ng-container *ngIf="item.itemData.detailCode===frontDataSourceComponent.dataTypeEnum.image">
+                    <div class="imageItem" id="dataItemBox{{item.itemId}}" *ngIf="item.itemData.resourceInfo!=''" [ngStyle]="{'background-image': 'url('+appSer.appsetting.viewServerUrl+item.itemData.resourceInfo+')'}">
+                    </div>
+                    <div class="imageItem" id="dataItemBox{{item.itemId}}" *ngIf="item.itemData.resourceInfo==''" [ngStyle]="{'background-image': 'url(../../../../assets/images/component/imageItemBg.svg)'}">
+                    </div>
+                  </ng-container>
+                  <!-- 轮播图片 -->
+                  <ng-container *ngIf="item.itemData.detailCode===frontDataSourceComponent.dataTypeEnum.pollingImage">
+                    <app-polling-image [pollingImgData]="item.itemData"></app-polling-image>
+                  </ng-container>
+                  <!-- 标题 -->
+                  <ng-container *ngIf="item.itemData.detailCode===frontDataSourceComponent.dataTypeEnum.title">
+                    <app-text [textData]="item.itemData"></app-text>
+                  </ng-container>
+                  <!-- 单行文本跑马灯 -->
+                  <ng-container *ngIf="item.itemData.detailCode===frontDataSourceComponent.dataTypeEnum.singleData">
+                    <app-single-data [id]="i" [singleTextData]="item.itemData"></app-single-data>
+                  </ng-container>
+                  <!-- 多行文本左翻 -->
+                  <ng-container *ngIf="item.itemData.detailCode===frontDataSourceComponent.dataTypeEnum.multipleData">
+                    <app-multiple-data [multipleTextData]="item.itemData"></app-multiple-data>
+                  </ng-container>
+                  <!-- 多行文本上滚 -->
+                  <ng-container *ngIf="item.itemData.detailCode===frontDataSourceComponent.dataTypeEnum.scrollTopData">
+                    <app-scroll-top [scrollTopData]="item.itemData"></app-scroll-top>
+                  </ng-container>
+                  <!-- 中国地图、世界地图 -->
+                  <ng-container *ngIf="item.itemData.detailCode===frontDataSourceComponent.dataTypeEnum.chinaMap||item.itemData.detailCode===frontDataSourceComponent.dataTypeEnum.worldMap">
+                    <app-based-map [id]="i" [mapType]="item.itemData.resourceInfo" [resourceId]="item.itemData.resourceId"></app-based-map>
+                  </ng-container>
+                  <!-- 3D球形地图 -->
+                  <ng-container *ngIf="item.itemData.detailCode===frontDataSourceComponent.dataTypeEnum.sphericalMap">
+                    <app-spherical-map [id]="i" [resourceId]="item.itemData.resourceId"></app-spherical-map>
+                  </ng-container>
+                  <!---实时视频-->
+                  <ng-container *ngIf="item.itemData.detailCode===frontDataSourceComponent.dataTypeEnum.realVideo">
+                    <app-video-plugin [videoData]="item.itemData" [resourceInfo]="item.itemData.resourceInfo"></app-video-plugin>
+                  </ng-container>
+                  <!--视频片段-->
+                  <ng-container *ngIf="item.itemData.detailCode===frontDataSourceComponent.dataTypeEnum.historyVideo">
+                    <app-video-plugin [videoData]="item.itemData" [resourceInfo]="item.itemData.resourceInfo"></app-video-plugin>
+                  </ng-container>
+                  <!-- 时间器 -->
+                  <ng-container *ngIf="item.itemData.detailCode===frontDataSourceComponent.dataTypeEnum.timer">
+                    <app-timer [timerData]="item.itemData"></app-timer>
+                  </ng-container>
+                  <!-- 翻牌 -->
+                  <ng-container *ngIf="item.itemData.detailCode===frontDataSourceComponent.dataTypeEnum.draw">
+                    <app-draw [drawData]="item.itemData"></app-draw>
+                  </ng-container>
+                  <!-- 轮播列表 -->
+                  <ng-container *ngIf="item.itemData.detailCode===frontDataSourceComponent.dataTypeEnum.pollingData">
+                    <app-polling-data [id]="i" [pollingData]="item.itemData"></app-polling-data>
+                  </ng-container>
+                  <!-- 内容 end -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="zoomInOutBox">
+          <span class="zoomOutIcon" (click)="zoomInOut(0)"></span>
+          <div class="rangeBox">
+            <input type="range" [min]="zoom.min" [max]="zoom.max" [step]="zoom.step" [val]="boxRadio" (onViewInit)="rangeChange()" app-rangeSlider
+              [(ngModel)]="boxRadio" [ngStyle]="{'background-size': (boxRadio/zoom.max*100)+'% 100%'}">
+          </div>
+          <span class="zoomInIcon" (click)="zoomInOut(1)"></span>
+        </div>
+      </div>
+    </div>
+    <div class="page-right">
+      <div class="position">
+        <!-- 页面设置 -->
+        <ng-container *ngIf="frontDataSourceComponent.selectedItemId===''">
+          <app-page-setting (changeBgData)="setBg($event)" [bgData]="sceneBg"></app-page-setting>
+        </ng-container>
+        <!-- 标题设置 -->
+        <ng-container *ngIf="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]?.detailCode===frontDataSourceComponent.dataTypeEnum.title">
+          <app-text-setting (changeTextData)="changeData($event)" [textData]="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]"></app-text-setting>
+        </ng-container>
+        <!-- 跑马灯 -->
+        <ng-container *ngIf="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]?.detailCode===frontDataSourceComponent.dataTypeEnum.singleData">
+          <app-single-data-setting (changeSingleTextData)="changeData1($event)" [singleTextData]="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]"></app-single-data-setting>
+        </ng-container>
+        <!-- 多行文本左翻 -->
+        <ng-container *ngIf="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]?.detailCode===frontDataSourceComponent.dataTypeEnum.multipleData">
+          <app-multiple-data-setting (changeMultipleTextData)="changeData1($event)" [multipleTextData]="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]"></app-multiple-data-setting>
+        </ng-container>
+        <!-- 多行文本上滚 -->
+        <ng-container *ngIf="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]?.detailCode===frontDataSourceComponent.dataTypeEnum.scrollTopData">
+          <app-scroll-top-setting (changeScrollTopData)="changeData1($event)" [scrollTopData]="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]"></app-scroll-top-setting>
+        </ng-container>
+        <!-- 图表设置 -->
+        <ng-container *ngIf="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]?.resourceCode===frontDataSourceComponent.dataTypeEnum.echarts">
+          <app-echarts-setting (changeEchartData)="changeEchartData($event)" [echartData]="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]"
+            [dataBoxId]="frontDataSourceComponent.selectedItemId"></app-echarts-setting>
+        </ng-container>
+        <!-- 图片设置 -->
+        <ng-container *ngIf="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]?.detailCode===frontDataSourceComponent.dataTypeEnum.image">
+          <app-image-setting (changeImageData)="changeData($event)" [imageData]="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]"></app-image-setting>
+        </ng-container>
+        <!--轮播图片-->
+        <ng-container *ngIf="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]?.detailCode===frontDataSourceComponent.dataTypeEnum.pollingImage">
+          <app-polling-image-setting (changePollingImgData)="changeData($event)" [pollingImgData]="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]"></app-polling-image-setting>
+        </ng-container>
+        <!--实时视频-->
+        <ng-container *ngIf="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]?.detailCode===frontDataSourceComponent.dataTypeEnum.realVideo">
+          <app-real-video-setting (changeVideoData)="changeData($event)" [videoData]="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]"></app-real-video-setting>
+        </ng-container>
+        <!--上传视频设置-->
+        <ng-container *ngIf="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]?.detailCode===frontDataSourceComponent.dataTypeEnum.historyVideo">
+          <app-video-setting (changeVideoData)="changeData($event)" [videoData]="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]"></app-video-setting>
+        </ng-container>
+        <!--时间器-->
+        <ng-container *ngIf="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]?.detailCode===frontDataSourceComponent.dataTypeEnum.timer">
+          <app-timer-setting (changeTimerData)="changeData($event)" [timerData]="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]"></app-timer-setting>
+        </ng-container>
+        <!--翻牌-->
+        <ng-container *ngIf="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]?.detailCode===frontDataSourceComponent.dataTypeEnum.draw">
+          <app-draw-setting (changeDrawData)="changeData($event)" [drawData]="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]"></app-draw-setting>
+        </ng-container>
+        <!--轮播列表-->
+        <ng-container *ngIf="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]?.detailCode===frontDataSourceComponent.dataTypeEnum.pollingData">
+          <app-polling-data-setting (changePollingData)="changeData($event)" [pollingData]="frontDataSourceComponent.dataList[frontDataSourceComponent.selectedItemId]"></app-polling-data-setting>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="operateLayoutBox" [ngStyle]="{ 'top': contextmenuMsg.top+ 'px', 'left':contextmenuMsg.left+ 'px'}
+" *ngIf="contextmenuMsg.isContextmenu ">
+  <ul>
+    <li (click)="move('top')">
+      <i class="topIcon"></i>
+      置顶
+    </li>
+    <li (click)="move('bottom')">
+      <i class="bottomIcon"></i>
+      置底
+    </li>
+    <li (click)="moveUp()">
+      <i class="moveupIcon"></i>
+      上移一层</li>
+    <li (click)="moveDown()">
+      <i class="movedownIcon"></i>
+      下移一层</li>
+    <li (click)="deleteCom()">
+      <i class="deleteIcon"></i>
+      删除</li>
+  </ul>
+</div>

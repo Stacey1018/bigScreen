@@ -1,0 +1,150 @@
+$imgUrl:'../../../assets/images/';
+@import '../../../assets/css/common';
+.database-deploy {
+    top: -1px;
+    border-top: 1px solid $borderColor;
+    .database-deploy-content {
+        bottom: 70px;
+        &.edit {
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 90px;
+            border: 1px solid $borderColor;
+        }
+    }
+    .leftList {
+        width: 300px;
+        right: auto;
+        border-right: 1px solid $borderColor;
+        background-color: #E9EDF5;
+    }
+    .rightList {
+        left: 300px;
+        background-color: #F6F6F7;
+    }
+    .btnBox {
+        top: auto;
+        height: 70px;
+        border-top: 1px solid $borderColor;
+        text-align: right;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        button {
+            margin-right: 15px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+        .confirmBtn {
+            width: 108px;
+            height: 42px;
+            line-height: 42px;
+            border-radius: 23px;
+            border: 0px;
+            cursor: pointer;
+            background-color: rgba(18, 150, 219, 0.2);
+            color: #1296DB;
+        }
+    }
+}
+
+.dbList,
+.dbTableList {
+    top: 45px;
+}
+
+.dbList {
+    li {
+        &:hover,&.active {
+            background-color: rgba(104, 111, 119, 0.36);
+        }
+    }
+}
+
+.dbTableList {
+    li {
+        padding: 0 40px;
+    }
+}
+
+.dbList,
+.dbTableList {
+    li {
+        height: 36px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        &:hover,
+        &.active {
+            .dbIcon {
+                background-image: url(#{$imgUrl}databaseIconHover.svg);
+            }
+            .excelIcon {
+                background-image: url(#{$imgUrl}excelIconHover.svg);
+            }
+            input {
+                color: #1296DB;
+            }
+        }
+        &:hover {
+            .renameIcon {
+                visibility: visible;
+            }
+        }
+    }
+    .dbName,
+    .dbTableName,
+    .dbTableNameSpan {
+        border: 1px solid rgba(20, 4, 4, 0);
+        height: 30px;
+        line-height: 28px;
+        margin: 0 10px;
+        padding: 0 3px;
+        border: none;
+        outline: medium;
+        pointer-events: none;
+        background: transparent;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        &.editStatus {
+            border: 1px solid rgba(20, 4, 4, 0.4);
+            pointer-events: auto;
+        }
+    }
+    .dbName,
+    .dbTableName {
+        flex: 1;
+    }
+    .dbTableNameSpan {
+        max-width: 90%;
+    }
+    .selectedIcon {
+        background-image: url(#{$imgUrl}selectedIcon.svg);
+    }
+    .renameIcon {
+        margin-right: 10px;
+        cursor: pointer;
+        visibility: hidden;
+        background-image: url(#{$imgUrl}renameIcon_hover.svg);
+    }
+    .dbIcon {
+        margin-left: 10px;
+        background-image: url(#{$imgUrl}databaseIcon.svg);
+    }
+    
+    .excelIcon {
+        margin-left: 10px;
+        background-image: url(#{$imgUrl}excelIcon.svg);
+    }
+}
+
+.icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+}

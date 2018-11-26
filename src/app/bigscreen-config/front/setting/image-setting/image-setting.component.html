@@ -1,0 +1,45 @@
+<div class="settingBox">
+  <div class="settingTitle">
+    配置信息
+  </div>
+  <ul class="navBox">
+    <li [ngClass]="{'active': !isShowHistotyList}" (click)="isShowHistotyList = false">图片上传</li>
+    <li [ngClass]="{'active': isShowHistotyList}" (click)="isShowHistotyList = true">历史上传</li>
+  </ul>
+  <div class="position" style="top:80px;" [ngClass]="{'hide': isShowHistotyList}">
+    <h2 class="title">选择上传</h2>
+    <div class="settingContain">
+      <div class="settingDiv">
+        <label class="settingName">单张图片</label>
+        <div class="uploadImg">
+          <a href="javascript:;" class="file">
+            <input class="file-upload" type="file" accept=".jpg,.jpeg,.svg,.gif,.png" (click)='beforeUpload()' ng2FileSelect [uploader]="uploader"
+              multiple/>点击上传
+          </a>
+          <div class="imgBox nodata" *ngIf="!imageData.resourceInfo">
+            <i></i>
+            暂无上传
+          </div>
+          <div class="imgBox" *ngIf="imageData.resourceInfo" [ngStyle]="{'background-image': 'url('+appSer.appsetting.viewServerUrl+imageData.resourceInfo+')'}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="position" style="top:80px;" [ngClass]="{'hide': !isShowHistotyList}">
+    <div class="containerDiv">
+      <ul class="bgList">
+        <li *ngFor="let item of historyImagesList;let i=indx" [ngClass]="{'active': imageData.resourceInfo==item.resourcesUrl}" (click)="selectBg(item)">
+          <span class="checkbox" *ngIf="imageData.resourceInfo==item.resourcesUrl">
+            <!-- <input class="check" type="checkbox" id="channel_checkDiv{{i}}" disabled checked/>
+            <label for="channel_checkDiv{{i}}" class="check-label white"></label> -->
+            <div (click)="deleteResourceById(item);$event.stopPropagation()">×</div>
+          </span>
+          <div class="bgBox" [ngStyle]="{'background-image': 'url('+appSer.appsetting.viewServerUrl+item.resourcesUrl+')'}">
+          </div>
+          <div class="bgName overEllipsis" title="{{item.resourcesName}}">{{item.resourcesName}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

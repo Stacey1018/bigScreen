@@ -1,0 +1,51 @@
+@import "../../../../assets/css/common";
+@import "../../../../assets/css/commonDialog";
+$imgUrl: "../../../../assets/images/";
+.dialogMain {
+    padding: 20px 20px 0;
+    line-height: 36px;
+    display: flex;
+    flex-direction: column;
+    .tooltip{
+      color: #FF3434;
+      font-size: 12px;
+    }
+    label {
+        width: 85px;
+        height: 30px;
+        line-height: 30px;
+    }
+    select {
+        width: 200px;
+        height: 36px;
+        margin-left: 10px;
+        line-height: 34px;
+        border: 1px solid #BAC0D6;
+    }
+    .tableBox {
+        flex: 1;
+        margin-top: 15px;
+        table {
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        .tableContent {
+            flex: 1;
+            overflow: hidden;
+        }
+        th {
+            background-color: #F6F6F7;
+        }
+        tr {
+            td:first-child {
+                padding: 0 5px;
+                text-align: left;
+            }
+        }
+        th,
+        td {
+            text-align: center;
+            border: 1px solid #BAC0D6;
+        }
+    }
+}

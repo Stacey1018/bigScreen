@@ -1,0 +1,191 @@
+<div class="sql-create-table">
+  <div class="sqlBox position" [ngClass]="{'fullScreen': sqlIsFullscreen}">
+    <div class="dataBaseBox">
+      <label>数据源：</label>
+      <select *ngIf="dataBases.length>0" [(ngModel)]="dataOptionParam.dbId" (change)="changeDataSource(dataOptionParam.dbId)">
+        <option value="{{item.dbId}}" *ngFor="let item of dataBases">{{item.remarkName}}</option>
+      </select>
+      <select *ngIf="dataBases.length==0">
+        <option selected>当前无数据源</option>
+      </select>
+    </div>
+    <div class="sqlBoxContentBox" [ngClass]="{'hidden':dataSourceIsDB}">
+      <h3 class="h3Title">
+        表
+      </h3>
+      <div class="sqlBoxContent">
+        <div class="containerDiv">
+          <ul class="dbTablesList" *ngIf="currDataSourceType==0">
+            <li [ngClass]="{'active': item.tableId == currTableId}" *ngFor="let item of dbTables" (click)="loadExcelData(item)" class="overEllipsis"
+              title="{{item.remarkName}}">
+              {{item.remarkName}}
+            </li>
+          </ul>
+          <ul class="dbTablesList" *ngIf="currDataSourceType==2">
+            <li [ngClass]="{'active': item.id == currTableId}" *ngFor="let item of dbEduTables" (click)="loadEduDataBySql(item)" class="overEllipsis"
+              title="{{item.tableName}}">
+              {{item.tableName}}
+            </li>
+          </ul>
+          <ul class="dbTablesList" *ngIf="currDataSourceType==3">
+            <li [ngClass]="{'active': item.tableId == currTableId}" *ngFor="let item of formTables" (click)="getTemplateData(item)" class="overEllipsis"
+              title="{{item.tableName}}">
+              {{item.tableName}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="sqlBoxContentBox" [ngClass]="{'hidden':!dataSourceIsDB}">
+      <h3 class="h3Title">
+        sql语句
+        <span class="fullscreenIcon" (click)="fullscreen('sql')" *ngIf="!sqlIsFullscreen" title="全屏">全屏</span>
+        <span class="exitFullscreenIcon" (click)="fullscreen('sql')" *ngIf="sqlIsFullscreen" title="缩放">缩放</span>
+      </h3>
+      <textarea class="sqlBoxContent p-10" [(ngModel)]="dataOptionParam.sqlInfo"></textarea>
+    </div>
+    <div class="sqlBtnBox" [ngClass]="{'hidden':!dataSourceIsDB}">
+      <button mat-raised-button color="primary" (click)='operation()'>运行</button>
+    </div>
+  </div>
+  <div class="centerBox position" [ngClass]="{'fullScreen': tableIsFullscreen}">
+    <h3 class="h3Title">图表预览
+      <div>
+        <button class="addDataBtn creatTableBtn" (click)="openDialog()" [disabled]="!isBtnDisplay">生成图表</button>
+        <span class="fullscreenIcon" (click)="fullscreen('table')" *ngIf="!tableIsFullscreen" title="全屏">全屏</span>
+        <span class="exitFullscreenIcon" (click)="fullscreen('table')" *ngIf="tableIsFullscreen" title="缩放">缩放</span>
+      </div>
+    </h3>
+    <div class="tableBoxContent position" [ngClass]="{'right240': rightIsDisplay}" *ngIf="dbTableData.data.length==0">
+      <table class="noDataTable">
+        <tr>
+          <td>
+            <div class="noDataImg noTable"></div>
+            <div class="noDataText">暂无数据</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="tableBoxContent position" [ngClass]="{'hidden':isDisplay,'right240': rightIsDisplay}">
+      <div id="divChart" class="position">
+      </div>
+    </div>
+    <div class="tableBoxContent position" [ngClass]="{'hidden': !(dbTableData.data.length && isDisplay),'right240': rightIsDisplay}">
+      <div class="tableList">
+        <div class="tableBox">
+          <div class="tableContentBox">
+            <table class="tableContent">
+              <tr class="tableTitle">
+                <th class="overEllipsis" title="{{keyItem}}" *ngFor="let keyItem of dbTableData.key">
+                  {{keyItem}}
+                </th>
+              </tr>
+              <tr *ngFor="let dataItem of dbTableData.data">
+                <td class="overEllipsis" title="{{dataItem[keyItem]}}" *ngFor="let keyItem of dbTableData.key">
+                  {{dataItem[keyItem]}}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tableMsgBox position" [ngClass]="{'hidden':!rightIsDisplay}">
+      <div class="position" style="bottom:50px;">
+        <div class="containerDiv">
+          <div class="tableType">
+            <label>图表类型</label>
+            <!-- <button (click)="setChart()">设置</button> -->
+            <ul class="tableTypeList clearfix">
+              <li *ngFor="let item of chartTypes" [ngClass]="{'active':item.code==currType}" class="{{item.iconName}}" [ngStyle]="{'background-image': 'url(../../../../assets/images/icon/'+item.iconName+'.svg)'}"
+                (click)="changeChartType(item)" title="{{item.typeName}}"></li>
+              <!--置灰先注掉-->
+              <!-- <ng-container *ngFor="let item of chartTypes">
+                    <li *ngIf="item.isUsable" [ngClass]="{'active':item.code==currType}" class="{{item.iconName}}" [ngStyle]="{'background-image': 'url(../../../../assets/images/icon/'+item.iconName+'.svg)'}"
+                      title="{{item.remark}}" (click)="changeChartType(item)" title="{{item.typeName}}"></li>
+                    <li *ngIf="!item.isUsable" class="{{item.iconName}} disabled" [ngStyle]="{'background-image': 'url(../../../../assets/images/icon/'+item.iconName+'_gray.svg)'}"
+                      title="{{item.remark}}" title="{{item.typeName}}"></li>
+                  </ng-container> -->
+            </ul>
+            <div *ngIf="currCombinationType==1 && comboFields.length>1">
+              <label>组合方式</label>
+              <div class="chartTypeIconBox" *ngIf="isShowChartTypeIconBox" [ngStyle]="{'top': top+'px','left':left+'px'}">
+                <ul>
+                  <li *ngFor="let chartType of comboChartTypes" title="{{chartType.typeName}}" [ngStyle]="{'background-image': 'url(../../../../assets/images/icon/'+chartType.iconName+'.svg)'}"
+                    (click)="changeComboChartType(chartType)">
+                  </li>
+                </ul>
+              </div>
+              <ul class="comboChartTypesBox">
+                <li *ngFor="let field of comboFields,let i=index">
+                  <div class="fieldName overEllipsis">{{field.fieldName}}</div>
+                  <div class="chartTypeIcon" (click)="showChartTypeIconBox(i,$event);$event.stopPropagation()" [ngStyle]="{'background-image': 'url(../../../../assets/images/icon/'+field.iconName+'.svg)'}"></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- <div class="tableColor">
+            <label>颜色</label>
+            <select [(ngModel)]="colorThemeId" (change)="changeColorTheme()">
+              <option *ngFor="let item of colorThemes" [value]="item.themeId">{{item.themeName}}</option>
+            </select>
+          </div> -->
+          <div class="tableLabel clearfix">
+            <label class="left">图表标签</label>
+            <div class="right switchTableLabel">
+              开
+              <input id="switchChartTitle" class="switchCheckbox" type="checkbox" [(ngModel)]="chartTitleIsOpen" (change)="changeTitleState()">
+              <label for="switchChartTitle" class="switchLabel"></label>
+              关
+            </div>
+          </div>
+          <div class="tableLabel clearfix">
+            <label class="left">图例</label>
+            <div class="right switchTableLabel">
+              开
+              <input id="switchChartLegend" class="switchCheckbox" type="checkbox" [(ngModel)]="chartLegendIsOpen" (change)="changeLegendState()">
+              <label for="switchChartLegend" class="switchLabel"></label>
+              关
+            </div>
+          </div>
+          <div class="clearfix numberSetting" *ngIf="currAxisType==1">
+            <label>数值设置</label>
+            <div>
+              <div class="labelName">标题</div>
+              <input class="numberValue" type="text" [(ngModel)]="dataOptionParam.yAxisName">
+            </div>
+            <div>
+              <div class="labelName">单位</div>
+              <select class="numberValue" [(ngModel)]="dataOptionParam.unitName" (change)="setUnit()">
+                <option value="1">请选择</option>
+                <option value="1000">千</option>
+                <option value="10000">万</option>
+                <option value="10000000">千万</option>
+                <option value="100000000">亿</option>
+              </select>
+            </div>
+            <div>
+              <div class="labelName">最大值</div>
+              <input class="numberValue" type="text" [(ngModel)]="dataOptionParam.max" [disabled]="maxIsAuto" (keyup)="changeValue($event,'max')">
+              <input class="checkboxInput" id="maxState" type="checkbox" [(ngModel)]="maxIsAuto" (change)="changeAutoState('max')">
+              <label class="checkboxLabel" for="maxState"></label>
+              <label for="maxState">自动</label>
+            </div>
+            <div>
+              <div class="labelName">最小值</div>
+              <input class="numberValue" type="text" [(ngModel)]="dataOptionParam.min" [disabled]="minIsAuto" (keyup)="changeValue($event,'min')">
+
+              <input class="checkboxInput" id="minState" type="checkbox" [(ngModel)]="minIsAuto" (change)="changeAutoState('min')">
+              <label class="checkboxLabel" for="minState"></label>
+              <label for="minState">自动</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btnBox position">
+        <input type="button" (click)="saveOpenDialog()" value="保存">
+        <input class="m-l-10" type="button" *ngIf="chartId !== ''" (click)="saveASOpenDialog()" value="另存为">
+      </div>
+    </div>
+  </div>
+</div>

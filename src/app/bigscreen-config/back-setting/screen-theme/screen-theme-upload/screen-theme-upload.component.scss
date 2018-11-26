@@ -1,0 +1,238 @@
+$backgroundColor:#fff;
+$borderColor:#E7E7E7;
+$fontColor:#2D3948;
+$imgUrl:'../../../../../assets/images/';
+@import '../../../../../assets/css/common';
+.content-container {
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    bottom: 0;
+    background-color: #fff;
+    .topcommon {
+        width: 100%;
+        height: 72px;
+        line-height: 72px;
+        border: 1px solid $borderColor;
+        vertical-align: middle;
+        overflow: hidden;
+        .topcommon-left {
+            display: inline-block;
+            height: 34px;
+            margin-top: 19px;
+            border: 1px solid $blueColor;
+            border-radius: 3px;
+            width: 366px;
+            margin-left: 20px;
+            position: relative;
+            .topcommon-select,
+            .search-picture-input {
+                position: absolute;
+                height: 32px;
+                display: inline-block;
+                top: 0px;
+                border: none;
+                outline: 0;
+            }
+            .topcommon-select {
+                width: 100px;
+                padding: 0 20px 0 3px;
+                -moz-appearance: none;
+                -webkit-appearance: none;
+                appearance: none;
+                background-image: url('#{$imgUrl}arrow-black.svg');
+                background-position: center right;
+                background-repeat: no-repeat;
+            }
+            .search-picture-input {
+                width: 264px;
+                left: 100px;
+                border-left: 1px solid #5DBFE2;
+                padding: 0 3px;
+            }
+        }
+        .upload-img {
+            position: relative;
+        }
+        .background-select {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            opacity: 0;
+            z-index: 1;
+        }
+        .search-theme-input {
+            border: 1px solid #22596d;
+            border-radius: 3px;
+            width: 259px;
+            height: 31px;
+            margin-left: 20px;
+            padding: 0 3px;
+            color: #02a6e3;
+            border: 1px solid rgba(3, 162, 221, 0.63);
+        }
+        .new-theme,
+        .upload-img {
+            margin-right: 20px;
+            margin-top: 16px;
+            border: 1px solid rgba(3, 162, 221, 0.63);
+            border-radius: 3px;
+            width: 136px;
+            height: 38px;
+            line-height: 38px;
+            color: #02a6e3;
+            text-align: center;
+            float: right;
+            cursor: pointer;
+        }
+    }
+    .tabcommon {
+        position: absolute;
+        width: 100%;
+        top: 72px;
+        bottom: 0;
+        .maincommon {
+            width: 100%;
+            position: relative;
+            top: 0;
+            bottom: 0;
+            height: 100%;
+        }
+    }
+}
+
+//上传部分
+.background-option {
+    height: 30px;
+    padding: 0;
+    .file-box {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .file-upload,
+    .choose-name {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        color: #02a6e3;
+        padding-left: 20px;
+    }
+    .file-upload {
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+.menu-bar {
+    width: 100%;
+    height: 30px;
+    border-bottom: 1px solid $borderColor;
+    .licommon {
+        float: left;
+        height: 100%;
+        line-height: 30px;
+        color: $fontColor;
+        text-align: center;
+    }
+}
+
+.scroll-container {
+    position: absolute;
+    top: 30px;
+    bottom: 0;
+    width: 100%
+}
+
+.first {
+    width: 15%;
+    img {
+        border: 2px solid #E7E7E7;
+    }
+}
+
+.second,
+.third,
+.forth {
+    width: 20%;
+}
+
+.fifth {
+    width: 25%;
+}
+
+.config-first {
+    width: 20%;
+    img {
+        border: 2px solid #E7E7E7;
+    }
+}
+
+.config-second {
+    width: 50%;
+}
+
+.config-fifth {
+    width: 30%;
+}
+
+.imgcommon {
+    display: inline-block;
+    width: 80px;
+    height: 45px;
+    margin-top: 7px;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.upload-ul-container {
+    .upload-li-common {
+        height: 60px;
+        line-height: 60px;
+        .licommon {
+            float: left;
+            height: 60px;
+            line-height: 60px;
+            color: $fontColor;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            text-align: center;
+            border-bottom: 1px solid $borderColor;
+        }
+        .operate {
+            span {
+                color: #02A6E3;
+                display: inline-block;
+                padding-left: 20px;
+                background-repeat: no-repeat;
+                background-position: left center;
+                margin-right: 30px;
+                cursor: pointer;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+            .operate-preview {
+                background-image: url('#{$imgUrl}previewPictureIcon.svg');
+            }
+            .operate-edit {
+                background-image: url('#{$imgUrl}editDataIconBlue.svg');
+            }
+            .operate-new {
+                background-image: url('#{$imgUrl}newThemeIcon.svg');
+            }
+            .operate-delete {
+                background-image: url('#{$imgUrl}deleteIcon.svg');
+            }
+        }
+    }
+}

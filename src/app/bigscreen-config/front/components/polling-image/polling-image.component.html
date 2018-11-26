@@ -1,0 +1,18 @@
+<div class="pollingBox">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-nodata" *ngIf="pollingImgData.configInfo.imgUrl.length==0">
+            </div>
+            <ng-container *ngIf="pollingImgData.configInfo.imgUrl.length>0">
+                <div class="swiper-slide" *ngFor="let data of pollingImgData.configInfo.imgUrl">
+                    <img [src]="appSer.appsetting.viewServerUrl+data.resourceInfo" alt="" width="100%">
+                </div>
+            </ng-container>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+        <!-- 如果需要导航按钮 -->
+        <!-- <div class="swiper-button-prev"></div> -->
+        <!-- <div class="swiper-button-next"></div> -->
+    </div>
+</div>

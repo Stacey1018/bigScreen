@@ -1,0 +1,6 @@
+{
+  "viewServerUrl": "http://172.16.101.146:8999",
+  "dataServerUrl": "http://172.16.101.146:5002",
+  "bigScreenUrl": "http://172.16.101.146:9001",
+  "timer": "10000"
+}
